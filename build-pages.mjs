@@ -3,6 +3,7 @@
  * Run by deploy.sh before the cache-bust stamp. Content-only; no framework. */
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
@@ -29,7 +30,7 @@ const footer = toHome(grab(index, /<footer class="site-footer/, "</footer>"));
 
 const THEME = `<script>(function(){try{var t=localStorage.getItem('skans-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>`;
 
-const head = (title, desc, slug) => {
+const head = (title, desc, slug, opts = {}) => {
   const url = `https://skanslabs.com/${slug}`;
   return `<!DOCTYPE html>
 <html lang="en">
@@ -38,6 +39,7 @@ const head = (title, desc, slug) => {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${title} — Skans Labs</title>
   <meta name="description" content="${desc}" />
+  <meta name="robots" content="${opts.noindex ? "noindex, nofollow" : "index, follow"}" />
   <meta name="theme-color" content="#0a0d12" />
   <link rel="canonical" href="${url}" />
   ${THEME}
@@ -172,6 +174,58 @@ const pages = [
 const built = pages.map(write);
 console.log("build-pages: wrote " + built.map((s) => s + ".html").join(", "));
 
+// ---- pricing (STAGED: noindex + not in nav or sitemap until counsel clears public prices) ----
+(function writePricing() {
+  const slug = "pricing";
+  const title = "Pricing";
+  const desc = "Skans editions — licensed per site, metered by managed endpoints. Community is free and production-ready.";
+  const plans = [
+    { name: "Community", price: "Free", per: "", band: "Up to 25 endpoints",
+      feats: ["Device identity + built-in CA", "Endpoint agent + NAC visibility", "Threat &amp; malware feeds", "Full community driver pack", "Single site &middot; community support"],
+      cta: "Get Community" },
+    { name: "Essential", price: "$499", per: "/ site &middot; yr", band: "Up to 100 endpoints",
+      feats: [{ head: "Everything in Community, plus" }, "Patch management + enforcement", "Backup &amp; disaster recovery", "Alerting &amp; notifications", "Password &amp; lockout baseline", "Email support"],
+      cta: "Choose Essential" },
+    { name: "Professional", price: "$999", per: "/ site &middot; yr", band: "Up to 500 endpoints", featured: true, primary: true,
+      feats: [{ head: "Everything in Essential, plus" }, "NIST 800-171 / CMMC / ISO 27001 evidence", "802.1X NAC, dynamic VLAN, segmentation", "Vulnerability management", "Log &amp; topology fusion", "Business-hours support"],
+      cta: "Choose Professional" },
+    { name: "Business", price: "$2,999", per: "/ site &middot; yr", band: "Up to 1,000 endpoints",
+      feats: [{ head: "Everything in Professional, plus" }, "OT/ICS driver depth &mdash; S7-1500, Desigo, BACnet", "Industrial cert lanes (OPC UA GDS Push)", "Priority support"],
+      cta: "Choose Business" },
+    { name: "Enterprise", price: "Contact", per: "", band: "1,000+ endpoints &middot; multi-site",
+      feats: [{ head: "Everything in Business, plus" }, "Distributed Core + Edge (per-site)", "High availability", "Air-gap Update Service + offline licensing", "SSO, advanced RBAC, full audit", "Dedicated support + SLA"],
+      cta: "Contact sales" },
+  ];
+  const card = (p) => `<article class="card plan${p.featured ? " featured" : ""} reveal">${p.featured ? '<span class="plan-tag">Most popular</span>' : ""}
+            <div class="plan-name">${p.name}</div>
+            <div class="plan-price">${p.price}${p.per ? `<small> ${p.per}</small>` : ""}</div>
+            <div class="plan-band">${p.band}</div>
+            <ul class="plan-feats">${p.feats.map((f) => (f.head ? `<li class="head">${f.head}</li>` : `<li>${f}</li>`)).join("")}</ul>
+            <div class="plan-cta"><a class="btn ${p.primary ? "btn-primary" : "btn-ghost"}" href="/#contact">${p.cta}</a></div>
+          </article>`;
+  const main = `
+  <main id="main">
+    <section class="section" id="pricing">
+      <div class="container-wide">
+        <p class="kicker reveal">Editions</p>
+        <h2 class="section-title reveal reveal-d1" style="max-width:24ch">Priced per site — by what you protect, not who you are.</h2>
+        <p class="lead reveal reveal-d2" style="margin-top:16px">One Skans appliance secures one site on one license. You're metered by <strong>managed endpoints</strong> — every device Skans gives an identity to: cameras, controllers, PLCs, switches, the server itself — not by seats, sockets, or agents. Community is free and runs in production; step a site up as it grows.</p>
+        <div class="plan-grid">
+          ${plans.map(card).join("\n          ")}
+        </div>
+        <div class="plan-notes reveal">
+          <p>Prices are annual, in USD, <strong>per site</strong>. Multi-site estates license each site — distributed <strong>Core&nbsp;+&nbsp;Edge</strong> deployments license each Edge. <a href="/#contact">Talk to us</a> about site packs and volume.</p>
+          <p><strong>Managed endpoints</strong> counts devices under active Skans management — identity, certificates, policy, or monitoring. The endpoint agents running on those devices are never metered separately.</p>
+        </div>
+      </div>
+    </section>
+  </main>`;
+  const html = head(title, desc, slug, { noindex: true }) + sprite + header + main + footer +
+    `\n  <script src="/app.js?v=0" defer></script>\n</body>\n</html>\n`;
+  fs.writeFileSync(path.join(PUB, "pricing.html"), html);
+  console.log("build-pages: wrote pricing.html (STAGED — noindex, unlinked, not in sitemap)");
+})();
+
 // ---- crawler / AI / SEO files ----
 const siteUrls = [`${SITE}/`, ...pages.map((p) => `${SITE}/${p.slug}`)];
 fs.writeFileSync(path.join(PUB, "sitemap.xml"),
@@ -185,3 +239,16 @@ fs.writeFileSync(path.join(PUB, "llms.txt"),
 const INDEXNOW_KEY = "633776baf62f2edd553d1abced5d7d5f1def6f5c9cebb59643790280ebb3e015";
 fs.writeFileSync(path.join(PUB, `${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);
 console.log("build-pages: wrote robots.txt, sitemap.xml, llms.txt, IndexNow key");
+
+// ---- cache-bust: stamp every ?v= on local assets with a content hash (ported from retired deploy.sh,
+// so Cloudflare Pages / browsers fetch fresh CSS+JS after a change instead of serving ?v=0 forever) ----
+const assetBytes = ["styles.css", "enclave.js", "app.js"].map((f) => {
+  try { return fs.readFileSync(path.join(PUB, f)); } catch { return Buffer.alloc(0); }
+});
+const VER = crypto.createHash("md5").update(Buffer.concat(assetBytes)).digest("hex").slice(0, 8);
+for (const f of fs.readdirSync(PUB)) {
+  if (!f.endsWith(".html")) continue;
+  const p = path.join(PUB, f);
+  fs.writeFileSync(p, fs.readFileSync(p, "utf8").replace(/\?v=[A-Za-z0-9]+/g, `?v=${VER}`));
+}
+console.log("build-pages: cache-bust stamped ?v=" + VER + " across all html");
