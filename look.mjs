@@ -1,0 +1,12 @@
+import { chromium } from "playwright-core";
+const b = await chromium.launch({ executablePath:"/home/david/.cache/ms-playwright/chromium-1223/chrome-linux64/chrome", args:["--no-sandbox"] });
+const O="/tmp/claude-1000/-home-david/8da55ca9-6a0e-403c-8ac2-325712b937c0/scratchpad";
+let p = await (await b.newContext({viewport:{width:1728,height:1080}})).newPage();
+await p.goto("http://127.0.0.1:8899/",{waitUntil:"networkidle"}); await p.waitForTimeout(2500);
+await p.screenshot({path:O+"/look-laptop-hero.png"});
+await p.screenshot({path:O+"/look-laptop-full.png", fullPage:true});
+let p2 = await (await b.newContext({viewport:{width:390,height:844},isMobile:true,deviceScaleFactor:2})).newPage();
+await p2.goto("http://127.0.0.1:8899/",{waitUntil:"networkidle"}); await p2.waitForTimeout(2500);
+await p2.screenshot({path:O+"/look-phone-full.png", fullPage:true});
+console.log("done");
+await b.close();

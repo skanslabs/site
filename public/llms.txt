@@ -1,0 +1,18 @@
+# Skans Labs
+
+> Skans is an on-premises security appliance that becomes the root of trust for isolated camera, IoT, OT, and building-automation networks — giving every device its own certificate identity plus access control, patching, backup, monitoring, vulnerability management, and NIST 800-171 / CMMC compliance evidence, run by the technician who installs the equipment, with nothing leaving the local network.
+
+## Company
+- Skans Labs is a product of La Costa Services, LLC.
+- Contact: hello@skanslabs.com
+
+## Site
+- [Home](https://skanslabs.com/): what Skans is and who it's for
+- [Company](https://skanslabs.com/about): about Skans Labs
+- [Contact](https://skanslabs.com/contact): get in touch
+- [Privacy](https://skanslabs.com/privacy) · [Terms](https://skanslabs.com/terms)
+
+## Documentation & writing
+- [Documentation](https://docs.skanslabs.com/): getting started, concepts, how-tos, compliance, reference
+- [Blog](https://blog.skanslabs.com/): announcements and how-tos
+- Docs AI index: https://docs.skanslabs.com/llms.txt

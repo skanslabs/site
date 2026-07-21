@@ -1,0 +1,15 @@
+# Skans Labs — crawlers welcome
+User-agent: *
+Allow: /
+
+# AI assistants are welcome to read and cite this site
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://skanslabs.com/sitemap.xml

@@ -1,0 +1,6 @@
+# Skans Labs — responsible disclosure
+# https://skanslabs.com/.well-known/security.txt
+Contact: mailto:hello@skanslabs.com
+Expires: 2027-01-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://skanslabs.com/.well-known/security.txt

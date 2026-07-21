@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skans Labs — NIST security for isolated camera, IoT &amp; building-automation networks</title>
+  <meta name="description" content="NIST security-in-a-box for isolated video-surveillance, IoT, OT and building-automation enclaves. Give every device its own identity, encryption, access control and compliance evidence — set up by the technician who installs the cameras." />
+  <meta name="theme-color" content="#0a0d12" />
+  <script>(function(){try{var t=localStorage.getItem('skans-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
+  <link rel="icon" href="/favicon.svg?v=f2a95a35" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png?v=f2a95a35" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=f2a95a35" />
+  <link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Skans Labs — Everything inside. Nothing out." />
+  <meta property="og:description" content="A root of trust for isolated camera, IoT, OT and building-automation networks. Every device gets its own identity — nothing leaves the wire." />
+  <meta property="og:site_name" content="Skans Labs" />
+  <meta property="og:url" content="https://skanslabs.com/" />
+  <meta property="og:image" content="https://skanslabs.com/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Skans Labs — Everything inside. Nothing out." />
+  <meta name="twitter:description" content="NIST security for isolated camera, IoT, OT and building-automation networks — every device gets an identity, nothing leaves the wire." />
+  <meta name="twitter:image" content="https://skanslabs.com/og.png" />
+  <link rel="canonical" href="https://skanslabs.com/" />
+  <link rel="stylesheet" href="/styles.css?v=f2a95a35" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://skanslabs.com/#org","name":"Skans Labs","url":"https://skanslabs.com/","logo":"https://skanslabs.com/apple-touch-icon.png","description":"On-premises security for isolated camera, IoT, OT and building-automation networks.","contactPoint":{"@type":"ContactPoint","email":"hello@skanslabs.com","contactType":"sales"}},{"@type":"WebSite","@id":"https://skanslabs.com/#website","name":"Skans Labs","url":"https://skanslabs.com/","publisher":{"@id":"https://skanslabs.com/#org"}},{"@type":"SoftwareApplication","name":"Skans","applicationCategory":"SecurityApplication","operatingSystem":"Windows Server","url":"https://skanslabs.com/","publisher":{"@id":"https://skanslabs.com/#org"},"description":"A single appliance that becomes the root of trust for an isolated network — giving every device its own identity plus access control, patching, backup, monitoring and NIST 800-171 / CMMC compliance evidence, run by the technician who installs the equipment."}]}</script>
+</head>
+<body>
+  <a class="skip-link btn btn-ghost" href="#main">Skip to content</a>
+
+  <!-- ===== SVG sprite (themeable via currentColor; azure bits fixed) ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="ax" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#34d3c1"/><stop offset="0.55" stop-color="#38bdf8"/><stop offset="1" stop-color="#8b8cf6"/>
+      </linearGradient>
+    </defs>
+    <symbol id="m-shield" viewBox="0 0 48 56">
+      <path d="M24 5 L40 9.6 C40.6 9.8 41 10.4 41 11 V27 C41 38.8 34 46.4 24 50.2 C14 46.4 7 38.8 7 27 V11 C7 10.4 7.4 9.8 8 9.6 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+      <path d="M29.6 14.5 L18.4 22.8 L29.6 30.4 L18.4 38.6" fill="none" stroke="url(#ax)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M11.5 44 L19 37 L23.5 41 L28.5 36 L36.5 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" opacity="0.8"/>
+    </symbol>
+    <!-- peak-A glyph: layered mountain that reads as A -->
+    <symbol id="m-peak" viewBox="0 0 100 100">
+      <path d="M11 90 L50 12" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M50 12 L89 90" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+      <path d="M29 64 H71" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round"/>
+      <circle cx="50" cy="12" r="5.5" fill="#34d3c1"/>
+    </symbol>
+    <!-- capability icons -->
+    <symbol id="ic-discovery" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M12 12 8.5 5.5"/><path d="M7 12a5 5 0 0 1 9-3"/><path d="M4.5 12a7.5 7.5 0 0 1 13-5"/><circle cx="18" cy="7" r="1"/><circle cx="6" cy="17" r="1"/><circle cx="17" cy="17" r="1"/></symbol>
+    <symbol id="ic-monitoring" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h3l2-7 3 14 2.5-9 1.5 4H21"/></symbol>
+    <symbol id="ic-patch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="12" r="5.5"/><path d="M12 3.5a8.5 8.5 0 0 1 8 5.6"/><path d="M12 20.5a8.5 8.5 0 0 1-8-5.6"/></symbol>
+    <symbol id="ic-nac" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="12" height="6" rx="1.4"/><path d="M15 12h3"/><rect x="18" y="9.5" width="3" height="5" rx="1"/><path d="M6 9V6.5M9 9V6.5M12 9V6.5"/></symbol>
+    <symbol id="ic-identity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><circle cx="7.5" cy="11" r="1.8"/><path d="M5.2 15.2a2.6 2.6 0 0 1 4.6 0"/><path d="M12 10h2.5M12 13h2"/><circle cx="19" cy="13" r="2"/><path d="M19 15v3l1 1"/></symbol>
+    <symbol id="ic-vuln" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 2.5V11c0 4.5-3 7.4-7 8.5-4-1.1-7-4-7-8.5V5.5z"/><path d="M9.5 11.5h5M12 9v5"/></symbol>
+    <symbol id="ic-backup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="8" cy="6" rx="4.5" ry="2"/><path d="M3.5 6v5c0 1.1 2 2 4.5 2"/><path d="M3.5 11v5c0 1.1 2 2 4.5 2 .6 0 1.2 0 1.7-.1"/><path d="M14 12h6m0 0-2.5-2.5M20 12l-2.5 2.5"/></symbol>
+    <symbol id="ic-console" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></symbol>
+    <!-- problem icons -->
+    <symbol id="ic-cloudcut" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h9a4 4 0 0 0 .7-7.9A5 5 0 0 0 7 9.5"/><path d="M3 9.5 21 21" opacity="0.9"/><path d="M5 14h3"/></symbol>
+    <symbol id="ic-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.5 2.5 14.5 0 17M12 3.5c-2.5 2.5-2.5 14.5 0 17"/></symbol>
+    <symbol id="ic-idp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M4 19a5 5 0 0 1 10 0"/><circle cx="18" cy="14" r="2"/><path d="M18 16v3l1 1"/></symbol>
+    <symbol id="ic-sheet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1.6"/><path d="M4 9h16M4 14h16M10 4v16"/></symbol>
+    <!-- audience icons -->
+    <symbol id="ic-defense" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 2.5V11c0 4.5-3 7.4-7 8.5-4-1.1-7-4-7-8.5V5.5z"/><path d="M9 11.5l2 2 4-4"/></symbol>
+    <symbol id="ic-ot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></symbol>
+    <symbol id="ic-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 5V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M8.5 12.5l2 2 4-4"/></symbol>
+    <symbol id="ic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></symbol>
+    <symbol id="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></symbol>
+    <symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+    <symbol id="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></symbol>
+    <symbol id="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.4A8.2 8.2 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></symbol>
+  </svg>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header" id="top">
+    <div class="container-wide header-inner">
+      <a class="brand" href="#top" aria-label="Skans Labs home">
+        <svg class="brand-mark" viewBox="0 0 48 56" width="47" height="55" role="img" aria-hidden="true"><use href="#m-shield"/></svg>
+        <span class="wordmark" aria-hidden="true">SK<svg class="peak" viewBox="0 0 100 100"><use href="#m-peak"/></svg>NS</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#platform">Capabilities</a></li>
+          <li><a href="#howit">How it works</a></li>
+          <li><a href="#compliance">Compliance</a></li>
+          <li><a href="#approach">Approach</a></li>
+          <li><a href="https://docs.skanslabs.com">Docs</a></li>
+          <li><a href="https://blog.skanslabs.com">Blog</a></li>
+          <li><a class="btn btn-primary nav-cta" href="#contact">Request a briefing</a></li>
+        </ul>
+        <button class="theme-toggle" type="button" aria-label="Toggle light or dark theme" aria-pressed="false">
+          <svg class="ic-sun" aria-hidden="true"><use href="#ic-sun"/></svg>
+          <svg class="ic-moon" aria-hidden="true"><use href="#ic-moon"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+      <canvas id="enclave" class="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-seam-fallback" aria-hidden="true"></div>
+      <div class="container-wide hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow reveal in">NIST security for isolated camera, IoT, OT &amp; building-automation networks</p>
+          <h1 class="hero-title reveal in">Everything inside.<br /><span class="text-gradient">Nothing out.</span></h1>
+          <p class="lead hero-lead reveal in">Skans gives an islanded network of cameras, controllers, and building systems its <b>own root of trust</b> — issuing an identity to every device, admitting only trusted gear, then encrypting, patching, backing up, and producing the compliance evidence. <b>One appliance, set up by the technician who installs the cameras.</b> Your data never leaves the wire; it runs air-gapped by default.</p>
+          <div class="hero-actions reveal in">
+            <a class="btn btn-primary" href="#contact">Request a briefing</a>
+            <a class="btn btn-ghost" href="#platform">See the capabilities</a>
+          </div>
+        </div>
+      </div>
+      <div class="hud" aria-hidden="true">
+        <div class="hud-head"><span class="live-dot"></span> ENCLAVE&#8209;01 · AIR&#8209;GAPPED</div>
+        <div class="hud-grid">
+          <div class="hud-metric"><span class="hud-num tnum" id="hud-probes" data-to="248">0</span><span class="hud-label">devices secured</span></div>
+          <div class="hud-sep"></div>
+          <div class="hud-metric"><span class="hud-num hud-num--calm tnum" id="hud-findings" data-to="2">0</span><span class="hud-label">certs expiring</span></div>
+        </div>
+      </div>
+      <p class="sr-only">A sealed, air-gapped enclave of cameras, controllers and building systems, each issued its own identity from an on-site root of trust — 2 certificates due for renewal, and your data never crossing the perimeter.</p>
+    </section>
+
+    <div class="seam-link reveal" aria-hidden="true"></div>
+
+    <!-- ===== PROBLEM ===== -->
+    <section class="section" id="problem">
+      <div class="container">
+        <p class="kicker reveal">The gap nobody covers</p>
+        <h2 class="section-title reveal reveal-d1" style="max-width:22ch">Installed by trades. Audited like IT.</h2>
+        <p class="lead reveal reveal-d2" style="margin-top:18px">A building full of IP cameras. A campus of BACnet controllers. A plant floor of PLCs. These run on <b>islanded networks</b> stood up by the technician who mounts the hardware — no domain, no IT team, no cloud. Yet NIST 800-171 and CMMC now demand that <b>every device</b> carry an identity, encryption and access control, with evidence to prove it. The tools that do that assume a directory, a security team, and an internet connection — none of which the island has.</p>
+        <div class="grid-2x2">
+          <article class="card prob reveal"><svg class="icon-line" aria-hidden="true"><use href="#ic-cloudcut"/></svg><h3>Islanded by design</h3><p>The network can't reach a vendor cloud or a corporate directory — and usually isn't permitted to.</p></article>
+          <article class="card prob reveal reveal-d1"><svg class="icon-line" aria-hidden="true"><use href="#ic-idp"/></svg><h3>Dumb devices, no identity</h3><p>A camera, intercom or controller can't domain-join or enroll itself; most ship with a self-signed cert and a default password.</p></article>
+          <article class="card prob reveal reveal-d2"><svg class="icon-line" aria-hidden="true"><use href="#ic-sheet"/></svg><h3>No IT team on site</h3><p>The crew that installs it hangs cameras and pulls cable — they don't run PKI, Active Directory, or RADIUS.</p></article>
+          <article class="card prob reveal reveal-d3"><svg class="icon-line" aria-hidden="true"><use href="#ic-globe"/></svg><h3>Audited anyway</h3><p>800-171 and CMMC still require identity, encryption, NAC, patching and evidence — for every device on it.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="seam-link reveal" aria-hidden="true"></div>
+
+    <!-- ===== NARRATIVE TURN ===== -->
+    <section class="section turn seamed" id="turn">
+      <div class="container turn-inner">
+        <h2 class="turn-title reveal">The cloud can't reach here.<br /><span class="text-gradient">So we built the security that lives inside.</span></h2>
+        <div class="turn-mark reveal reveal-d2" aria-hidden="true">
+          <svg class="brand-mark" viewBox="0 0 48 56" width="46" height="54"><use href="#m-shield"/></svg>
+          <span class="wordmark wordmark-lg">SK<svg class="peak" viewBox="0 0 100 100"><use href="#m-peak"/></svg>NS</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="seam-link reveal" aria-hidden="true"></div>
+
+    <!-- ===== HOW IT WORKS (operator) ===== -->
+    <section class="section" id="howit">
+      <div class="container">
+        <p class="kicker reveal">How it works</p>
+        <h2 class="section-title reveal reveal-d1" style="max-width:22ch">From cable to compliant — by the tech who hung the cameras.</h2>
+        <p class="lead reveal reveal-d2" style="margin-top:16px">No PKI knowledge. No IT team. The Setup Wizard asks two or three plain questions, you press one button, and the appliance stands up the whole posture behind it — directory, certificate authority, network admission, device drivers, hardening. The operator never touches AD, Kerberos, or a CLI.</p>
+        <div class="steps">
+          <article class="card step reveal"><span class="step-num">1</span><h3>Plug in, answer 2&ndash;3 questions</h3><p>Site name, network, scope. The wizard takes it from there, on golden-config defaults.</p></article>
+          <article class="card step reveal reveal-d1"><span class="step-num">2</span><h3>One button &rarr; secured site</h3><p>The box stands up the directory, CA and RADIUS, then issues identities and pushes certs to every device it finds.</p></article>
+          <article class="card step reveal reveal-d2"><span class="step-num">3</span><h3>Run it by outcomes</h3><p>The console reports results, not certificate chains. Renewals, admission and patches keep running on their own.</p></article>
+        </div>
+        <div class="outcome reveal reveal-d2" aria-hidden="true"><span><span class="ok-dot">&#10003;</span> <b>248</b> devices encrypted</span><span><span class="ok-dot">&#10003;</span> <b>2</b> certs expiring &mdash; auto-renewing</span><span><span class="ok-dot">&#10003;</span> <b>1</b> legacy device segmented</span><span class="muted">enclave-01 · console</span></div>
+      </div>
+    </section>
+
+    <div class="seam-link reveal" aria-hidden="true"></div>
+
+    <!-- ===== NOT SECURE -> SECURE ===== -->
+    <section class="section" id="secure">
+      <div class="container">
+        <p class="kicker reveal">The close</p>
+        <h2 class="section-title reveal reveal-d1">Every device, from default to defended.</h2>
+        <p class="lead reveal reveal-d2" style="margin-top:16px">A new camera ships with a self-signed certificate and a default password — untrusted and exposed. Skans issues it a real identity from your CA, replaces the cert, locks the credentials, and admits it over 802.1X. The browser warning disappears; the device is trusted, encrypted, and accounted for.</p>
+        <div class="ba-grid">
+          <article class="card ba ba-before reveal"><div class="dev">CAMERA-07</div><ul><li><span class="pill">self-signed</span> untrusted certificate</li><li><span class="pill">default creds</span> factory password</li><li><span class="pill">open</span> unrestricted on the LAN</li></ul></article>
+          <svg class="ba-arrow reveal reveal-d1" aria-hidden="true"><use href="#ic-arrow"/></svg>
+          <article class="card ba ba-after reveal reveal-d2"><div class="dev">CAMERA-07</div><ul><li><span class="pill">CA-issued</span> identity from your root of trust</li><li><span class="pill">hardened</span> credentials rotated &amp; vaulted</li><li><span class="pill">802.1X</span> admitted, encrypted, accounted for</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="seam-link reveal" aria-hidden="true"></div>
+
+    <!-- ===== PLATFORM (bento) ===== -->
+    <section class="section" id="platform">
+      <div class="container-wide">
+        <p class="kicker reveal">What's in the appliance</p>
+        <h2 class="section-title reveal reveal-d1" style="max-width:24ch">Every device secured. The whole enclave compliant.</h2>
+        <p class="lead reveal reveal-d2" style="margin-top:16px">One appliance stands up the enclave's root of trust and issues an identity to every device on it — cameras, controllers, building systems, network gear, and Windows/Linux/macOS servers and endpoints (via a lightweight agent) — then handles admission, patching, backup and the compliance evidence. One console, air-gapped by default, nothing of yours leaving the wire.</p>
+        <div class="bento">
+          <article class="tile card sweep b-2 reveal"><svg class="icon-line" aria-hidden="true"><use href="#ic-discovery"/></svg><h3>Device discovery &amp; inventory</h3><p>Find every camera, controller, PLC and switch by multi-protocol discovery — ONVIF, network scan, industrial — auto-classified by class and capability tier.</p></article>
+          <article class="tile card sweep b-feature reveal reveal-d1">
+            <svg class="icon-line" aria-hidden="true"><use href="#ic-identity"/></svg>
+            <h3>Identity for every device</h3>
+            <p>Stand up a root of trust the enclave owns and issue an X.509 identity to every device. Per-vendor drivers push certs onto the cameras, intercoms and controllers that can't enroll themselves.</p>
+            <div class="tile-echo" aria-hidden="true" style="font-family:var(--font-sans);font-size:0.78rem;font-weight:500;letter-spacing:0.03em;color:var(--steel)">Proven across leading camera &amp; IoT brands — extensible to any vendor</div>
+          </article>
+          <article class="tile card sweep b-1 reveal reveal-d1"><svg class="icon-line" aria-hidden="true"><use href="#ic-nac"/></svg><h3>Network access control</h3><p>802.1X EAP-TLS admits only trusted, cert-bearing devices; MAB and dynamic VLANs for limited gear; legacy OT segmented and gated.</p></article>
+          <article class="tile card sweep b-1 reveal reveal-d2"><svg class="icon-line" aria-hidden="true"><use href="#ic-patch"/></svg><h3>Patch &amp; firmware</h3><p>Staged patch rings for Windows without WSUS, plus a vetted, hash-verified firmware repository for cameras and IoT/OT gear — no internet required. Air-gapped estates stay current.</p></article>
+          <article class="tile card sweep b-2 reveal"><svg class="icon-line" aria-hidden="true"><use href="#ic-vuln"/></svg><h3>Encryption &amp; hardening</h3><p>TLS on every device and service, default creds gone, a CIS/STIG baseline applied — the island goes from "not secure" to verified-secure, device by device.</p></article>
+          <article class="tile card sweep b-1 reveal reveal-d1"><svg class="icon-line" aria-hidden="true"><use href="#ic-monitoring"/></svg><h3>Continuous monitoring</h3><p>Correlated, deduplicated findings bounded by device count — signal that scales with your fleet, not a firehose. Plus offline CVE &amp; ATT&amp;CK intel.</p></article>
+          <article class="tile card sweep b-1 reveal reveal-d2"><svg class="icon-line" aria-hidden="true"><use href="#ic-backup"/></svg><h3>Backup &amp; config vault</h3><p>Versioned backups of camera, PLC and network configs, databases, secrets and firmware — encrypted and held off the source machine.</p></article>
+          <article class="tile card sweep b-wide reveal"><svg class="icon-line" aria-hidden="true"><use href="#ic-console"/></svg><div><h3>One console &amp; compliance evidence</h3><p>The operator sees outcomes — "cameras encrypted · 2 certs expiring" — never AD or CA internals, and hands the assessor a NIST&nbsp;800-171 / CMMC evidence pack.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="seam-link reveal" aria-hidden="true"></div>
+
+    <!-- ===== CAPABILITY TIERS ===== -->
+    <section class="section" id="tiers">
+      <div class="container">
+        <p class="kicker reveal">We meet your gear where it is</p>
+        <h2 class="section-title reveal reveal-d1" style="max-width:24ch">Not everything can hold a certificate. We plan for that.</h2>
+        <p class="lead reveal reveal-d2" style="margin-top:16px">Mixed-vintage estates are the norm. Skans sorts every device into a tier and applies the strongest control it can support — full identity where possible, a driver-pushed cert where the device is limited, segmentation and a gateway where it's legacy.</p>
+        <div class="grid-3" style="margin-top:32px">
+          <article class="card tier tier-a reveal"><span class="tier-badge">A</span><h3>Cert-capable<small>modern cameras, servers, network gear, OPC UA</small></h3><p>Full identity + 802.1X admission + encryption + patching + config backup.</p></article>
+          <article class="card tier tier-b reveal reveal-d1"><span class="tier-badge">B</span><h3>Limited<small>cert or proprietary mgmt only; maybe no 802.1X</small></h3><p>Driver-pushed certificate + config backup + monitoring + a dynamic VLAN.</p></article>
+          <article class="card tier tier-c reveal reveal-d2"><span class="tier-badge">C</span><h3>Legacy<small>old PLCs, serial-over-ethernet, BACnet MS/TP, raw Modbus</small></h3><p>Segmentation + security gateway + allow-list + monitoring — NIST 800-82 compensating controls.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="seam-link reveal" aria-hidden="true"></div>
+
+    <!-- ===== APPROACH / PRINCIPLES ===== -->
+    <section class="section" id="approach">
+      <div class="container">
+        <p class="kicker reveal">How it's built</p>
+        <h2 class="section-title reveal reveal-d1">Air-gap-first, not air-gap-capable.</h2>
+        <p class="lead reveal reveal-d2" style="margin-top:16px">The constraints of a disconnected, regulated network drive the architecture — they aren't worked around after the fact. These are the assumptions Skans was designed on from the first line of code.</p>
+        <ol class="principles">
+          <li class="principle reveal"><span class="p-num tnum">01</span><div><h3>Air-gap-first</h3><p>Disconnected by default: your identities, keys and data never leave, threat feeds can sync offline, and a severed WAN changes nothing about your protection. The one optional egress — the Skans Update Service — is yours to switch on or leave off.</p></div></li>
+          <li class="principle reveal reveal-d1"><span class="p-num tnum">02</span><div><h3>Simple to operate</h3><p>A field tech can run it — issue a hardware token, approve a device, push a patch ring — without touching a CLI or a specialist.</p></div></li>
+          <li class="principle reveal reveal-d2"><span class="p-num tnum">03</span><div><h3>You own the keys</h3><p>Your certificate authority, your identities, your data. Nothing about your enclave lives on someone else's server.</p></div></li>
+          <li class="principle reveal reveal-d3"><span class="p-num tnum">04</span><div><h3>Aligned by design</h3><p>Mapped to NIST 800-171 and CMMC controls from the start, so the evidence is in place before the assessor arrives.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="seam-link reveal" aria-hidden="true"></div>
+
+    <!-- ===== EDITIONS + DEPLOYMENT ===== -->
+    <section class="section" id="deploy">
+      <div class="container">
+        <p class="kicker reveal">How you run it</p>
+        <h2 class="section-title reveal reveal-d1" style="max-width:20ch">Your keys. Your data never leaves.</h2>
+        <p class="lead reveal reveal-d2" style="margin-top:16px">Skans is a single self-contained Windows Server appliance. It rides the native roles you already license — AD DS, AD CS, NPS — behind one console, and your identities, keys and data never leave the enclave. It's air-gapped by default; the one optional egress is the Skans Update Service, which you control. Start free with the generous Community Edition; step up to Enterprise for compliance evidence, deeper OT/ICS coverage, and vendor support.</p>
+        <div class="grid-2" style="margin-top:32px">
+          <article class="card sku reveal"><svg class="icon-line" aria-hidden="true"><use href="#ic-console"/></svg><h3>Community Edition — free</h3><p>Generous and uncapped: no device cap, no per-device fee. The enclave root of trust, the full driver pack, NAC, the credential vault, monitoring and alerts — yours to run in production.</p></article>
+          <article class="card sku reveal reveal-d1"><svg class="icon-line" aria-hidden="true"><use href="#ic-identity"/></svg><h3>Enterprise — licensed</h3><p>A commercial subscription for serious estates: compliance evidence packs (ISO 27001 / CMMC), OT/ICS certificate management, SIEM forwarding and OIDC single sign-on — plus vendor support and an SLA. Multi-site (Core + Edge) and high availability are on the roadmap.</p></article>
+        </div>
+        <div class="profiles-strip reveal reveal-d2">
+          <div class="mini"><h3><b>Island</b> · flagship</h3><p>No directory on site? Skans becomes the enclave's directory, CA and RADIUS.</p></div>
+          <div class="mini"><h3><b>Full-Site</b></h3><p>A Windows fleet joins the Skans domain; GPO pushes trust, policy and patch rings.</p></div>
+          <div class="mini"><h3><b>Joined</b></h3><p>A healthy AD already exists? Skans publishes trust through it — it never hijacks your domain.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="seam-link reveal" aria-hidden="true"></div>
+
+    <!-- ===== TRUST / STATS ===== -->
+    <section class="section trust seamed" id="trust">
+      <div class="container">
+        <h2 class="kicker reveal" style="justify-content:center;width:100%;text-align:center">What holds the line</h2>
+        <div class="stats">
+          <div class="stat reveal"><span class="stat-num tnum" data-count="0" data-suffix="">0</span><span class="stat-cap">bytes of your data sent to any cloud — by design.</span></div>
+          <div class="stat reveal reveal-d1"><span class="stat-num tnum" data-count="100" data-suffix="%">0%</span><span class="stat-cap">CVE + MITRE ATT&amp;CK feeds synced without internet.</span></div>
+          <div class="stat reveal reveal-d2"><span class="stat-num tnum stat-seam">1,471&#8201;→&#8201;2</span><span class="stat-cap">raw events correlated to calm findings.</span></div>
+          <div class="stat reveal reveal-d3"><span class="stat-num tnum" data-count="1" data-suffix="">0</span><span class="stat-cap">console — every control, every device, role-based.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="seam-link reveal" aria-hidden="true"></div>
+
+    <!-- ===== COMPLIANCE ===== -->
+    <section class="section" id="compliance">
+      <div class="container">
+        <p class="kicker reveal">Compliance by design</p>
+        <h2 class="section-title reveal reveal-d1">The evidence is already in place.</h2>
+        <p class="lead reveal reveal-d2" style="margin-top:16px">Skans maps its capabilities to NIST 800-171 and CMMC control families from the start — no badge-spam, just an honest alignment you can hand an assessor.</p>
+        <div class="ctable panel reveal reveal-d2">
+          <div class="ctable-row ctable-head"><span>NIST 800-171 family</span><span>Covered by</span><span class="ctable-how">How</span></div>
+          <div class="ctable-row"><span>Access Control</span><span class="azure-fam">Network access control</span><span class="ctable-how">802.1X + MAB with RADIUS-assigned VLANs gates the network to trusted devices only.</span></div>
+          <div class="ctable-row"><span>Identification &amp; Authentication</span><span class="azure-fam">Hardware-backed identity</span><span class="ctable-how">PIV + FIDO2 from your own CA satisfies hardware-backed MFA and device trust.</span></div>
+          <div class="ctable-row"><span>Configuration Management</span><span class="azure-fam">Patch management</span><span class="ctable-how">Staged patch rings without WSUS keep a documented, enforced baseline.</span></div>
+          <div class="ctable-row"><span>Risk Assessment</span><span class="azure-fam">Vulnerability &amp; threat intel</span><span class="ctable-how">Offline CVE matching + ATT&amp;CK mapping evidences continuous risk assessment.</span></div>
+          <div class="ctable-row"><span>System &amp; Information Integrity</span><span class="azure-fam">Continuous monitoring</span><span class="ctable-how">Correlated, deduplicated findings provide bounded, reviewable integrity signal.</span></div>
+          <div class="ctable-row"><span>Media Protection</span><span class="azure-fam">Endpoint &amp; server backup</span><span class="ctable-how">Off-source backups protect the confidentiality of backup CUI at rest (§3.8.9), held off the source machine.</span></div>
+        </div>
+        <p class="lead reveal" style="margin-top:24px">The same measured checks also support <b>ISO/IEC 27001:2022</b> — crosswalked to all 93 Annex A controls via NIST's published OLIR mapping, with a signed supporting-evidence pack and responsibility matrix for your auditor. Skans supplies the technical evidence; organizational, people and physical controls stay yours — it's your ISMS that gets certified, never a product.</p>
+        <p class="lead reveal" style="margin-top:16px;opacity:.82">The <b>one-command evidence-pack export</b> (NIST 800-171 / CMMC and ISO 27001) is an <b>Enterprise</b> feature.</p>
+      </div>
+    </section>
+
+    <div class="seam-link reveal" aria-hidden="true"></div>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section" id="faq">
+      <div class="container">
+        <p class="kicker reveal">Questions</p>
+        <h2 class="section-title reveal reveal-d1">What security teams ask first.</h2>
+        <div class="faq reveal reveal-d2">
+          <details class="faq-item"><summary>Does it phone home?</summary><p>By default, no — Skans runs disconnected and never sends your identities, keys or device data out. Threat feeds (CVE/MITRE ATT&amp;CK), AV signatures and agent/patch content reach an air-gapped site by offline sync. If you'd rather have automatic online updates, you can switch on the optional <b>Skans Update Service</b> — a single, operator-controlled egress that only <i>pulls</i> licensed content down; it's off by default and never sends your data anywhere.</p></details>
+          <details class="faq-item"><summary>Will it touch our existing Active Directory?</summary><p>Only if you want it to. The <b>Joined</b> profile publishes trust through your AD without taking it over; the <b>Island</b> profile stands up its own directory when you don't have one on site.</p></details>
+          <details class="faq-item"><summary>What standards does it meet?</summary><p>It ships meeting the <b>technical</b> controls of NIST 800-171 and CMMC at mandated defaults — FIPS mode, MFA, a CIS/STIG baseline, TLS everywhere — and hands you an evidence pack. Organizational controls stay yours via a control-responsibility matrix, with any gaps tracked in a POA&amp;M.</p></details>
+          <details class="faq-item"><summary>Can Skans make us ISO 27001 certified?</summary><p>No — ISO/IEC 27001 certifies your organization's ISMS, not any product. What Skans does is <b>support</b> the audit: its continuously measured technical checks are crosswalked to the 93 Annex A controls of ISO/IEC 27001:2022, and it exports a signed supporting-evidence pack — per-control evidence, a three-way responsibility matrix, and a tamper-evident manifest. Organizational, people and physical controls remain yours.</p></details>
+          <details class="faq-item"><summary>What if a device can't hold a certificate?</summary><p>It's sorted into a capability tier: limited devices get a driver-pushed cert and a dynamic VLAN; legacy devices get segmentation and a security gateway with compensating controls.</p></details>
+          <details class="faq-item"><summary>Who installs and runs it?</summary><p>The field technician who installs the cameras. The Setup Wizard is two or three plain questions and one button; the PKI, directory and RADIUS run behind it. CLI and PowerShell exist only for experts.</p></details>
+          <details class="faq-item"><summary>Is Skans open source?</summary><p>No — Skans is proprietary, closed-source software, solely owned by its author. What you get isn't source access, it's independence: nothing of yours leaves the enclave, and you own the CA, the identities and the data. The <b>Community Edition</b> is free, uncapped and yours to run in production; <b>Enterprise</b> adds scale, compliance and support.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <div class="seam-link reveal" aria-hidden="true"></div>
+
+    <!-- ===== AUDIENCES ===== -->
+    <section class="section" id="audiences">
+      <div class="container">
+        <p class="kicker reveal">Who holds the line</p>
+        <h2 class="section-title reveal reveal-d1">Built for the networks that can't touch the cloud.</h2>
+        <div class="grid-3" style="margin-top:34px">
+          <article class="card aud sweep reveal"><svg class="icon-line" aria-hidden="true"><use href="#ic-defense"/></svg><h3>Video surveillance &amp; physical security</h3><p>IP cameras, access control, intercoms and recorders on islanded networks — every device given an identity and encrypted, installed by the integrator who mounts them.</p></article>
+          <article class="card aud sweep reveal reveal-d1"><svg class="icon-line" aria-hidden="true"><use href="#ic-ot"/></svg><h3>Building automation &amp; facilities</h3><p>HVAC, lighting, elevators and metering from the major BMS vendors — Siemens, Honeywell, Johnson Controls, Tridium — given identity where the device supports it, segmented and gated where it doesn't, without ripping out the install.</p></article>
+          <article class="card aud sweep reveal reveal-d2"><svg class="icon-line" aria-hidden="true"><use href="#ic-clipboard"/></svg><h3>Industrial &amp; OT networks</h3><p>PLCs, SCADA, OPC UA and sensors across plant and utility floors — modern gear gets full identity; legacy gets segmentation and a security gateway.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="seam-link reveal" aria-hidden="true"></div>
+
+    <!-- ===== CONTACT / CTA ===== -->
+    <section class="section cta seamed" id="contact">
+      <div class="container cta-inner">
+        <p class="kicker reveal" style="justify-content:center">Talk to us</p>
+        <h2 class="section-title cta-title reveal reveal-d1">Tell us about the network<br />you can't put in the cloud.</h2>
+        <p class="lead reveal reveal-d2" style="margin:18px auto 0;text-align:center">Skans is built for the teams running networks the cloud can't reach. If your network can't touch the cloud and still has to pass an audit, email us for a technical walkthrough — architecture, controls, and exactly how it stays offline.</p>
+        <div class="cta-actions reveal reveal-d3">
+          <a class="btn btn-primary btn-arm" href="mailto:hello@skanslabs.com?subject=Skans%20briefing">Request a briefing</a>
+          <button class="btn btn-ghost copy-email" type="button" data-email="hello@skanslabs.com">
+            <svg class="icon-line copy-ic" aria-hidden="true" style="width:18px;height:18px"><use href="#ic-copy"/></svg>
+            <span class="copy-label">hello@skanslabs.com</span>
+          </button>
+          <span class="sr-only" role="status" aria-live="polite" id="copy-status"></span>
+        </div>
+        <div class="grid-2 cta-rows reveal reveal-d3">
+          <div class="mini"><h3>A real conversation</h3><p>Talk straight to engineering, not a sales funnel.</p></div>
+          <div class="mini"><h3>Built around your enclave</h3><p>We map Skans to your network, your compliance scope, and your constraints.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer seamed">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="wordmark" aria-hidden="true">SK<svg class="peak" viewBox="0 0 100 100"><use href="#m-peak"/></svg>NS</span><span class="sr-only">Skans</span>
+        <span class="footer-labs">LABS</span>
+      </div>
+      <p class="footer-tag">On-prem security for networks that can't touch the cloud.<br />Every control your enclave needs. Nothing leaves the wire.</p>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#platform">Capabilities</a><a href="#howit">How it works</a><a href="#compliance">Compliance</a><a href="https://docs.skanslabs.com">Docs</a><a href="https://blog.skanslabs.com">Blog</a><a href="#contact">Briefing</a>
+      </nav>
+    </div>
+    <div class="container footer-base">
+      <span>© 2026 Skans Labs — a product of La Costa Services, LLC.</span>
+      <nav class="footer-legal" aria-label="Legal"><a href="/about">Company</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/contact">Contact</a></nav>
+      <span class="footer-micro">Air-gap-first · You own the keys</span>
+    </div>
+  </footer>
+
+  <script src="/enclave.js?v=f2a95a35" defer></script>
+  <script src="/app.js?v=f2a95a35" defer></script>
+</body>
+</html>
