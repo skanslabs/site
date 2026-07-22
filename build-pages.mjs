@@ -29,7 +29,7 @@ const toHome = (html) => html.replace(/(?<!<use )href="#/g, 'href="/#');
 const header = toHome(grab(index, /<header class="site-header"/, "</header>"));
 const footer = toHome(grab(index, /<footer class="site-footer/, "</footer>"));
 
-const THEME = `<script>(function(){try{var t=localStorage.getItem('skans-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>`;
+const THEME = `<script>(function(){try{var t=localStorage.getItem('skans-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>`;
 
 const head = (title, desc, slug, opts = {}) => {
   const url = `https://skanslabs.com/${slug}`;
