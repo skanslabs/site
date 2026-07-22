@@ -1,0 +1,1757 @@
+[
+  {
+    "slug": "platform",
+    "kind": "Platform",
+    "eyebrow": "The platform",
+    "h1": "Every control your isolated network needs — in one air-gapped appliance.",
+    "lead": "Skans is a single self-contained appliance that becomes an isolated network's root of trust — the directory and certificate authority it never had — then layers on access control, patching, backup, monitoring, vulnerability assessment and audit-ready compliance evidence. One console runs all of it. It's air-gapped by default and set up by the technician who installs the cameras, not a security team — everything inside, nothing leaving the wire.",
+    "heroShot": "noc",
+    "heroShotLabel": "Skans console · NOC",
+    "heroShotAlt": "The Skans NOC wall — metric tiles for fleet health, open incidents, compliance percentage, certificates issued, devices by capability tier, open vulnerabilities, events in the on-box store, ATT&CK detections, RADIUS/NPS serving and the search engine, all from one appliance.",
+    "sections": [
+      {
+        "type": "split",
+        "eyebrow": "The core idea",
+        "h": "One box becomes the root of trust the network never had.",
+        "body": "Most isolated networks share one gap: the cameras, intercoms and controllers on them can't domain-join or enroll themselves, there's no directory or IT team on site, and yet every device is still expected to carry an identity, encryption and access control. Skans becomes the authority the enclave never had — it stands up a directory and a certificate authority on the appliance itself, then issues every device its own X.509 identity from that one CA. Nothing about your enclave lives on anyone else's server.",
+        "bullets": [
+          "<b>One CA per enclave</b> — a single root of trust, with the private signing key TPM-protected on the box by default (a FIPS-140-3 HSM is an optional override, not the shipped default).",
+          "<b>Four enrollment lanes, chosen automatically</b> — Windows auto-enroll via AD CS + GPO, SCEP for standalone devices, a vendor-driver push for cameras and IoT that can't enroll themselves, and protocol-native issuance for OPC UA (GDS Push) and BACnet/SC.",
+          "<b>Proven across leading camera & IoT brands</b> — Axis, Hanwha, Bosch, 2N, Uniview, ONVIF, Redfish and UniFi are hardware-validated end to end, and the signed driver pack is extensible to any vendor.",
+          "<b>Capability tiers, honestly applied</b> — full identity where a device can hold a cert, a driver-pushed cert where it's limited, segmentation and a gateway where it's legacy. When a device genuinely can't take a certificate, the driver says so instead of faking it."
+        ],
+        "shot": "devices",
+        "shotLabel": "Skans console · Devices",
+        "shotAlt": "The Skans device inventory — cameras, switches and firewalls with their onboarding lane, certificate status, capability tier and reachability, all kept current automatically.",
+        "reverse": false
+      },
+      {
+        "type": "grid",
+        "eyebrow": "What's in the appliance",
+        "h": "Everything the enclave needs — in one box.",
+        "body": "The same appliance that mints identity runs every control built on top of it. One console, air-gapped by default, nothing of yours leaving the wire.",
+        "cards": [
+          {
+            "icon": "ic-discovery",
+            "h": "Discovery & inventory",
+            "p": "Find every camera, controller, PLC and switch by multi-protocol discovery — ONVIF, network scan, industrial — auto-classified by device class and capability tier (A / B / C)."
+          },
+          {
+            "icon": "ic-identity",
+            "h": "Identity for every device",
+            "p": "A built-in CA issues a real X.509 certificate to each device — pushed onto the cameras and controllers that can't enroll themselves, and to Windows, Linux and macOS endpoints through a lightweight agent."
+          },
+          {
+            "icon": "ic-nac",
+            "h": "Network access control",
+            "p": "802.1X EAP-TLS admits only trusted, cert-bearing devices through the appliance's native RADIUS; MAB and dynamic VLANs handle limited gear; legacy OT is segmented and gated."
+          },
+          {
+            "icon": "ic-patch",
+            "h": "Patch & firmware",
+            "p": "Staged patch rings for Windows without WSUS, an offline missing-KB scan, and a vetted, SHA-256-hashed firmware repository for cameras and IoT — no endpoint ever reaching the internet."
+          },
+          {
+            "icon": "ic-backup",
+            "h": "Backup & recovery",
+            "p": "Encrypted, off-box backups of the database, directory system-state, device and network configs, and endpoint data — so nothing irreplaceable lives in one place. Restore is a documented, drilled break-glass procedure."
+          },
+          {
+            "icon": "ic-monitoring",
+            "h": "Continuous monitoring",
+            "p": "Push-first, event-driven collection with an always-on alert engine that produces correlated findings bounded by device count — signal that scales with your fleet, not a raw event firehose."
+          },
+          {
+            "icon": "ic-vuln",
+            "h": "Vulnerability management",
+            "p": "The CVE List and MITRE ATT&CK sync to the box and match your live inventory with a strict version-range gate — CVSS-scored, KEV/EPSS-ranked findings that hand off to patch approval. No cloud scanner in the loop."
+          },
+          {
+            "icon": "ic-check",
+            "h": "Credential vault",
+            "p": "Every device login and secret is envelope-encrypted into an SQL vault, each under its own key sealed to the appliance — TPM-backed hardware protection where a TPM is present. Every reveal and copy is audited."
+          },
+          {
+            "icon": "ic-clipboard",
+            "h": "Compliance evidence",
+            "p": "Live NIST 800-171 / CMMC posture by control family, an ISO 27001 crosswalk, and a signed, one-command evidence pack backed by a tamper-evident audit chain — evidence you hand an assessor, never a certification."
+          },
+          {
+            "icon": "ic-console",
+            "h": "One console",
+            "p": "The operator sees outcomes — 'cameras encrypted · 2 certs expiring' — never AD, Kerberos or a CLI. Ask or command the appliance in plain language over a correlated, role-based worklist."
+          }
+        ]
+      },
+      {
+        "type": "split",
+        "eyebrow": "Compliance by design",
+        "h": "The evidence an assessor asks for — already in place.",
+        "body": "Skans is the enclave's technical control plane and evidence generator. It satisfies the hard technical controls of NIST 800-171 / CMMC Level 2, maps them to control families you can read at a glance, and produces an assessment-ready evidence pack from live state on one command — no hand-collation, and it works air-gapped. It shrinks the boundary an assessor has to look at; it never claims to certify you.",
+        "bullets": [
+          "<b>Posture by control family</b> — AC, AU, CM, CP, IA, RA and SC, each backed by what the appliance actually measured. A control Skans hasn't verified reads Not Verified — never turned green because a policy should have applied.",
+          "<b>One-command evidence pack</b> — SSP control status, a live POA&M of gaps, a Skans-technical-vs-customer-organizational responsibility matrix, the asset inventory, the audit log, and a signed manifest.",
+          "<b>ISO 27001 crosswalk</b> — the same measured checks map to all 93 Annex A controls of ISO/IEC 27001:2022 via NIST's published OLIR mapping; it's your ISMS that gets certified, never a product.",
+          "<b>Cryptographically tamper-evident</b> — an append-only, hash-linked, signed audit chain detects after-the-fact change. It's tamper-evident, not WORM, and organizational, people and physical controls stay yours."
+        ],
+        "shot": "compliance",
+        "shotLabel": "Skans console · Compliance",
+        "shotAlt": "The Skans compliance view — a NIST security-posture ring at 67% with per-control-family cards for AC, AU, CM, CP, IA, RA and SC.",
+        "reverse": true
+      },
+      {
+        "type": "split",
+        "eyebrow": "Signal over noise",
+        "h": "Detection is the appliance's judgment. Where it lands is yours.",
+        "body": "Monitoring is push-first and event-driven — an agent event, a syslog message, an SNMP trap lands the instant it happens and fires the alert engine. Findings are correlated and bounded by device count, so a 200-device site produces alerts on the order of devices affected, not thousands of raw events. Offline CVE and MITRE ATT&CK intel matches your live inventory on the box itself, with nothing leaving the wire.",
+        "bullets": [
+          "<b>Correlated, deduplicated findings</b> — a site-wide outage collapses into a handful of alerts; transient laptops get a 24-hour offline grace so a van of sleeping machines doesn't read as an incident.",
+          "<b>Offline vulnerability assessment</b> — the CVE List and ATT&CK sync to the appliance and match live inventory with a strict version-range gate; a patched host shows zero findings, and KEV/EPSS rank what's actually exploited.",
+          "<b>Rules, routing and recorded exceptions</b> — tune rules from the console; a suppression on a compliance-tagged rule demands a written justification and is logged as an explicit risk acceptance, so a silenced control is never an invisible gap.",
+          "<b>Honest scope</b> — this is push-first collection plus correlation and known-CVE assessment, not a full IDS/EDR, SIEM or NVR. Pair Skans with a dedicated IDS/EDR for complete NIST Detect coverage."
+        ],
+        "shot": "alerting",
+        "shotLabel": "Skans console · Alerting",
+        "shotAlt": "The Skans alerting view — alert rules listed by name, type, severity, cooldown and routing.",
+        "reverse": false
+      },
+      {
+        "type": "split",
+        "eyebrow": "How it's built",
+        "h": "One console. Air-gapped by default. Run by the tech who hung the cameras.",
+        "body": "The whole appliance runs from one role-based console — ask or command it in plain language, or read the triage at a glance: what needs you, where compliance stands, whether last night's backup ran. It's disconnected by default: your identities, keys and data never leave, and a severed WAN changes nothing about your protection. Setup is two or three plain questions and one button; the directory, CA and RADIUS stand up behind it.",
+        "bullets": [
+          "<b>Air-gap-first</b> — the one optional egress is the operator-controlled Skans Update Service, and it only pulls signed content down. It never sends your data out, and it's off unless you switch it on.",
+          "<b>You own the keys</b> — your certificate authority, your identities, your data, on your box. Skans is proprietary, closed-source Windows software; Community Edition is free and runs uncapped in production — independence, not source access.",
+          "<b>Set up by the install tech</b> — the Setup Wizard hides AD, Kerberos and the CLI; the operator sees outcomes, never certificate chains. The endpoint agent is Authenticode-signed and deploys over GPO — no hand-carried double-click MSI yet.",
+          "<b>One box, sized for a site</b> — a single self-contained Windows Server appliance today; distributed Core + Edge and high availability are a design-stage Enterprise tier, not shipping yet."
+        ],
+        "shot": "dashboard",
+        "shotLabel": "Skans console · Home",
+        "shotAlt": "The Skans console home — an ask-or-command bar over a correlated worklist of what needs attention, compliance posture, and backup status.",
+        "reverse": true
+      }
+    ],
+    "related": [
+      {
+        "name": "Device identity & the CA",
+        "href": "/features/identity"
+      },
+      {
+        "name": "Network access control",
+        "href": "/features/access-control"
+      },
+      {
+        "name": "Continuous monitoring",
+        "href": "/features/monitoring"
+      },
+      {
+        "name": "NIST 800-171 / CMMC evidence",
+        "href": "/features/compliance"
+      }
+    ],
+    "editionNote": "Every edition includes the root of trust, device identity, the full driver pack, the credential vault and monitoring; patch, backup and alerting start at Essential; 802.1X NAC, vulnerability management and NIST 800-171 / CMMC evidence at Professional; OT/ICS depth at Business; Core + Edge, high availability and the air-gap Update Service at Enterprise.",
+    "seoTitle": "Platform — one appliance for an isolated enclave | Skans Labs",
+    "seoDesc": "Skans is a single air-gapped appliance that becomes an isolated network's root of trust — identity for every device, plus access control, patching, backup, monitoring, vulnerability assessment and NIST 800-171 / CMMC evidence, run from one console."
+  },
+  {
+    "slug": "features/identity",
+    "kind": "Feature",
+    "eyebrow": "Identity & root of trust",
+    "h1": "Give every device an identity. Hold the CA that issues it.",
+    "lead": "Skans stands up one certificate authority per enclave and issues a real X.509 identity to every device on it — cameras, controllers, switches, servers and endpoints. The CA, the signing key and the identities live on the appliance and never leave the wire. Per-vendor drivers reach the cameras and controllers that can't enrol themselves — and re-read the certificate on the wire to prove it's serving before they call the job done.",
+    "heroShot": "devices",
+    "heroShotLabel": "Skans console · Devices",
+    "heroShotAlt": "The Skans device inventory — cameras, switches and firewalls with certificate status, capability tier and enrolment lane.",
+    "sections": [
+      {
+        "type": "split",
+        "eyebrow": "One authority",
+        "h": "One CA per enclave — and the keys stay yours.",
+        "body": "Skans stands up a single certificate authority for the enclave: one chain to trust, one place identity is minted, one root every device certificate traces back to. It runs on your appliance, not someone else's server — your CA, your signing key, your identities. Nothing about your enclave lives in a vendor cloud.",
+        "bullets": [
+          "<b>One root, one chain</b> — a single AD CS-backed authority (Skans Root CA) issues and anchors every device leaf, with one CRL and one trust decision to reason about.",
+          "<b>Hardware-protected signing key</b> — where a TPM is present the CA key is sealed in the Microsoft Platform Crypto Provider, non-exportable; a FIPS-140-3 HSM is a supported configuration override. The appliance runs FIPS approved-mode, which is not the same as CMVP-validated.",
+          "<b>The appliance backs itself up</b> — the directory system-state the CA lives in (NTDS.dit, GPOs, SYSVOL) and the control-plane database ship AES-256-encrypted off the source machine daily, so the box is rebuildable from media. Restore is a documented break-glass procedure, and full off-box escrow of the CA signing key is a partly-proven recovery path rather than one-click DR.",
+          "<b>Air-gapped by default</b> — keys and identities never leave; the one optional egress, the Skans Update Service, only pulls signed content down and never sends your data out."
+        ],
+        "shot": "backup",
+        "shotLabel": "Skans console · Backup",
+        "shotAlt": "Backup and restore view — directory system-state and database backups shipped encrypted off the source machine, with disaster-recovery status.",
+        "reverse": false
+      },
+      {
+        "type": "split",
+        "eyebrow": "Every device it can reach",
+        "h": "Identity reaches every device — four lanes, chosen automatically.",
+        "body": "How a device gets its certificate depends only on what the device can do. Skans routes each one to the right lane and picks automatically — the operator just presses Secure. Where a device genuinely can't take a certificate, Skans says so plainly instead of faking it, and secures the conduit around it.",
+        "bullets": [
+          "<b>Windows domain members</b> — auto-enroll and auto-trust through AD CS and GPO, with zero operator steps. Shipped and proven end to end.",
+          "<b>SCEP devices</b> — self-enroll through the native NDES role with a dynamic one-time challenge; no shared secret to leak. Shipped and hardware-validated.",
+          "<b>Cameras, intercoms & IoT that can't enrol</b> — a per-vendor driver reaches the device's native API, issues a leaf, pushes and binds it, then re-reads the served certificate to confirm the serial matches. Proven on real hardware across leading camera and intercom brands — Axis, Hanwha, Bosch, 2N — plus generic ONVIF, Redfish and UniFi, inside a 100+-vendor library authored from each vendor's API and extensible to any vendor.",
+          "<b>Industrial devices</b> — OPC UA (GDS Push) and BACnet/SC get identity through their own protocols, signed by the Skans root rather than an external PKI. Business-edition depth."
+        ],
+        "shot": "devices",
+        "shotLabel": "Skans console · Devices",
+        "shotAlt": "Device inventory showing each device's certificate status, capability tier and enrolment lane.",
+        "reverse": true
+      },
+      {
+        "type": "grid",
+        "eyebrow": "Why it matters",
+        "h": "A cryptographic identity changes what everything else can do.",
+        "body": "Issue a real certificate to a device and it stops being a guess. Identity becomes the anchor for correlation, admission, compliance — and independence.",
+        "cards": [
+          {
+            "icon": "ic-identity",
+            "h": "The strongest anchor",
+            "p": "A certificate is spoof-resistant, so it becomes the one stable key a device is known by. IP, MAC, hostname and VLAN all change — identity anchored on the cert survives the churn that quietly splits or merges attribute-keyed tools."
+          },
+          {
+            "icon": "ic-nac",
+            "h": "Admission you can trust",
+            "p": "Cert-bearing devices are the ones 802.1X EAP-TLS lets onto the wire; anything without a Skans-issued certificate that chains to your root is rejected at the port. Identity first is what makes real network access control possible instead of a MAC allow-list (AC-3 / IA-3)."
+          },
+          {
+            "icon": "ic-check",
+            "h": "Evidence already in place",
+            "p": "One CA issuing hardware-backed identity supports the NIST 800-171 / CMMC Identification & Authentication and System & Communications Protection controls — IA-5, SC-12, SC-13, SC-17 — as alignment an assessor can read, not badge-spam. Skans supports these controls; it never certifies you."
+          },
+          {
+            "icon": "ic-globe",
+            "h": "You own the keys",
+            "p": "The authority, the signing key and every identity stay inside the enclave. Nothing of yours leaves the wire, and a severed WAN changes nothing about your protection."
+          }
+        ]
+      },
+      {
+        "type": "split",
+        "eyebrow": "People, not just devices",
+        "h": "Operators sign in with hardware, not a password.",
+        "body": "The same CA that identifies devices issues operator identities too. An admin binds a PIV hardware token to their directory account and signs in to the console with the card plus a PIN — strong, phishing-resistant MFA, proven today on Windows from the physical console session.",
+        "bullets": [
+          "<b>Bound by the CA, not the card's claim</b> — login resolves the certificate's issuer + serial against a strong AD mapping first, so a card can't sign in as someone it wasn't issued to.",
+          "<b>The token's management key lives in the vault</b> — held under a hardware-protected (TPM-sealed) wrapping key, never by the operator, and every reveal is audited.",
+          "<b>Driver-free FIDO2 / WebAuthn</b> — designed and built, reusing the same resolver; not yet hardware-tested, so treat it as available-soon rather than shipped.",
+          "<b>Honest FIPS posture</b> — the token's FIPS level is vendor-stated pending CMVP; Skans runs in FIPS approved-mode and shows a visible gap banner instead of claiming validation."
+        ],
+        "shot": "vault",
+        "shotLabel": "Skans console · Passwords",
+        "shotAlt": "The credential vault — device and service secrets encrypted under a TPM-protected key, with reveal and copy audited.",
+        "reverse": false
+      },
+      {
+        "type": "split",
+        "eyebrow": "Runs itself",
+        "h": "Identity that renews, revokes, and holds together on its own.",
+        "body": "Once identity is issued, Skans keeps it healthy without operator work. Certificates renew before they expire, revocation is published, and a device stays the same entity across every change to its address or its hardware.",
+        "bullets": [
+          "<b>Self-healing PKI</b> — a daily health service renews appliance certificates, republishes the CRL, and rebinds NPS after a DC-certificate renewal so EAP-TLS admission keeps working.",
+          "<b>Renewal by lane</b> — domain members auto-renew through GPO; SCEP devices renew via SCEP; driver-enrolled devices are tracked with expiry and re-pushed.",
+          "<b>Revoke and supersede</b> — decommissioning a device revokes its certificate first, and re-enrolling supersedes the old serial — all CRL-based, republished on a schedule.",
+          "<b>Survives the churn</b> — swap a NIC, move Wi-Fi to wired, take a new DHCP lease or rotate the certificate, and it stays one device: the cert anchor and its lineage keep identity stable."
+        ],
+        "shot": "noc",
+        "shotLabel": "Skans console · NOC",
+        "shotAlt": "The NOC wall — fleet health, certificates, RADIUS/NPS serving and other live tiles across the enclave.",
+        "reverse": true
+      }
+    ],
+    "related": [
+      {
+        "name": "Network access control",
+        "href": "/features/access-control"
+      },
+      {
+        "name": "Physical security",
+        "href": "/solutions/physical-security"
+      },
+      {
+        "name": "Credential vault",
+        "href": "/features/vault"
+      },
+      {
+        "name": "NIST & CMMC compliance evidence",
+        "href": "/features/compliance"
+      }
+    ],
+    "editionNote": "Core device identity — the on-prem CA, an X.509 identity for every device, the full per-vendor cert-push driver pack, the credential vault and PIV/FIDO2 operator login — is included in every edition, starting with free Community. 802.1X cert-gated admission is Professional and up; industrial cert lanes (OPC UA GDS Push, BACnet/SC) are Business and up.",
+    "seoTitle": "Device Identity & Root of Trust — Skans Labs",
+    "seoDesc": "Skans issues a real X.509 identity to every device from an on-prem CA you own — cameras, controllers, switches and servers. Per-vendor drivers enrol the gear that can't enrol itself, and PIV/FIDO2 gives operators hardware-backed login. Air-gapped by default; you hold the keys."
+  },
+  {
+    "slug": "features/access-control",
+    "kind": "Feature",
+    "eyebrow": "Network access control · 802.1X EAP-TLS",
+    "h1": "Nothing reaches the wire without a trusted identity.",
+    "lead": "Turn on network admission and every port becomes a checkpoint. A device holding a Skans-issued certificate is let onto its segment; anything else is rejected at the switch and never reaches the network. It runs on the appliance's native Windows NPS (RADIUS) — no extra NAC appliance to buy or run, stood up and hidden behind the console.",
+    "heroShot": "devices",
+    "heroShotLabel": "Skans console · Devices",
+    "heroShotAlt": "The Skans device inventory — cameras, switches and firewalls with certificate status, capability tier and admission lane",
+    "sections": [
+      {
+        "type": "split",
+        "eyebrow": "802.1X EAP-TLS",
+        "h": "Only a trusted certificate opens the port.",
+        "body": "Admission is decided by cryptography, not a password or an allow-list you maintain by hand. A device presents the certificate Skans issued it; NPS runs EAP-TLS and checks the chain back to your enclave's own Root CA; a valid identity gets an Access-Accept and its port opens, while a missing or untrusted certificate gets an Access-Reject and the port stays shut. There is no partial state and no fail-open — a device either proves a trusted identity or it stays off the wire.",
+        "bullets": [
+          "<b>Runs on native Windows NPS</b> — the installer stands up NPS, AD CS and AD DS / GPO together and hides all three behind the console. There is no separate NAC appliance to license or operate.",
+          "<b>Chain-trust is the always-on gate</b> — a certificate that doesn't chain to your Skans Root CA is rejected. The trusted store and EAP-TLS policy are set up for you at install.",
+          "<b>Every decision is visible</b> — the console surfaces live admissions with accept / reject counts, the EAP type, the account, and which switch sent them (NPS security events 6272 and 6273).",
+          "<b>No hand-authored policy</b> — the Setup Wizard turns admission on from golden-config defaults, bound to the appliance's own server certificate. There is no operator CLI for it and none is needed."
+        ],
+        "shot": "noc",
+        "shotLabel": "Skans console · NOC",
+        "shotAlt": "The Skans NOC wall — fleet health, certificates, devices-by-tier and a RADIUS / NPS Serving status tile"
+      },
+      {
+        "type": "split",
+        "reverse": true,
+        "eyebrow": "Meet the gear where it is",
+        "h": "Not every device can hold a certificate. We plan for that.",
+        "body": "Mixed-vintage estates are the norm — a new camera next to a fifteen-year-old PLC. Skans sorts every device into a capability tier and applies the strongest control it can actually support, rather than pretending a weak device is admitted.",
+        "bullets": [
+          "<b>Tier A — cert-capable</b> — full 802.1X EAP-TLS admission by the device's own Skans-issued certificate.",
+          "<b>Tier B — limited</b> — no supplicant, but identifiable: admitted by MAC (MAB) and placed on a restricted, RADIUS-assigned dynamic VLAN using the standard Tunnel-Type / Tunnel-Medium-Type / Tunnel-Private-Group-ID attributes.",
+          "<b>Tier C — legacy</b> — old PLCs, raw Modbus and BACnet MS/TP that can't hold a certificate are never faked onto the wire; they're segmented behind a protective gateway, allow-listed to only the flows they need, and monitored — NIST 800-82 compensating controls, not fake admission.",
+          "<b>Standards-based, lab-proven on UniFi</b> — the validated authenticator is a UniFi Cloud Key controller; any switch or AP that speaks standard 802.1X, MAB and RADIUS dynamic VLAN works the same way."
+        ],
+        "shot": "devices",
+        "shotLabel": "Skans console · Devices",
+        "shotAlt": "Device inventory rows tagged by capability tier A, B and C with certificate status and admission lane"
+      },
+      {
+        "type": "grid",
+        "eyebrow": "Safe by construction",
+        "h": "A write path that can't lock you out — and a lane that can't wedge.",
+        "body": "Turning on admission means writing config to live switches and standing up a RADIUS service the whole site depends on. Skans is built so that path is safe by construction: staged rollout, a break-glass way back, and a service that stays honest about its own health.",
+        "cards": [
+          {
+            "icon": "ic-nac",
+            "h": "Fail-closed at the port",
+            "p": "A device either proves a trusted identity or it never gets a port or a VLAN. There is no partial or fail-open admission state to slip through."
+          },
+          {
+            "icon": "ic-check",
+            "h": "Break-glass and rollback",
+            "p": "Roll out monitor-first, segment cameras onto their own VLAN, and keep a break-glass path so admission never locks you out of your own gear. Already-admitted sessions survive a RADIUS outage — a RADIUS problem becomes a 'fix it Monday,' not a 3 a.m. lockout."
+          },
+          {
+            "icon": "ic-monitoring",
+            "h": "A RADIUS lane that can't fail silently",
+            "p": "Skans functionally probes its own RADIUS every few minutes — not 'is the service running' but 'is it answering on the wire.' A silent failure raises a proactive alert, and a one-click repair brings it back safely."
+          },
+          {
+            "icon": "ic-identity",
+            "h": "Connections pinned against MITM",
+            "p": "When Skans logs into a switch or device to configure it, the connection is pinned to that device's exact certificate and SSH host key. An impostor presents a different key, the connection fails closed, and nothing sensitive is handed over."
+          }
+        ]
+      },
+      {
+        "type": "split",
+        "eyebrow": "How it turns on",
+        "h": "The PKI runs behind it. You press one button.",
+        "body": "You never hand-author an EAP-TLS policy or edit NPS. The Setup Wizard binds NPS to the appliance's own server certificate and its RADIUS shared secret — held in the credential vault, never in a config file — and turns admission on from golden-config defaults. From there, bringing a site's gear online is a short, plain-language job.",
+        "bullets": [
+          "<b>Register each switch once</b> — on the Network page, add each switch or AP as a RADIUS client with its name, IP and shared secret. NPS won't answer for an authenticator it doesn't know.",
+          "<b>Secrets in the vault</b> — RADIUS shared secrets and device logins live in the TPM-hardened credential vault, encrypted, with reveal and copy audited — never in plaintext JSON.",
+          "<b>Watch devices come on</b> — the console shows recent admissions in plain terms: accepted, rejected, and by which switch — enough to confirm a segment is authenticating or spot a device being turned away.",
+          "<b>Outcomes, not certificate chains</b> — the operator sees results; AD, Kerberos, the CA and the RADIUS policy stay behind the wizard."
+        ],
+        "shot": "vault",
+        "shotLabel": "Skans console · Passwords",
+        "shotAlt": "The Skans credential vault — device logins and RADIUS secrets encrypted, TPM-protected, with reveal and copy audited"
+      },
+      {
+        "type": "split",
+        "reverse": true,
+        "eyebrow": "Compliance by design",
+        "h": "The access-control evidence an assessor asks for.",
+        "body": "Identity-gated admission is the technical enabler for the Access Control and Identification & Authentication families. Skans maps what it enforces to those controls and hands you the evidence — it supports your assessment; it doesn't certify you, and organizational controls stay yours.",
+        "bullets": [
+          "<b>AC-3 access enforcement</b> — 802.1X plus MAB with RADIUS-assigned VLANs gates the network to trusted devices only.",
+          "<b>IA-3 device authentication</b> — every admitted device is authenticated by a certificate from your own CA, not a shared password.",
+          "<b>Live posture, per family</b> — the compliance view maps admission to NIST 800-171 / CMMC control families, with an ISO 27001 crosswalk and a signed, tamper-evident evidence pack you can hand over.",
+          "<b>Honest scope</b> — Skans supplies the technical evidence; organizational, people and physical controls remain yours via a responsibility matrix, with any gaps tracked in a POA&M."
+        ],
+        "shot": "compliance",
+        "shotLabel": "Skans console · Compliance",
+        "shotAlt": "The NIST security-posture ring with per-control-family cards including Access Control (AC) and Identification & Authentication (IA)"
+      }
+    ],
+    "related": [
+      {
+        "name": "Device identity & the CA",
+        "href": "/features/identity"
+      },
+      {
+        "name": "Credential vault",
+        "href": "/features/vault"
+      },
+      {
+        "name": "Industrial & OT security",
+        "href": "/solutions/industrial-ot"
+      },
+      {
+        "name": "NIST 800-171 / CMMC evidence",
+        "href": "/features/compliance"
+      }
+    ],
+    "editionNote": "NAC visibility ships in every edition, Community and up. 802.1X EAP-TLS admission, dynamic VLANs + MAB, and legacy segmentation + security gateway come with Professional ($999 / site·yr) and above (Professional, Business, Enterprise).",
+    "seoTitle": "Network Access Control — 802.1X EAP-TLS admission | Skans Labs",
+    "seoDesc": "Admit only trusted, certificate-bearing devices with 802.1X EAP-TLS on native Windows NPS. MAB and RADIUS-assigned VLANs for limited gear, segmentation for legacy OT — air-gapped, fail-closed, run from one console."
+  },
+  {
+    "slug": "features/patching",
+    "kind": "Feature",
+    "eyebrow": "Patch & firmware management",
+    "h1": "Every host patched. Every image verified. No endpoint touches the internet.",
+    "lead": "Skans keeps an isolated enclave current the way an island demands. The appliance pulls and caches Microsoft updates, stages them through pilot-then-production rings, and Authenticode-verifies every payload to a Microsoft publisher before a single host installs it — while a hash-verified repository does the same for camera and OT firmware. No WSUS, no vendor cloud, nothing of yours leaving the wire.",
+    "heroShot": "patch",
+    "heroShotLabel": "Skans console · Updates",
+    "heroShotAlt": "The Skans updates view — Microsoft-signature-gated updates, per-ring approval, a fleet patch-compliance bar chart and a hash-verified firmware repository.",
+    "sections": [
+      {
+        "type": "split",
+        "eyebrow": "Change control",
+        "h": "Staged rings, not a WSUS server.",
+        "body": "WSUS is a dead end on Windows Server 2025 — its catalog sync floods errors and never completes, so Skans doesn't use it. Instead the appliance's own Windows Update Agent pulls and caches updates, and you stage the rollout by ring. Promote a representative host into the pilot ring, approve the update there, watch it, then roll the fleet. Both rings keep Windows Update quiescent, so nothing installs and nothing reboots until you say so.",
+        "bullets": [
+          "<b>The appliance is the source</b> — it pulls from Microsoft Update once and caches; no endpoint ever reaches out for a patch.",
+          "<b>Pilot → production</b> — move a host into the Skans-Pilot ring, approve there, then promote. Ring-based change control that maps to NIST CM-3.",
+          "<b>Signed before it installs</b> — every OS-update and Defender payload is Authenticode-verified to a Microsoft publisher first (SI-7).",
+          "<b>No surprise reboots</b> — GPO keeps Windows Update quiescent, so nothing installs or reboots on Microsoft's timetable; the rollout waits on your approval."
+        ],
+        "shot": "patch",
+        "shotLabel": "Skans console · Updates",
+        "shotAlt": "The Skans updates view — signature-gated updates with per-ring approval and a fleet patch-compliance bar chart.",
+        "reverse": false
+      },
+      {
+        "type": "split",
+        "eyebrow": "Visibility",
+        "h": "Know exactly what's missing — offline.",
+        "body": "You can't patch what you can't see, and an island can't ask Microsoft what it's short. So Skans scans each Windows host against Microsoft's offline wsusscn2.cab catalog with the Windows Update Agent — no internet required — and lists the exact KBs each host lacks. Open a device's Updates tab to read enclave-wide patch posture without a single endpoint calling home.",
+        "bullets": [
+          "<b>Offline catalog</b> — scans against Microsoft's signed wsusscn2.cab, so no outbound path is needed to know what's missing.",
+          "<b>Per-host missing KBs</b> — every Windows device's Updates tab shows the specific KBs it lacks, drawn from the distributed catalog.",
+          "<b>Runs on a schedule</b> — a weekly in-process job refreshes posture, so the picture the console shows is never stale.",
+          "<b>Evidence built in</b> — the missing-KB report supports NIST SI-2 (flaw remediation) and RA-5 (reporting)."
+        ],
+        "shot": "devices",
+        "shotLabel": "Skans console · Devices",
+        "shotAlt": "The Skans device inventory — Windows hosts, cameras and switches with their patch and certificate status.",
+        "reverse": true
+      },
+      {
+        "type": "split",
+        "eyebrow": "Firmware",
+        "h": "A firmware repository you can actually trust.",
+        "body": "Cameras, intercoms and controllers don't take Windows updates — they take vendor firmware, and firmware is exactly where a supply-chain attack hides. Skans keeps a vetted, SHA-256-hashed repository per vendor and model, populated offline from a signed bundle so nothing enters the enclave unverified. The box compares each device's live firmware against the vetted baseline and flags what's drifted.",
+        "bullets": [
+          "<b>Hash-verified, offline-loaded</b> — every image carries a recorded SHA-256 and enters only from a signed bundle, never off the open internet.",
+          "<b>STALE flagging</b> — a scheduler job compares live inventory to the baseline with a version-aware compare and flags devices that have fallen behind.",
+          "<b>Hard-gated push</b> — a flash can brick a device, so a push needs an explicit confirm and re-hashes the image against the repository immediately before flashing; any tampering aborts it.",
+          "<b>Honest by design</b> — Skans flags the currency it can see; it never claims to patch a device the vendor has no update for."
+        ],
+        "shot": "patch",
+        "shotLabel": "Skans console · Firmware",
+        "shotAlt": "The Skans firmware repository — vetted, hash-verified images per vendor and model, with stale devices flagged against the baseline.",
+        "reverse": false
+      },
+      {
+        "type": "grid",
+        "eyebrow": "Why it holds",
+        "h": "Built for a network that can't phone Microsoft.",
+        "cards": [
+          {
+            "icon": "ic-check",
+            "h": "Signed, then installed",
+            "p": "OS updates, Defender payloads and firmware images are all cryptographically verified — Authenticode to a Microsoft publisher, SHA-256 to the repository — before anything touches a host."
+          },
+          {
+            "icon": "ic-cloudcut",
+            "h": "Offline by default",
+            "p": "The appliance caches everything endpoints need. For a true air-gap, content imports from a signed bundle; the optional, operator-controlled Skans Update Service only pulls signed content down — it never sends your data out."
+          },
+          {
+            "icon": "ic-clipboard",
+            "h": "You approve — nothing auto-fires",
+            "p": "Windows Update stays quiescent and a human approves each update into each ring. There is deliberately no CVE-to-exact-fix automation making changes behind your back."
+          },
+          {
+            "icon": "ic-vuln",
+            "h": "Findings become fixes",
+            "p": "A vulnerability finding hands off to the patch-approval flow carrying the fixed-in version — so the path from 'what's wrong' to 'approved and staged' is one lane, not two disconnected tools."
+          }
+        ]
+      },
+      {
+        "type": "split",
+        "eyebrow": "Compliance",
+        "h": "The evidence an assessor asks for — already in place.",
+        "body": "Patch and firmware currency isn't a certification; it's an enabler. Skans maps the work you're already doing to the control families an assessor asks about and hands the record over. It supplies the technical evidence — the attestation stays a human process, and the organizational, people and physical controls stay yours.",
+        "bullets": [
+          "<b>CM-3</b> — ring-based change control keeping a documented, enforced baseline.",
+          "<b>SI-2 / RA-5</b> — the offline missing-KB scan evidences flaw remediation and reporting.",
+          "<b>SI-7</b> — signature verification of every payload before it installs.",
+          "<b>Tamper-evident record</b> — approvals and results feed the audit trail you export for the assessor."
+        ],
+        "shot": "compliance",
+        "shotLabel": "Skans console · Compliance",
+        "shotAlt": "The Skans compliance view — a NIST posture ring and per-control-family status cards including CM and SI.",
+        "reverse": true
+      }
+    ],
+    "related": [
+      {
+        "name": "Vulnerability management",
+        "href": "/features/vulnerabilities"
+      },
+      {
+        "name": "Backup & recovery",
+        "href": "/features/backup"
+      },
+      {
+        "name": "Compliance evidence",
+        "href": "/features/compliance"
+      },
+      {
+        "name": "Continuous monitoring",
+        "href": "/features/monitoring"
+      }
+    ],
+    "editionNote": "Patch management and the vetted, hash-verified firmware repository are included from Essential up (Essential, Professional, Business, Enterprise). The air-gapped Skans Update Service and offline licensing are Enterprise.",
+    "seoTitle": "Patch & firmware management without WSUS — Skans Labs",
+    "seoDesc": "Staged patch rings without WSUS, offline missing-KB scans and a hash-verified firmware repository for cameras and OT — every payload cryptographically verified before it installs, with no endpoint ever reaching the internet."
+  },
+  {
+    "slug": "features/backup",
+    "kind": "Feature",
+    "eyebrow": "Backup & disaster recovery",
+    "h1": "Nothing irreplaceable lives in only one place.",
+    "lead": "Skans gets every store on the appliance — the CA key, the databases, the directory, and every camera, PLC and network config — encrypted and off the source box on a daily schedule. It ships to an off-box target you own; nothing goes to a cloud. And a backup you've never restored is only a hope, so Skans verifies restores for you and lets you rehearse the real thing without touching production.",
+    "heroShot": "backup",
+    "heroShotLabel": "Skans console · Backup",
+    "heroShotAlt": "The Skans backup and recovery view — the restore-point catalog with CA key, database and directory points, off-box target status, and read-only restore-verify.",
+    "sections": [
+      {
+        "type": "split",
+        "reverse": false,
+        "eyebrow": "What gets protected",
+        "h": "Every store on the enclave — off the box, encrypted.",
+        "body": "Six scheduled lanes run inside the always-on control plane, each capturing a different store on its own timer, encrypting it, and shipping it off the source machine before it lands. Here's what ends up protected — the certificate authority's own key material included — so the box that holds your root of trust is never the only place your state lives.",
+        "bullets": [
+          "<b>CA key + database</b> — the crown jewel: the certificate authority's private-key material and its database, so identity is rebuildable from media, not from nothing.",
+          "<b>Control-plane database</b> — devices, config, RBAC, the agent registry, credential-vault references and the audit trail, taken as a daily full backup.",
+          "<b>Directory system-state</b> — NTDS.dit, every GPO and SYSVOL, so the enclave's sole domain controller can be rebuilt from media rather than from scratch.",
+          "<b>Camera, PLC & network configs</b> — each device's running-config pulled over its native interface, versioned only when it actually changes, with golden-baseline drift detection.",
+          "<b>Telemetry store</b> — events, Windows logs, metrics, inventory and offline CVE data, taken as a daily deduplicated snapshot.",
+          "<b>Endpoint backups</b> — full and differential of config files and SQL databases on servers and workstations, shipped off the source host over the agent's mutual-TLS channel."
+        ],
+        "shot": "devices",
+        "shotLabel": "Skans console · Devices",
+        "shotAlt": "The Skans device inventory — cameras, switches and firewalls whose running-configs are versioned and backed up off-box"
+      },
+      {
+        "type": "split",
+        "reverse": true,
+        "eyebrow": "RPO by design",
+        "h": "A day's RPO where it's cheap. Restore-on-demand where it's big.",
+        "body": "Skans keeps its state in two stores with opposite characteristics, so it uses two mechanisms — each matched to how valuable, how large, and how re-derivable the data is. There is no single 'back everything up the same way' knob; the asymmetry drives the design.",
+        "bullets": [
+          "<b>Small and irreplaceable</b> — the control-plane database is a few megabytes, so it takes a daily full backup with keep-last-N retention (ten by default). A day's RPO is the deliberate trade for a store this small.",
+          "<b>Large but re-derivable</b> — telemetry is bigger but append-only, so it takes a daily incremental snapshot. After an outage, agents resume shipping and only the outage gap is lost.",
+          "<b>An off-box target you own</b> — point Skans at a UNC share and it ships there from the next run. Until you set one, off-box egress stays inert — an unattended install never writes to a share that isn't there.",
+          "<b>Nothing leaves the wire</b> — the target is yours, on your network. There is no Skans cloud and no third party anywhere in the path."
+        ],
+        "shot": "dashboard",
+        "shotLabel": "Skans console · Home",
+        "shotAlt": "The Skans console home — a correlated triage worklist showing at a glance whether last night's backup ran"
+      },
+      {
+        "type": "grid",
+        "eyebrow": "Why it holds",
+        "h": "Built for a disconnected, regulated site.",
+        "cards": [
+          {
+            "icon": "ic-backup",
+            "h": "Off the source, always",
+            "p": "Every artifact leaves the box it protects — off the source host and off the appliance — so a single machine failure never takes your only copy with it."
+          },
+          {
+            "icon": "ic-identity",
+            "h": "Encrypted and key-escrowed",
+            "p": "Each artifact is AES-256 encrypted before it leaves. The backup master key is sealed to the appliance and escrowed for a rebuilt box, and the vault's keys ride to an operator-held recovery key — so a standby can decrypt what it's given, and no one else can."
+          },
+          {
+            "icon": "ic-check",
+            "h": "Restore-verify, daily",
+            "p": "A scheduled check proves the crown-jewel backups would actually restore — the database, the directory and the CA — and raises a Critical alert if one wouldn't. You learn a backup is bad before a crisis, not during one."
+          },
+          {
+            "icon": "ic-clipboard",
+            "h": "Evidence for CP-9 / CP-10",
+            "p": "Off-box backup maps to NIST CP-9 and tested manual restore to CP-10, with golden-baseline drift covering CM-2 / CM-6 — technical support for the controls, never a certification."
+          }
+        ]
+      },
+      {
+        "type": "split",
+        "reverse": false,
+        "eyebrow": "Recovery",
+        "h": "A backup you've never restored is a hope, not a plan.",
+        "body": "Restore is a deliberate, admin-run break-glass procedure — there is no blind one-click button. What Skans automates is the proof: it verifies restores on a schedule, lets you rehearse the real thing side-by-side, and guides the destructive steps when a real recovery comes.",
+        "bullets": [
+          "<b>Verify, read-only</b> — prove a backup opens end-to-end without writing anything; the database engine, the CA key material and the directory header are each checked against a real restore.",
+          "<b>Rehearse, non-destructive</b> — restore SQL into a side-by-side standby database while the live one keeps serving, proving the whole log chain restores on this exact appliance.",
+          "<b>Promote, guarded</b> — swapping the standby in as live sits behind a break-glass capability, a typed confirmation, and a preserved rollback copy of the old database — never a drop.",
+          "<b>CA & AD runbooks</b> — directory and certificate-authority restore stay operator-driven, with guided steps and the backup filename pre-filled, because an authoritative restore of a sole domain controller is done by hand.",
+          "<b>Optional automatic failover</b> — sites that need it can point Skans at a customer-owned SQL Always On availability group and fail over transparently; the cluster is yours to run, not a Skans dependency."
+        ],
+        "shot": "backup",
+        "shotLabel": "Skans console · Backup",
+        "shotAlt": "The Skans backup and restore view — the restore-point catalog with read-only verify, standby rehearsal, and disaster-recovery status"
+      }
+    ],
+    "related": [
+      {
+        "name": "Patch & firmware",
+        "href": "/features/patching"
+      },
+      {
+        "name": "Credential vault",
+        "href": "/features/vault"
+      },
+      {
+        "name": "Identity & root of trust",
+        "href": "/features/identity"
+      },
+      {
+        "name": "NIST 800-171 / CMMC evidence",
+        "href": "/features/compliance"
+      }
+    ],
+    "editionNote": "Backup & disaster recovery is included from the Essential edition up — Essential, Professional, Business and Enterprise; it is not part of the free Community edition.",
+    "seoTitle": "Backup & Disaster Recovery — Skans Labs",
+    "seoDesc": "Daily, encrypted, off-box backup of the CA key, databases, directory and every device config for isolated camera, IoT and OT networks — with daily restore-verify, non-destructive standby rehearsal and guided disaster recovery. Nothing leaves the wire."
+  },
+  {
+    "slug": "features/monitoring",
+    "kind": "Feature",
+    "eyebrow": "Monitoring & operations",
+    "h1": "Signal that scales with your fleet. Not a firehose.",
+    "lead": "Skans watches every device on the enclave — Windows endpoints through the agent, cameras, PLCs, switches and firewalls through the collector — and turns the raw stream into a small, correlated worklist bounded by the number of devices affected, never a wall of events. Alert rules decide what fires, routing decides where it goes, and every suppression is a recorded exception. Offline CVE and MITRE ATT&CK run on the box, so a severed WAN changes nothing about what you can see.",
+    "heroShot": "noc",
+    "heroShotLabel": "Skans console · Operations",
+    "heroShotAlt": "A Skans NOC wall dashboard — metric tiles for fleet health, open incidents, compliance percentage, certificates, devices by tier, vulnerabilities, approvals and maintenance windows, events in the last 24 hours, ATT&CK detections, auto-handled findings, RADIUS/NPS status, and search-engine health.",
+    "sections": [
+      {
+        "type": "split",
+        "eyebrow": "Signal over noise",
+        "h": "Correlation, not raw volume.",
+        "body": "Traditional monitoring polls on a timer and floods you with one alert per host. Skans inverts it: anything that can push — a Windows event, a syslog message, an SNMP trap — does so on occurrence, and an always-on alert engine turns those occurrences into findings that are correlated and bounded by device count. A site of 200 devices produces alerts on the order of devices affected, not thousands of raw events. A site-wide outage collapses into a handful of correlated findings instead of one per host.",
+        "bullets": [
+          "<b>Bounded by device count</b> — a 1,471-event storm resolves to the two findings that actually need you, not a scrollback you'll never read.",
+          "<b>Storm de-duplication</b> — a site outage coalesces into a single storm count; portable machines get a 24-hour offline grace and are excluded, so a van full of sleeping laptops never reads as an incident.",
+          "<b>One upstream cause, one finding</b> — root-cause walks the uplink chain, so a known-unreachable switch subsumes everything behind it instead of paging you per device.",
+          "<b>Fail-open by design</b> — the offline rule watches only registered hosts, but if that allowlist goes missing or stale it watches everything rather than going silent."
+        ],
+        "shot": "dashboard",
+        "shotLabel": "Skans console · Home",
+        "shotAlt": "The Skans console home — an ask-the-appliance command bar over a correlated worklist of what needs attention, where compliance stands, and whether backup ran."
+      },
+      {
+        "type": "split",
+        "reverse": true,
+        "eyebrow": "You decide where it lands",
+        "h": "Rules decide what fires. Routing decides where it goes.",
+        "body": "Detection is the product's judgment; where an alert lands is yours. The Alerting console lets an operator tune the packaged rules, route by severity, and record every exception — a save goes live on the engine's next evaluation cycle, with no service restart. Suppressions are exceptions on the record, never silent muting.",
+        "bullets": [
+          "<b>Rules &amp; routing</b> — enable, disable and tune rules from the console; route by severity with quiet-hours, and re-notify an unacknowledged alert on an interval instead of firing once and forgetting.",
+          "<b>Suppressions on the record</b> — silence a rule for a host pattern for a bounded window; if the rule evidences a control like NIST AU-6, the console requires a written justification and logs it as an explicit risk acceptance, so a silenced control is never an invisible gap.",
+          "<b>Snooze always expires</b> — nothing gets silenced indefinitely by accident.",
+          "<b>Delivery health</b> — see whether the SMTP relay or webhook actually accepted the last dispatch, so you learn about a broken channel from the console, not from a missed incident."
+        ],
+        "shot": "alerting",
+        "shotLabel": "Skans console · Alerting",
+        "shotAlt": "The Skans alerting view — a table of alert rules by name, type, severity, cooldown, and routing."
+      },
+      {
+        "type": "split",
+        "eyebrow": "Threat intel, offline",
+        "h": "Offline CVE and MITRE ATT&CK, matched on the box.",
+        "body": "Skans syncs the public CVE List and MITRE ATT&CK into an on-box store and matches them against live per-host inventory — no cloud scanner in the loop. The match uses a strict version-range gate, not a name lookup, so a host that is actually patched shows zero findings. Green means green, not unscanned.",
+        "bullets": [
+          "<b>~342k CVEs, 697 ATT&CK techniques</b> — held on the appliance and matched locally; a severed WAN changes nothing about the scan.",
+          "<b>Ranked by real-world risk</b> — findings carry a CVSS score, are stamped when they appear in CISA's Known Exploited catalog, and carry a FIRST.org EPSS exploit-probability score, so what's actually being exploited sorts to the top.",
+          "<b>ATT&CK on every finding</b> — a CVE → CWE → ATT&CK join tags each hit with the techniques that exploit it, so a finding reads as adversary behavior, not just a number.",
+          "<b>Air-gap integrity</b> — the offline feed arrives as a signed bundle that is cryptographically verified against a held anchor before a single record is indexed; a tampered or unsigned bundle is refused.",
+          "<b>An honest hand-off</b> — Skans tells you what's vulnerable and which version fixes it, then routes remediation into approved patch rings where a human approves the change. It never picks or applies a fix for you."
+        ],
+        "shot": "patch",
+        "shotLabel": "Skans console · Updates & patch rings",
+        "shotAlt": "The Skans updates view — signature-gated updates with per-ring approval and a fleet patch-compliance bar chart, where a CVE finding's remediation lands."
+      },
+      {
+        "type": "grid",
+        "eyebrow": "How the signal gets in",
+        "h": "Every lane feeds one picture.",
+        "cards": [
+          {
+            "icon": "ic-monitoring",
+            "h": "Agent lane for Windows",
+            "p": "The Authenticode-signed agent runs on each Windows server and workstation, pushing inventory, metrics, Defender health, patch state, and a full event-log mirror over mutual TLS. A failed logon reaches the console in seconds — no forwarding tier to stand up or maintain."
+          },
+          {
+            "icon": "ic-discovery",
+            "h": "Agentless lane for everything else",
+            "p": "A low-privilege collector listens for syslog and SNMP traps and polls SNMP-capable gear on a fast reconcile. For PLCs it does read-only ICS identification — EtherNet/IP and Modbus/TCP — reading run and fault state without ever writing to the device."
+          },
+          {
+            "icon": "ic-defense",
+            "h": "The appliance watches itself",
+            "p": "A self-health service samples disk, RAM, CPU, database size, and core-service liveness, and raises immediate Critical alerts on the crown jewels — domain-controller drift, DR and backup failure, PKI expiry, and Critical CVE matches."
+          },
+          {
+            "icon": "ic-sheet",
+            "h": "Events live on the box",
+            "p": "Logs, events and metrics land in an on-box store — the appliance's own system of record — with a default one-year retention on event data. With no outbound channel, delivery degrades gracefully to console-only; nothing is silently dropped."
+          }
+        ]
+      },
+      {
+        "type": "split",
+        "reverse": true,
+        "eyebrow": "Watched, and audit-ready",
+        "h": "The Detect evidence an assessor asks for.",
+        "body": "Correlated, reviewable integrity signal is exactly what a continuous-monitoring control wants to see. Skans maps its monitoring to the NIST Detect function — and because suppressing a compliance-tagged rule is recorded as a risk acceptance, a silenced control stays visible to the compliance view. Skans supplies the technical evidence; it never certifies you.",
+        "bullets": [
+          "<b>Continuous-monitoring evidence</b> — correlated, deduplicated findings give the bounded, reviewable integrity signal NIST 800-171's System &amp; Information Integrity family expects.",
+          "<b>Offline risk assessment</b> — on-box CVE matching evidences continuous vulnerability monitoring (RA-5) for an enclave with no internet.",
+          "<b>An honest boundary</b> — this is push-first collection plus correlation, not a full IDS/EDR. Pair Skans with a dedicated IDS/EDR for complete Detect coverage; it's an enabler, never a certification."
+        ],
+        "shot": "compliance",
+        "shotLabel": "Skans console · Compliance",
+        "shotAlt": "The Skans compliance view — a NIST 800-171 posture ring and per-control-family status cards for AC, AU, CM, IA, RA, and SC."
+      }
+    ],
+    "related": [
+      {
+        "name": "Vulnerability management",
+        "href": "/features/vulnerabilities"
+      },
+      {
+        "name": "Compliance evidence",
+        "href": "/features/compliance"
+      },
+      {
+        "name": "Patch & firmware",
+        "href": "/features/patching"
+      },
+      {
+        "name": "Network access control",
+        "href": "/features/access-control"
+      }
+    ],
+    "editionNote": "Continuous monitoring with correlated findings and offline CVE + MITRE ATT&CK feeds are in every edition, including free Community. Alert rules, routing and notifications start at Essential; vulnerability management (CVE matching + prioritisation) and log & topology fusion start at Professional.",
+    "seoTitle": "Monitoring & operations — signal over noise, offline threat intel",
+    "seoDesc": "Skans correlates every event into a bounded, per-device worklist and matches offline CVE + MITRE ATT&CK on the box. Alert rules route what fires; suppressions are recorded exceptions. Nothing leaves the wire."
+  },
+  {
+    "slug": "features/vulnerabilities",
+    "kind": "Feature",
+    "eyebrow": "Vulnerability management",
+    "h1": "Know exactly what's exploitable. With nothing leaving the wire.",
+    "lead": "Skans syncs the public CVE List and MITRE ATT&CK onto the appliance and matches them against your live, per-host inventory — no cloud scanner, no internet. Findings come CVSS-scored, ranked by KEV and EPSS so real-world exploitation sorts to the top, tagged with the ATT&CK techniques that exploit them, and rolled up per device. And because the match uses a strict version-range gate, a patched host shows zero — green means green, not unscanned.",
+    "heroShot": "noc",
+    "heroShotLabel": "Skans console · NOC",
+    "heroShotAlt": "The Skans NOC wall — fleet-health tiles including open vulnerabilities and ATT&CK-tagged findings across the enclave.",
+    "sections": [
+      {
+        "type": "split",
+        "eyebrow": "The match",
+        "h": "Matched to your live fleet — not to a name.",
+        "body": "A first-party worker, Skans.VulnFeed, syncs the public CVE List (cvelistV5) and MITRE ATT&CK Enterprise into an on-box store, then joins your live per-host inventory against each CVE's affected-version ranges. A broad product match finds candidates; a strict version-range check then gates every one, so software patched past the affected range stays quiet. The whole match runs on the appliance — there is no cloud scanner in the loop.",
+        "bullets": [
+          "<b>Version-range gate, not name lookup</b> — a candidate only becomes a finding when the installed version actually falls inside the affected range.",
+          "<b>Green means green</b> — a fully-patched host produced zero findings in a live drill, so a clean result means secured, not unscanned.",
+          "<b>Live inventory as the source</b> — the same software and firmware Skans already inventories per host is what the CVE corpus is joined against.",
+          "<b>Nothing leaves the wire</b> — sync, match and write all happen on-box; your inventory never goes to a cloud scanner."
+        ],
+        "shot": "devices",
+        "shotLabel": "Skans console · Devices",
+        "shotAlt": "The Skans device inventory — the live per-host software and firmware picture the CVE match is joined against."
+      },
+      {
+        "type": "split",
+        "reverse": true,
+        "eyebrow": "Prioritisation",
+        "h": "Ranked by what's actually being exploited.",
+        "body": "CVSS tells you how bad a flaw could be; it doesn't tell you what attackers are using this week. Skans enriches every matched finding with two public threat-intel feeds so triage can rank by real-world risk rather than severity alone — and tags each finding with the adversary techniques that target it.",
+        "bullets": [
+          "<b>CISA KEV</b> — a CVE in the Known Exploited Vulnerabilities catalog is stamped kev=true, so actively-exploited flaws sort to the top.",
+          "<b>FIRST.org EPSS</b> — each finding carries its exploit-prediction score, the estimated probability the CVE is exploited in the wild.",
+          "<b>ATT&CK technique tags</b> — a CVE → CWE → ATT&CK join labels each hit with the techniques (for example T1110, brute force) that exploit it.",
+          "<b>A Critical CVE match rule</b> — watches the findings index and raises an on-box alert that dispatches to your configured sinks alongside every other Skans alert."
+        ],
+        "shot": "alerting",
+        "shotLabel": "Skans console · Alerting",
+        "shotAlt": "The Skans alerting view — rules by type and severity, including the offline CVE plus MITRE ATT&CK feed that fires a Critical CVE match."
+      },
+      {
+        "type": "grid",
+        "eyebrow": "Built to run disconnected",
+        "h": "Air-gap integrity, end to end.",
+        "body": "The feed is designed for a site with no internet: the threat intel arrives by offline transfer and is verified before it's ever trusted.",
+        "cards": [
+          {
+            "icon": "ic-cloudcut",
+            "h": "A signed feed bundle",
+            "p": "For an air-gapped site the CVE + ATT&CK feed arrives as a PackSigner-signed .skb bundle. Skans CMS-verifies it against the held pack anchor before a single record is indexed — a tampered or unsigned bundle is refused, and nothing is ingested."
+          },
+          {
+            "icon": "ic-globe",
+            "h": "The whole corpus, on-box",
+            "p": "About 342k CVEs and 697 ATT&CK techniques live in the appliance's own search store. A severed WAN changes nothing about your assessment — the match keeps running."
+          },
+          {
+            "icon": "ic-check",
+            "h": "No cloud scanner",
+            "p": "The match is on-box, joining live inventory against affected-version ranges. Because that gate is version-range rather than name-match, a patched host stays honestly quiet."
+          },
+          {
+            "icon": "ic-monitoring",
+            "h": "Supervised, not a cron job",
+            "p": "Sync-and-scan runs weekly as a supervised job inside the always-on control plane — no OS scheduled task and no separate scheduler service to maintain."
+          }
+        ]
+      },
+      {
+        "type": "split",
+        "eyebrow": "From finding to fix",
+        "h": "A hand-off to a human, not a black box.",
+        "body": "Skans tells you what is vulnerable and what version clears it — then hands the fix to a person. Each device's Vulnerabilities tab lists its findings with the fix target; one action routes the remediation into the approved patch rings, where a human approves the patch. This is deliberate: it is known-CVE posture assessment (RA-5), not an IDS or EDR — pair it with one for full Detect coverage.",
+        "bullets": [
+          "<b>Per-device rollup</b> — each host's Vulnerabilities tab shows its own findings, each with the fixedIn version that clears it.",
+          "<b>One-click remediation request</b> — routes the fix into the approved patch rings; there is no CVE-to-exact-fix automation, by design.",
+          "<b>Firmware flagged, not forced</b> — stale device firmware is surfaced; where a vetted image and vendor path exist, an optional push re-hashes against the recorded SHA-256 and requires an explicit confirm.",
+          "<b>An honest boundary</b> — Skans records, correlates and assesses; it is not a full IDS/EDR and does not apply fixes for you."
+        ],
+        "shot": "patch",
+        "shotLabel": "Skans console · Updates",
+        "shotAlt": "The Skans updates and patch-rings view — where a vulnerability finding's remediation lands for human approval."
+      },
+      {
+        "type": "split",
+        "reverse": true,
+        "eyebrow": "Compliance evidence",
+        "h": "The evidence for RA-5, already in place.",
+        "body": "The same matching that keeps operators ahead of exploitation is the technical evidence an assessor asks for. Continuous CVE matching against live per-host inventory supports NIST RA-5 (vulnerability monitoring), and the vuln-to-patch hand-off supports SI-2 (flaw remediation). It is an enabler for those controls, never a certification of them — Skans supplies the technical evidence while your organizational risk-management process stays yours.",
+        "bullets": [
+          "<b>Supports RA-5</b> — offline CVE matching against live inventory is the risk-assessment evidence for an isolated enclave.",
+          "<b>Supports SI-2</b> — the vulnerability-to-patch hand-off is the evidence for flaw remediation, always as an enabler.",
+          "<b>Rolls into the evidence pack</b> — findings feed the enclave's live NIST 800-171 / CMMC posture and the one-command supporting-evidence export.",
+          "<b>An enabler, never a badge</b> — no product makes you compliant; organizational, people and process controls remain the customer's."
+        ],
+        "shot": "compliance",
+        "shotLabel": "Skans console · Compliance",
+        "shotAlt": "The Skans compliance view — the NIST posture ring and the Risk Assessment control family that CVE matching supports."
+      }
+    ],
+    "related": [
+      {
+        "name": "Continuous monitoring",
+        "href": "/features/monitoring"
+      },
+      {
+        "name": "Patch & firmware",
+        "href": "/features/patching"
+      },
+      {
+        "name": "Network access control",
+        "href": "/features/access-control"
+      },
+      {
+        "name": "NIST 800-171 / CMMC evidence",
+        "href": "/features/compliance"
+      }
+    ],
+    "editionNote": "Full vulnerability management — CVE matching plus KEV/EPSS prioritisation — is included in Professional, Business and Enterprise. The offline CVE + MITRE ATT&CK feeds and continuous monitoring ship in every edition, including free Community.",
+    "seoTitle": "Vulnerability Management — offline CVE & ATT&CK matching | Skans Labs",
+    "seoDesc": "Skans matches the public CVE List and MITRE ATT&CK against your live fleet on the appliance — no internet. KEV/EPSS prioritisation, ATT&CK-tagged findings, per-device rollup, patch hand-off, and RA-5 evidence."
+  },
+  {
+    "slug": "features/compliance",
+    "kind": "Feature",
+    "eyebrow": "Compliance & evidence",
+    "h1": "Walk into the assessment with the evidence already assembled.",
+    "lead": "Skans is the enclave's technical control plane and evidence generator. It satisfies the hard technical controls of NIST 800-171 / CMMC Level 2, crosswalks the same live measurements to ISO/IEC 27001:2022, and exports a signed, air-gap-friendly evidence pack on one command. It supports and evidences your program — it never certifies it, and your organizational controls stay yours.",
+    "heroShot": "compliance",
+    "heroShotLabel": "Skans console · Compliance",
+    "heroShotAlt": "The Skans compliance view — a NIST security-posture ring with per-control-family status cards for AC, AU, CM, CP, IA, RA and SC",
+    "sections": [
+      {
+        "type": "split",
+        "eyebrow": "NIST 800-171 / CMMC",
+        "h": "Live posture, read by control family.",
+        "body": "The Compliance hub maps Skans capabilities onto the NIST 800-171 / CMMC Level 2 control families and shows where each one stands — computed from the appliance's live state, not a questionnaire. Of the 110 requirements in 800-171, roughly a third are organizational and stay with you; Skans owns the system and technical controls a product can actually measure.",
+        "shot": "compliance",
+        "shotLabel": "Skans console · Compliance",
+        "shotAlt": "NIST posture ring with per-control-family cards — AC, AU, CM, CP, IA, RA, SC",
+        "bullets": [
+          "<b>Posture by family</b> — AC (802.1X admission, RBAC), AU (central logging, synchronized time), CM (baseline + update rings), IA (per-device X.509, MFA), RA (CVE + ATT&CK matching), SC (TLS, PKI, FIPS approved-mode), CP, SI — with PE / PS / PL / PM shown as out of scope for an appliance.",
+          "<b>A live, agent-measured scorecard</b> — BitLocker, host firewall, audit policy, FIPS mode, and patch / Defender / certificate posture roll up on each device's detail page.",
+          "<b>Not Verified, never wishful</b> — a control Skans hasn't actually read stays Not Verified; it is never turned green just because a policy should have applied it. Only the on-box reading counts.",
+          "<b>The boundary, shrunk to the enclave</b> — a responsibility matrix names the organizational third that remains yours, so the assessor looks at less."
+        ]
+      },
+      {
+        "type": "split",
+        "reverse": true,
+        "eyebrow": "ISO/IEC 27001:2022",
+        "h": "One set of measurements, crosswalked to all 93 Annex A controls.",
+        "body": "The same live checks feed an ISO 27001 tab — a different crosswalk over the same evidence machinery. It reports against every Annex A control, grounded in a published mapping rather than an in-house judgment call, and it is deliberate about what it will and won't claim.",
+        "shot": "compliance",
+        "shotLabel": "Skans console · Compliance · ISO 27001",
+        "shotAlt": "The ISO 27001 crosswalk tab in the Skans Compliance hub, showing Annex A controls bucketed by evidence status",
+        "bullets": [
+          "<b>All 93 Annex A controls</b> — a fixed denominator that never shrinks to flatter the numbers, and deliberately no single \"readiness %\" over a standard that is mostly organizational.",
+          "<b>Grounded in NIST OLIR #155</b> — every check-to-control link traces back to the published SP 800-53 Rev 5 → ISO/IEC 27001:2022 mapping, not a guess.",
+          "<b>Four honest buckets</b> — supporting evidence available · gaps identified · mapped-not-yet-measured · customer responsibility.",
+          "<b>15 controls get partial technical evidence</b> — 5.9, 5.16–5.18 and clause-8 controls such as 8.15 Logging; the remaining 78 are your ISMS's. A passing check is evidence toward a control, never the whole control."
+        ]
+      },
+      {
+        "type": "grid",
+        "eyebrow": "Honest by construction",
+        "h": "The boundaries are the feature.",
+        "body": "Being straight about what a product can and can't do is the point. These four lines are drawn into the tab, the export, and the language itself.",
+        "cards": [
+          {
+            "icon": "ic-clipboard",
+            "h": "Supports, never certifies",
+            "p": "No product can make a network \"NIST compliant\" or be \"ISO 27001 certified.\" Skans evidences the technical controls; your ISMS is certified by an accredited body, and CMMC Level 2 standing by a C3PAO."
+          },
+          {
+            "icon": "ic-check",
+            "h": "Tamper-evident, not WORM",
+            "p": "An append-only, hash-linked, signed audit chain: each entry carries the previous hash, so any after-the-fact edit breaks every hash and signature after it. Cryptographically tamper-evident — never described as immutable."
+          },
+          {
+            "icon": "ic-identity",
+            "h": "Your controls stay yours",
+            "p": "A responsibility matrix spells out Skans-technical vs customer-organizational per control, and a live POA&M carries the gaps. Physical, personnel, planning and program controls remain the customer's."
+          },
+          {
+            "icon": "ic-vuln",
+            "h": "Only measured state counts",
+            "p": "Agentless devices read N/A, not pass; unmeasured controls stay grey. Fleet evidence reads like \"4 of 4 measured devices pass\" — a real count over real readings, not wishful green."
+          }
+        ]
+      },
+      {
+        "type": "split",
+        "eyebrow": "Ask-the-box & evidence pack",
+        "h": "Ask the box in plain language. Hand over the pack in one command.",
+        "body": "The console is command-bar-driven — type where a family stands or what needs you, then export the whole thing. One command produces a timestamped folder and .zip, assembled entirely from live state with no hand-collation, built to move to an air-gapped site.",
+        "shot": "dashboard",
+        "shotLabel": "Skans console · Home",
+        "shotAlt": "The Skans console home — a command bar over a correlated worklist with a Compliance lane",
+        "bullets": [
+          "<b>Ask the appliance</b> — the command-bar console resolves \"compliance\", \"AC\" or \"what needs me\" straight to the surface, and Compliance sits in the bounded triage worklist, not a firehose.",
+          "<b>Everything an assessor opens</b> — ssp-control-status.csv (every control → NIST ID → Implemented / Planned), poam.csv (the live gaps), responsibility-matrix.csv, inventory.csv with per-device cert posture, audit-log.csv, and a README cover sheet.",
+          "<b>Signed and verifiable</b> — a manifest.sha256 plus a detached release-key signature; any post-export edit breaks verification.",
+          "<b>Point-in-time by design</b> — each pack is a live snapshot; persisted evidence history and in-console SoA management are named as Phase 2, not claimed today."
+        ]
+      },
+      {
+        "type": "split",
+        "reverse": true,
+        "eyebrow": "Audit & change control",
+        "h": "Every change approved. Every action on the record.",
+        "body": "Compliance is as much about how the enclave is run as what it measures. Skans gates the changes that matter behind an approval, attributes every action to a real person, and gives the auditor a read-only lens of their own.",
+        "shot": "patch",
+        "shotLabel": "Skans console · Updates",
+        "shotAlt": "The Skans updates view — patch rings with per-ring approval and a fleet patch-compliance chart",
+        "bullets": [
+          "<b>Change approvals</b> — patch-ring promotion, maintenance windows and firmware push gate on a Manager's patch.approve capability; the approval is recorded, not implicit.",
+          "<b>Real-actor attribution</b> — an AuditContext stamps the signed-in person on AD and RBAC writes; login is audited on both success and failure with the source IP, and rate-limiting, a 15-minute idle lock and explicit sign-out back NIST AC-7 / AC-11 / AC-12 and AU-2.",
+          "<b>A read-only Auditor role</b> — one of six least-privilege roles: review, attest and export signed evidence with no mutating capability, keeping the reviewer separate from the operator (NIST AC-6).",
+          "<b>Reports straight from live state</b> — control-status, POA&M and inventory export as the same CSVs you hand the assessor, with a default 365-day audit retention."
+        ]
+      }
+    ],
+    "related": [
+      {
+        "name": "Device identity",
+        "href": "/features/identity"
+      },
+      {
+        "name": "Network access control",
+        "href": "/features/access-control"
+      },
+      {
+        "name": "Vulnerability management",
+        "href": "/features/vulnerabilities"
+      },
+      {
+        "name": "Backup & recovery",
+        "href": "/features/backup"
+      }
+    ],
+    "editionNote": "Compliance mapping, the ISO 27001 crosswalk, the signed evidence-pack export, and audit-log & change approvals are included from Professional up (Professional, Business, Enterprise); Community and Essential don't include them.",
+    "seoTitle": "Compliance & evidence — NIST 800-171 / CMMC & ISO 27001 | Skans Labs",
+    "seoDesc": "Live NIST 800-171 / CMMC posture by control family, an ISO 27001 crosswalk to all 93 Annex A controls, and a signed evidence pack on one command. Supports your program — never certifies it."
+  },
+  {
+    "slug": "features/vault",
+    "kind": "Feature",
+    "eyebrow": "Credential vault",
+    "h1": "Every login sealed to the box. Every reveal on the record.",
+    "lead": "Device logins, saved passwords and secure notes belong in one encrypted place — not a spreadsheet or a config file. Skans seals every secret with a key that never leaves the appliance — a non-exportable TPM key on the Windows appliance — uses it internally without ever putting it on screen, and records every reveal and copy in the audit log. You own the keys; nothing leaves the wire.",
+    "heroShot": "vault",
+    "heroShotLabel": "Skans console · Passwords",
+    "heroShotAlt": "The Skans credential vault — the Passwords page listing device logins, saved passwords and secure notes, each encrypted at rest and TPM-sealed on Windows, with audited reveal and copy.",
+    "sections": [
+      {
+        "type": "split",
+        "eyebrow": "One place, entered once",
+        "h": "One vault for every secret you'd otherwise write down.",
+        "body": "Every device and service credential Skans holds lives in one encrypted place — plus the saved passwords and secure notes your team would otherwise scatter across spreadsheets. You enter each one once through the console; it's encrypted on the way in and never written to a plaintext file.",
+        "shot": "vault",
+        "shotLabel": "Skans console · Passwords",
+        "shotAlt": "The Passwords page with device credentials, saved passwords and secure notes listed as masked entries.",
+        "bullets": [
+          "<b>Device logins</b> — the management credential Skans uses to reach a camera, switch or controller, issue and bind its certificate, and read its health.",
+          "<b>Controller & API keys</b> — a service or controller credential, like the read-only login for a network controller.",
+          "<b>Saved passwords & secure notes</b> — the wifi PSK, the rack combination, the break-glass account your team keeps on a sticky note — with the note body encrypted right alongside the secret.",
+          "<b>Entered once, zero-exposure</b> — the value is written straight into the SQL vault as an SKV2 envelope, never echoed back on entry, and never staged to a config file, script or JSON."
+        ]
+      },
+      {
+        "type": "grid",
+        "eyebrow": "How it's protected",
+        "h": "Sealed to the hardware inside the box.",
+        "cards": [
+          {
+            "icon": "ic-identity",
+            "h": "A key that never leaves the box",
+            "p": "On Windows the wrapping key that seals the vault is a non-exportable TPM key — RSA-2048 in the platform crypto provider, sealed to this appliance and working even on a vTPM. That's the hardware-backed root."
+          },
+          {
+            "icon": "ic-defense",
+            "h": "A fresh key per secret",
+            "p": "Envelope encryption: every credential gets its own AES-256-GCM data key, wrapped by a key-encryption key, sealed by the TPM. No two secrets ever share a key."
+          },
+          {
+            "icon": "ic-nac",
+            "h": "Bound to where it belongs",
+            "p": "Each ciphertext is tied to its exact device and field with authenticated data. Lift a blob onto another device or column and it simply fails to decrypt — a copied secret can't be replayed where it doesn't belong."
+          },
+          {
+            "icon": "ic-check",
+            "h": "Honest about the fallbacks",
+            "p": "No usable TPM? Skans falls back to DPAPI or a permission-locked keyfile — and says so; only the TPM path is reported as hardware-backed. The appliance runs FIPS approved-mode, which it never dresses up as CMVP validation."
+          }
+        ]
+      },
+      {
+        "type": "split",
+        "reverse": true,
+        "eyebrow": "Nothing revealed off the record",
+        "h": "Every reveal and copy lands in the audit log.",
+        "body": "Skans uses a stored credential internally without ever putting it on screen. Surfacing one again is a separate, deliberate action — and it never happens silently.",
+        "shot": "vault",
+        "shotLabel": "Skans console · Passwords",
+        "shotAlt": "A vault entry with copy-first and reveal controls, each action recorded to the audit trail.",
+        "bullets": [
+          "<b>Gated by capability</b> — revealing or copying a stored credential needs the vault.reveal capability: a small, auditable grant, not blanket admin.",
+          "<b>Copy-first, then re-mask</b> — the console copies without showing where it can, and re-masks a revealed password after 30 seconds. The control is the record, not withholding the secret from the field tech whose job needs it.",
+          "<b>On the audit trail</b> — every interactive reveal, credential set or rotation is recorded to the SQL audit trail as a vault-decrypt by the acting operator.",
+          "<b>Down to the machine reads</b> — background and machine decrypts append to a dedicated skans-vaultaudit index with who, when, scope, field, KEK id, provider and host. Recorded and queryable now."
+        ]
+      },
+      {
+        "type": "split",
+        "eyebrow": "Coverage, not guesswork",
+        "h": "See which devices have no login — or a stale one.",
+        "body": "A vault is only as good as its coverage. The Passwords page rolls up the whole fleet — which devices have a stored login, which are missing one, and which haven't been changed in too long — all from a projection that never decrypts a thing.",
+        "shot": "devices",
+        "shotLabel": "Skans console · Devices",
+        "shotAlt": "The device inventory with cameras, switches and firewalls, showing which managed devices carry a stored credential.",
+        "bullets": [
+          "<b>Coverage at a glance</b> — fleet tiles count how many managed devices actually have a credential on file, computed without opening a single secret.",
+          "<b>A missing-login list</b> — the devices Skans manages but holds no credential for, so a gap can't quietly persist.",
+          "<b>A staleness filter</b> — surface the credentials that haven't been rotated in too long, so an ageing password can't hide in a long list.",
+          "<b>Import what you already have</b> — bring existing secrets in from KeePass or CSV with a masked preview, then delete the source file on the way out."
+        ]
+      },
+      {
+        "type": "split",
+        "reverse": true,
+        "eyebrow": "Resilient by design",
+        "h": "The vault outlives the box — and stays apart from the machine's own secrets.",
+        "body": "Your credentials are protected in ways that outlast the appliance they live on, and kept apart from the machine secrets the box runs on itself.",
+        "shot": "backup",
+        "shotLabel": "Skans console · Backup & DR",
+        "shotAlt": "The backup and disaster-recovery view showing off-box encrypted backup sets and restore-verified status.",
+        "bullets": [
+          "<b>Rotate online, safely</b> — key rotation and re-wrap run on a live appliance: new key material is minted before the old is retired, every write is crash-safe, and nothing goes down.",
+          "<b>Backed up encrypted, off the source</b> — where off-box backup is enabled, a vault snapshot travels with the daily set, encrypted before it leaves and held on a different machine than the one it protects; the key that decrypts that set is escrowed off the appliance so a standby or rebuilt box can open it.",
+          "<b>Recoverable without the vault</b> — a critical secret like the CA-backup password is escrowed so a rebuilt box recovers it even before the vault is back. Full escrow of the live vault key itself — to a PIV token or recovery secret, so a rebuilt box unseals the running vault directly — is on the roadmap.",
+          "<b>A separate store for machine secrets</b> — the appliance's own service secrets — the RADIUS secret, smartcard management keys, the SCEP minter — live in a distinct sealed store that auto-unseals only to the service and is never browsed by hand. Defense in depth, not one basket."
+        ]
+      }
+    ],
+    "related": [
+      {
+        "name": "Identity for every device",
+        "href": "/features/identity"
+      },
+      {
+        "name": "Network access control",
+        "href": "/features/access-control"
+      },
+      {
+        "name": "Backup & disaster recovery",
+        "href": "/features/backup"
+      },
+      {
+        "name": "NIST & CMMC evidence",
+        "href": "/features/compliance"
+      }
+    ],
+    "editionNote": "The credential vault is included in every edition — Community (free) through Enterprise. Off-box encrypted backup, which carries the vault snapshot, arrives with Essential and up.",
+    "seoTitle": "Credential Vault — TPM-sealed device passwords & secrets | Skans Labs",
+    "seoDesc": "Skans seals device logins, saved passwords and secure notes with a TPM-protected key that never leaves the appliance. Every reveal and copy is audited."
+  },
+  {
+    "slug": "features/console",
+    "kind": "Feature",
+    "eyebrow": "The Console",
+    "h1": "Run the whole enclave from one console — by outcomes, not internals.",
+    "lead": "One role-based console sits over the entire appliance: identity, admission, patching, backup, monitoring and compliance. Ask or command it in plain language and it answers in outcomes — \"cameras encrypted · 2 certs expiring\" — never AD, Kerberos or a CLI. The technician who installs the cameras stands the whole thing up with a Setup Wizard: two or three questions and one button.",
+    "heroShot": "dashboard",
+    "heroShotLabel": "Skans console · Home",
+    "heroShotAlt": "The Skans console home — an ask-or-command bar over a correlated triage worklist of what needs you, plus compliance and backup status.",
+    "sections": [
+      {
+        "type": "split",
+        "eyebrow": "The command bar",
+        "h": "Ask or command the appliance.",
+        "body": "There's no left-hand menu. Every page, device, CVE and control is a destination you reach by typing — and the same bar resolves any identifier to the entity that holds it. Ask \"certs\", \"what needs me\", or paste a MAC, and the appliance answers in plain language.",
+        "bullets": [
+          "<b>Type anything</b> — hostname, IP, MAC, serial, certificate thumbprint, CVE, KB or user — and the bar lands you on the entity that holds it.",
+          "<b>Live against the database</b> — resolution runs on the control-plane store with no separate index to drift, cancelled and re-run on every keystroke.",
+          "<b>Honest about time</b> — a match is labelled current, last-seen, or historical; yesterday's MAC still gets you to today's device.",
+          "<b>Works air-gapped</b> — CVE and free-text search fuse keyword and on-box semantic retrieval, so it runs on a disconnected site with no cloud call.",
+          "<b>Capability-filtered</b> — a destination your role can't use never appears, and the target page re-checks authorization on arrival."
+        ],
+        "shot": "devices",
+        "shotLabel": "Skans console · Devices",
+        "shotAlt": "The Skans console device inventory — every camera, switch and firewall with its certificate status, capability tier and onboarding lane.",
+        "reverse": false
+      },
+      {
+        "type": "split",
+        "eyebrow": "Role-based by design",
+        "h": "Six roles. One console. Least privilege.",
+        "body": "The same console resolves to six lenses — Admin, Technician, Manager, Supervisor, Operator, Auditor — each scoped to what that person should see and do. Access is expressed as capability claims, not a fixed role enum, so a role is exactly the bundle of actions the job needs and nothing more.",
+        "bullets": [
+          "<b>18 fine-grained capabilities</b> — from dashboard.view to device.deploy to the break-glass dr.restore — bundle into six least-privilege roles.",
+          "<b>Layered enforcement by design</b> — the nav, the individual controls, and a server-side re-check, on the rule that a hidden button is not a control.",
+          "<b>Attributed to the real person</b> — every action is stamped with the signed-in principal, and the audit trail is tamper-evident: hash-linked and signed, not a rewritable log.",
+          "<b>The Auditor's lens</b> — read-only NIST posture and evidence, review and attest, export a signed pack; no mutating action.",
+          "<b>Break-glass held tight</b> — destructive in-place restore of SQL, CA or AD is an Admin-only grant that sits above every other capability."
+        ],
+        "shot": "compliance",
+        "shotLabel": "Skans console · Compliance",
+        "shotAlt": "The Skans compliance view — a NIST security-posture ring and per-control-family cards, the Auditor's read-only lens on the same console.",
+        "reverse": true
+      },
+      {
+        "type": "grid",
+        "eyebrow": "What the console guarantees",
+        "h": "Built for the operator. Hardened for the auditor.",
+        "cards": [
+          {
+            "icon": "ic-console",
+            "h": "Outcomes, never internals",
+            "p": "The operator reads results — \"cameras encrypted · 2 certs expiring\" — never AD, Kerberos, a CA chain or a CLI. Expert tooling exists, but it's never the technician's path."
+          },
+          {
+            "icon": "ic-globe",
+            "h": "Air-gapped by default",
+            "p": "The console is served on-box over HTTPS to a browser, and its embedded analytics stay on loopback. Nothing about your enclave leaves the wire."
+          },
+          {
+            "icon": "ic-identity",
+            "h": "Hardware-backed login",
+            "p": "Sign in with a smart-card / PIV certificate from your own CA — phishing-resistant MFA for administrators, proven on Windows, with a driver-free FIDO2 lane coming."
+          },
+          {
+            "icon": "ic-check",
+            "h": "Session controls an auditor asks for",
+            "p": "Login rate-limited to five attempts a minute per IP, a 15-minute idle lock, and every login audited with its source IP — supporting NIST AC-7 / AC-11 / AC-12."
+          }
+        ]
+      },
+      {
+        "type": "split",
+        "eyebrow": "Stood up on site",
+        "h": "Set up by the tech who installs the cameras.",
+        "body": "The console's front door is a Setup Wizard, not a runbook. Two or three plain questions — site name, an admin password, confirm the network — and one button stands up the directory, certificate authority, network admission, device drivers and hardening behind it, from golden-config defaults.",
+        "bullets": [
+          "<b>Two or three questions, one button</b> — no PowerShell, no PKI or AD jargon, ever.",
+          "<b>Idempotent and resumable</b> — safe to re-run; it detects prior state, resumes across the reboots it needs, and self-heals if you close the browser mid-build.",
+          "<b>Plain-language errors</b> — \"Couldn't reach Camera 3 — check the cable, then Retry,\" never a stack trace.",
+          "<b>Proven, not assumed</b> — each green tick is verified on the wire (the device actually serves its issued cert), then you run the site by the Home worklist."
+        ],
+        "shot": "dashboard",
+        "shotLabel": "Skans console · Home",
+        "shotAlt": "The Skans console home — the outcomes worklist the operator runs the site by once the Setup Wizard finishes.",
+        "reverse": false
+      },
+      {
+        "type": "split",
+        "eyebrow": "At a glance",
+        "h": "The whole enclave on one wall.",
+        "body": "For an always-on operator station, the NOC view is a wall of live tiles — the fleet's health in one look. It reads a materialized store, so a page opens instantly instead of live-querying every device on the wire.",
+        "bullets": [
+          "<b>The tiles that matter</b> — fleet health, open incidents, compliance %, expiring certificates, devices by tier, vulnerabilities, ATT&CK detections, and RADIUS / 802.1X status.",
+          "<b>Correlated, not raw</b> — findings are bounded by device count, so the numbers stay legible as the fleet grows, never a firehose of events.",
+          "<b>Embedded analytics, same RBAC</b> — dashboards ride a deny-by-default proxy that passes each role only the views it may see.",
+          "<b>Degrades gracefully</b> — a dead analytics service shows a retry card, never a broken frame, and never takes Home down with it."
+        ],
+        "shot": "noc",
+        "shotLabel": "Skans console · NOC",
+        "shotAlt": "The Skans NOC wall — live metric tiles for fleet health, incidents, compliance, certificates, vulnerabilities and 802.1X status.",
+        "reverse": true
+      }
+    ],
+    "related": [
+      {
+        "name": "Identity for every device",
+        "href": "/features/identity"
+      },
+      {
+        "name": "Network access control",
+        "href": "/features/access-control"
+      },
+      {
+        "name": "Continuous monitoring",
+        "href": "/features/monitoring"
+      },
+      {
+        "name": "Compliance evidence",
+        "href": "/features/compliance"
+      }
+    ],
+    "editionNote": "The console ships in every edition, Community through Enterprise. Advanced RBAC, full audit and OIDC SSO are Enterprise.",
+    "seoTitle": "The Skans Console — role-based, air-gapped, run by outcomes",
+    "seoDesc": "One role-based, air-gapped console over the whole Skans appliance. Ask or command it in plain language and it answers in outcomes — no AD, no CLI — with six-role RBAC, hardware-backed login, and a two-question Setup Wizard the install technician runs."
+  },
+  {
+    "slug": "solutions/physical-security",
+    "kind": "Solution",
+    "eyebrow": "Video surveillance & physical security",
+    "h1": "Every camera gets an identity. Nothing leaves the wire.",
+    "lead": "IP cameras, access control, intercoms and recorders live on islanded networks the cloud can't reach — yet NIST 800-171 and CMMC still demand that every one carry an identity, encryption and evidence. Skans becomes that network's root of trust: an X.509 identity for every device, admission for only the gear you trust, then encryption, monitoring and the audit evidence. One appliance, set up by the integrator who mounts the cameras.",
+    "heroShot": "devices",
+    "heroShotLabel": "Skans console · Devices",
+    "heroShotAlt": "The Skans device inventory filtered to cameras — each with a certificate issued by the enclave CA, its capability tier, and its enrollment lane (ONVIF / vendor driver / agent).",
+    "sections": [
+      {
+        "type": "split",
+        "eyebrow": "Identity for every device",
+        "h": "A certificate on every camera — from a CA you own.",
+        "body": "Skans stands up one certificate authority on the appliance and issues an X.509 leaf to every camera, intercom and recorder on the network. A camera can't domain-join or enroll itself, so a per-vendor driver reaches into the device's own management API, installs the cert, and then confirms the camera is actually serving it on the wire — a real check, not an assumption. It's the enclave's own authority, not a bridge to a vendor cloud.",
+        "shot": "devices",
+        "shotLabel": "Skans console · Devices",
+        "shotAlt": "The Skans device inventory — cameras with certificate status, capability tier, and enrollment lane, each traceable to the enclave's own CA.",
+        "reverse": false,
+        "bullets": [
+          "<b>Driver-pushed certs</b> — the driver issues, installs and binds the leaf, then verifies the camera is serving the new certificate serial before it reports success.",
+          "<b>Proven on real hardware</b> — Axis, Hanwha and Bosch cameras and 2N intercoms are validated on physical devices, alongside a hardware-proven generic ONVIF driver for ONVIF-conformant cameras.",
+          "<b>Extensible to any vendor</b> — the signed, versioned driver pack covers 100+ vendors, including Uniview, Dahua, Hikvision, i-PRO, Avigilon, LenelS2 and Mercury; new vendors ship in the pack without upgrading the appliance.",
+          "<b>Renewal runs itself</b> — expiries are tracked and re-issued before they lapse; the operator sees \"2 certs expiring — auto-renewing,\" never a certificate chain."
+        ]
+      },
+      {
+        "type": "split",
+        "eyebrow": "Network access control",
+        "h": "Only the cameras you trust reach the wire.",
+        "body": "With admission turned on, a camera holding a Skans-issued certificate is let onto its port; a device without one is rejected at the switch and never reaches the segment. Cameras that can't speak 802.1X are admitted by MAC and placed on a restricted camera VLAN, gated from the rest of the estate. Enforcement is a Professional-edition capability — and always a deliberate act, never flipped on automatically.",
+        "shot": "noc",
+        "shotLabel": "Skans console · NOC",
+        "shotAlt": "The Skans NOC wall — fleet health, devices by capability tier, certificates, and a RADIUS / NPS Serving tile showing admission is live.",
+        "reverse": true,
+        "bullets": [
+          "<b>802.1X EAP-TLS</b> — identity-gated admission over the appliance's native Windows NPS (RADIUS); a camera swapped for a rogue device fails authentication and gets no address.",
+          "<b>MAB + dynamic VLANs</b> — limited cameras are admitted by MAC and placed on the right segment by RADIUS-assigned VLAN.",
+          "<b>Legacy segmented and gated</b> — an old recorder that can't hold a cert gets a segment, an allow-list and monitoring instead of open access.",
+          "<b>Staged, never sprung</b> — turning admission on can black out a camera fleet the instant it hits live ports, so Skans keeps it a separate, opt-in step you stage first, then enforce."
+        ]
+      },
+      {
+        "type": "grid",
+        "eyebrow": "Beyond the certificate",
+        "h": "The rest of the posture, handled by the same box.",
+        "body": "Identity is the anchor, but a compliant camera network needs its passwords, firmware, telemetry and backups looked after too — offline, on one appliance.",
+        "cards": [
+          {
+            "icon": "ic-vuln",
+            "h": "Passwords gone dark, then rotated",
+            "p": "The factory password is replaced and encrypted into a TPM-protected vault — one login per vendor, never in a config file. Where the driver supports it, Skans rotates camera passwords on a schedule: LAPS for cameras."
+          },
+          {
+            "icon": "ic-patch",
+            "h": "Firmware & patch, offline",
+            "p": "A vetted, SHA-256-hashed firmware repository flags out-of-date cameras and holds vetted images offline — no internet, no vendor portal. Windows recording servers patch on staged rings without WSUS."
+          },
+          {
+            "icon": "ic-monitoring",
+            "h": "Tamper & health in view",
+            "p": "Cameras and NVRs push SNMP traps and syslog to the appliance — tamper, link-down, disk-fail, reboot — correlated into a bounded worklist, not a firehose. Offline CVE + MITRE ATT&CK intel matches known camera vulnerabilities without internet."
+          },
+          {
+            "icon": "ic-backup",
+            "h": "Backups held off the box",
+            "p": "Recording servers back up through the agent; network-device configs, the credential vault and the directory/CA system-state are held encrypted off the source machine — so a failed box is rebuildable from media, not from nothing. Restore is a documented, admin-run step."
+          }
+        ]
+      },
+      {
+        "type": "split",
+        "eyebrow": "Run by the install crew",
+        "h": "Set up by the technician who mounts the cameras.",
+        "body": "No PKI knowledge, no IT team, no CLI. Point Discover at the camera VLAN, press one button, and every camera Skans can identify and authenticate to is enrolled in a single pass — every lane its driver declares, from identity read and certificate issued to telemetry aimed at the appliance. The console reports outcomes, never certificate chains.",
+        "shot": "dashboard",
+        "shotLabel": "Skans console · Home",
+        "shotAlt": "The Skans console home — an ask-or-command bar over a correlated worklist of what needs attention, where compliance stands, and whether last night's backup ran.",
+        "reverse": false,
+        "bullets": [
+          "<b>Scan a subnet, secure everything</b> — one button runs scan → identify → secure across the range, with a per-device lane scoreboard for what ran.",
+          "<b>One credential per vendor</b> — a site has one camera password, not two hundred; store it once and the sweep never stops to ask again.",
+          "<b>Proof, not guesswork</b> — an ONVIF string only hints which driver to try; the vendor is confirmed by a driver actually talking the device's protocol. Anything it can't confirm is reported and skipped, never faked.",
+          "<b>Read-only by default</b> — the automatic pass only reads or adds a telemetry destination; it never rotates a password or enforces NAC, so it can't take a camera off the network."
+        ]
+      },
+      {
+        "type": "split",
+        "eyebrow": "Compliance by design",
+        "h": "The evidence an assessor asks for — already in place.",
+        "body": "Skans maps its technical checks to NIST 800-171 and CMMC control families from the start — access control, identification, configuration management, risk assessment, system integrity — with an ISO 27001 crosswalk to all 93 Annex A controls. It's honest alignment you can hand an assessor, not a badge.",
+        "shot": "compliance",
+        "shotLabel": "Skans console · Compliance",
+        "shotAlt": "The Skans compliance view — a NIST 800-171 posture ring and per-control-family cards for AC, AU, CM, CP, IA, RA and SC.",
+        "reverse": true,
+        "bullets": [
+          "<b>Posture by control family</b> — a live view of where the camera estate stands against AC, IA, CM, RA and SC, updated as devices run.",
+          "<b>Evidence you hand over</b> — a signed, per-control evidence pack built from live state, with a tamper-evident manifest and a responsibility matrix; the evidence-pack export is a Professional capability.",
+          "<b>Honest scope</b> — Skans supplies the technical evidence; organizational, people and physical controls stay yours, with any gaps tracked in a POA&M. Your ISMS gets certified — never a product.",
+          "<b>Nothing leaves the wire</b> — evidence is generated and proven offline; the one optional egress, the operator-controlled Skans Update Service, only pulls signed content in and never sends your data out."
+        ]
+      }
+    ],
+    "related": [
+      {
+        "name": "Device identity & the CA",
+        "href": "/features/identity"
+      },
+      {
+        "name": "Network access control",
+        "href": "/features/access-control"
+      },
+      {
+        "name": "Building automation & facilities",
+        "href": "/solutions/building-automation"
+      },
+      {
+        "name": "Industrial & OT networks",
+        "href": "/solutions/industrial-ot"
+      }
+    ],
+    "editionNote": "Camera identity, discovery, the credential vault and continuous monitoring ship in the free Community edition; patch, firmware, scheduled password rotation and off-source backup at Essential; 802.1X admission, vulnerability management, and NIST 800-171 / CMMC and ISO 27001 evidence at Professional.",
+    "seoTitle": "Video surveillance & physical security — Skans Labs",
+    "seoDesc": "Give every IP camera, intercom, access controller and recorder its own identity and encryption on an islanded, air-gapped network — proven across leading camera brands, extensible to any vendor. NIST 800-171 / CMMC evidence, set up by the integrator who installs them."
+  },
+  {
+    "slug": "solutions/building-automation",
+    "kind": "Solution",
+    "eyebrow": "Building automation & facilities",
+    "h1": "Bring the whole building under one root of trust — without ripping out the install.",
+    "lead": "HVAC, lighting, elevators, metering and the BMS head-ends from Siemens Desigo, Honeywell, Johnson Controls Metasys and Tridium Niagara run on islanded networks a trades integrator stood up — no directory, no security team, no internet. Skans becomes that enclave's root of trust: an identity for every controller that can hold one, segmentation and read-only monitoring for the gear that can't, and the compliance evidence to prove it. One appliance, set up by the technician who commissions the building.",
+    "heroShot": "noc",
+    "heroShotLabel": "Skans console · NOC",
+    "heroShotAlt": "The Skans NOC wall for a facility — metric tiles for fleet health, open incidents, compliance percent, certificate status, devices by capability tier, vulnerabilities and 24-hour events.",
+    "sections": [
+      {
+        "type": "split",
+        "reverse": false,
+        "eyebrow": "Identity for every controller",
+        "h": "Give every building system an identity your CA owns.",
+        "body": "Skans stands up an on-premises certificate authority the enclave owns, then issues an X.509 identity to every controller, head-end and field panel that can hold one. Per-vendor drivers push and bind the certificate onto gear that can't domain-join or enroll itself — Siemens Desigo, Honeywell, Johnson Controls Metasys, Tridium Niagara, Distech Controls, Belimo and the S7 controllers behind them. OPC UA servers get spec-correct application-instance certificates instead of the permanent, hand-made self-signed ones they usually ship with.",
+        "bullets": [
+          "<b>Your own root of trust</b> — an on-prem CA issues and rotates every identity; nothing about your building lives on a vendor cloud.",
+          "<b>Driver-pushed certificates</b> — the BAS driver pack installs and binds TLS on controllers that can't enroll themselves, so a self-signed default becomes a trusted, CA-issued identity.",
+          "<b>OPC UA done right</b> — application-instance certs carry the ApplicationUri in the URI-SAN with the correct key usage, which is the single most common reason an OPC UA server rejects a certificate.",
+          "<b>Proven on cameras & IoT, extensible to any vendor</b> — the camera and IoT drivers are hardware-validated; the BAS drivers are authored to each vendor's management API and spec-verified — pilot one controller first."
+        ],
+        "shot": "devices",
+        "shotLabel": "Skans console · Devices",
+        "shotAlt": "The Skans device inventory listing BMS controllers, cameras and switches with certificate status, capability tier and management lane."
+      },
+      {
+        "type": "split",
+        "reverse": true,
+        "eyebrow": "Meet the plant where it is",
+        "h": "Not every controller can hold a certificate. We plan for that.",
+        "body": "Mixed-vintage estates are the norm in a building — a new Desigo head-end beside a decade-old BACnet MS/TP trunk and a raw-Modbus meter. Skans sorts every device into a capability tier and applies the strongest control it can support: full identity where possible, a driver-pushed cert and a dynamic VLAN where the device is limited, and segmentation with a security gateway where it's legacy. That's NIST 800-82 compensating controls, not a rip-and-replace.",
+        "bullets": [
+          "<b>Tier A — cert-capable</b> — modern controllers, servers and OPC UA gear get full identity, 802.1X admission, encryption and config backup.",
+          "<b>Tier B — limited</b> — a driver-pushed certificate plus a dynamic VLAN and monitoring for gear that can't speak 802.1X.",
+          "<b>Tier C — legacy</b> — BACnet MS/TP, serial-over-Ethernet and raw Modbus get segmentation, an allow-list and a security gateway.",
+          "<b>Read-only by construction</b> — native EtherNet/IP and Modbus/TCP identity probes read vendor, firmware and run/fault state where the protocol exposes it, and never write a coil or register; per-target maintenance windows and rate-limiting keep the touch safe on a production controller."
+        ],
+        "shot": "alerting",
+        "shotLabel": "Skans console · Alerting",
+        "shotAlt": "The Skans alerting view — correlated findings and alert rules by type and severity, with cooldowns and routing."
+      },
+      {
+        "type": "grid",
+        "eyebrow": "Why facilities teams pick Skans",
+        "h": "Built for the way buildings actually run.",
+        "body": "Islanded by design, commissioned by trades, audited like IT. Skans fits that reality instead of fighting it.",
+        "cards": [
+          {
+            "icon": "ic-identity",
+            "h": "One root of trust",
+            "p": "Your CA, your identities, your keys — issued and rotated on-box for every building system, never parked on a vendor cloud."
+          },
+          {
+            "icon": "ic-ot",
+            "h": "OT-safe touch",
+            "p": "Legacy controllers are segmented, allow-listed and read only. Identity probes ask 'who are you, are you running?' — they never write to the device."
+          },
+          {
+            "icon": "ic-cloudcut",
+            "h": "Air-gapped by default",
+            "p": "Disconnected out of the box. Threat feeds, firmware and patches sync offline; a severed WAN changes nothing about your protection."
+          },
+          {
+            "icon": "ic-console",
+            "h": "Run by the commissioning tech",
+            "p": "The Setup Wizard is a few plain questions and one button. The operator sees outcomes — 'controllers encrypted · 2 certs expiring' — never PKI internals."
+          }
+        ]
+      },
+      {
+        "type": "split",
+        "reverse": false,
+        "eyebrow": "Patch, firmware & backup",
+        "h": "Keep an offline building current — and recoverable.",
+        "body": "Air-gapped estates fall behind because there's no clean way to get signed content in. Skans keeps a vetted, hash-verified firmware repository for controllers and IoT gear, and staged patch rings for the Windows head-ends and workstations that run the BMS — no internet, no WSUS. Configs, secrets and firmware are versioned and held off the source machine, so a bricked panel or a bad commissioning change is recoverable.",
+        "bullets": [
+          "<b>Firmware repository</b> — vetted and SHA-256-hash-verified before it ever reaches a controller; air-gapped sites stay current.",
+          "<b>Patch rings without WSUS</b> — the BMS servers and workstations patch on staged, approved rings via the Authenticode-signed endpoint agent (deployed by GPO or signed install).",
+          "<b>Config & secret vault</b> — controller, PLC and network configs versioned and change-detected, encrypted off the source box.",
+          "<b>One optional egress</b> — the operator-controlled Skans Update Service only pulls signed content down; it never sends your building's data out."
+        ],
+        "shot": "patch",
+        "shotLabel": "Skans console · Updates",
+        "shotAlt": "The Skans updates and patch-rings view — signature-gated updates, per-ring approval, a fleet patch-compliance chart and a firmware repository."
+      },
+      {
+        "type": "split",
+        "reverse": true,
+        "eyebrow": "Evidence, not badges",
+        "h": "The evidence a facilities audit actually asks for.",
+        "body": "Skans maps its technical controls to NIST 800-171 and CMMC control families from the start, with an ISO 27001 crosswalk and read-only OT guidance from NIST 800-82 for the gear that can't be hardened directly. It hands the assessor a signed, per-control evidence pack — not a compliance badge, and never a claim that a product made you compliant.",
+        "bullets": [
+          "<b>Mapped by control family</b> — Access Control, Configuration Management, Risk Assessment and System & Information Integrity, evidenced from live measurement.",
+          "<b>OT compensating controls</b> — legacy segmentation and read-only monitoring documented against NIST 800-82 for gear that can't hold a cert.",
+          "<b>Signed evidence pack</b> — per-control, with a three-way responsibility matrix and a cryptographically tamper-evident manifest.",
+          "<b>Honest by design</b> — Skans supplies the technical evidence; organizational, people and physical controls stay yours, with gaps tracked in a POA&M. Your ISMS gets certified, never a product."
+        ],
+        "shot": "compliance",
+        "shotLabel": "Skans console · Compliance",
+        "shotAlt": "The Skans compliance view — a NIST 800-171 posture ring and per-control-family status cards for AC, AU, CM, CP, IA, RA and SC."
+      }
+    ],
+    "related": [
+      {
+        "name": "Industrial & OT networks",
+        "href": "/solutions/industrial-ot"
+      },
+      {
+        "name": "Video surveillance & physical security",
+        "href": "/solutions/physical-security"
+      },
+      {
+        "name": "Device identity & root of trust",
+        "href": "/features/identity"
+      },
+      {
+        "name": "Network access control",
+        "href": "/features/access-control"
+      }
+    ],
+    "editionNote": "Foundations — device identity, the on-prem CA and the per-vendor cert-push driver pack — are in free Community. 802.1X NAC, legacy segmentation and NIST 800-171 / CMMC evidence from Professional. Deep OT/ICS lanes — S7-1500, Desigo, BACnet/SC and OPC UA GDS Push certificate management — from Business.",
+    "seoTitle": "Building automation & facilities security — Skans Labs",
+    "seoDesc": "On-prem NIST security for islanded HVAC, lighting, elevator, metering and BMS networks. Give Siemens Desigo, Honeywell, Johnson Controls and Tridium an identity where they support it, segment and monitor where they don't — air-gapped, set up by the tech who commissions the building."
+  },
+  {
+    "slug": "solutions/industrial-ot",
+    "kind": "Solution",
+    "eyebrow": "Industrial &amp; OT",
+    "h1": "Give the plant floor an identity — without ever writing to a live controller.",
+    "lead": "PLCs, SCADA, OPC UA servers and sensors run on islanded plant and utility floors — no directory, no cloud, and zero tolerance for anything that writes to a running controller. Skans gives the gear that can hold one a real X.509 identity, and contains the gear that can't behind segmentation, an allow-list and read-only monitoring. Modern kit gets full identity; legacy gets NIST 800-82 compensating controls — all from one air-gapped appliance, nothing leaving the wire.",
+    "heroShot": "devices",
+    "heroShotLabel": "Skans console · Devices",
+    "heroShotAlt": "The Skans device inventory — PLCs, controllers, switches and cameras sorted by capability tier, each with its certificate status and monitoring lane",
+    "sections": [
+      {
+        "type": "grid",
+        "eyebrow": "We meet your gear where it is",
+        "h": "Not every controller can hold a certificate. We plan for that.",
+        "body": "Mixed-vintage estates are the norm on a plant floor. Skans discovers every device, sorts it into a capability tier, and applies the strongest control that device can actually support — full identity where the gear allows it, a driver-pushed certificate where it's limited, and containment where it's legacy.",
+        "cards": [
+          {
+            "icon": "ic-discovery",
+            "h": "Find it first",
+            "p": "Multi-protocol discovery — ONVIF, network scan and native industrial probes — enumerates every PLC, drive, RTU, switch and sensor and auto-classifies it by device class and capability tier."
+          },
+          {
+            "icon": "ic-identity",
+            "h": "Tier A — cert-capable",
+            "p": "Modern controllers, servers, network gear and OPC UA servers get full X.509 identity, 802.1X admission, encryption and patching."
+          },
+          {
+            "icon": "ic-nac",
+            "h": "Tier B — limited",
+            "p": "Gear that can be identified but not enrolled gets a driver-pushed certificate, config backup, read-only monitoring and a RADIUS-assigned dynamic VLAN via MAB."
+          },
+          {
+            "icon": "ic-ot",
+            "h": "Tier C — legacy",
+            "p": "Old PLCs, serial-over-Ethernet, BACnet MS/TP and raw Modbus can't hold a cert — so they get segmentation, a security gateway, an allow-list and read-only monitoring: NIST 800-82 compensating controls, never fake admission."
+          }
+        ]
+      },
+      {
+        "type": "split",
+        "reverse": false,
+        "eyebrow": "Full identity",
+        "h": "Give modern controllers a real identity — and lock down their credentials.",
+        "body": "Skans stands up one certificate authority the enclave owns and issues an X.509 identity to every device that can carry it — signed by your Skans Root, never a vendor cloud. Industrial gear gets identity over its own protocol: spec-correct OPC UA application-instance certificates from your own PKI, plus native cert lanes for the leading PLC and controller families — all from one console. And the admin passwords Skans rotates are sealed in a TPM-protected vault.",
+        "bullets": [
+          "<b>OPC UA application certificates</b> — spec-correct application-instance certificates issued to Part 6 (the URI-SAN, key-usage and serverAuth+clientAuth profile OPC UA servers demand), from your own CA instead of permanent self-signed certs — built for enclave-wide distribution over OPC UA&rsquo;s GDS Push model (Part 12 UpdateCertificate + ApplyChanges), trust list included.",
+          "<b>Native cert lanes</b> — Siemens S7 and S7-1200, Rockwell Stratix, Phoenix PLCnext, Beckhoff TwinCAT and WAGO, each issued and bound from one console.",
+          "<b>Verified, never assumed</b> — where a lane is proven, the driver reads the new certificate serial back off the device before it reports success, not &ldquo;should work.&rdquo;",
+          "<b>LAPS for controllers</b> — rotate the admin password on the gear that supports it (S7, S7-1200, WAGO, Stratix, PLCnext), audited on every reveal and copy."
+        ],
+        "shot": "vault",
+        "shotLabel": "Skans console · Passwords",
+        "shotAlt": "The Skans credential vault — device logins and secrets encrypted and hardware-protected, with reveal and copy audited"
+      },
+      {
+        "type": "split",
+        "reverse": true,
+        "eyebrow": "The safest possible touch",
+        "h": "See a PLC is alive and healthy — without ever writing to it.",
+        "body": "The most important devices on a plant floor speak no SNMP and can never hold a certificate. Skans reaches them in the only language they speak — their native industrial protocol, sent strictly read-only. It asks &ldquo;who are you, and are you running?&rdquo; and reads the answer; it never writes a coil, a register or a config. Identity and run/fault state flow into the same correlated, per-device worklist as every other signal — bounded by device count, not raw event volume.",
+        "bullets": [
+          "<b>EtherNet/IP (CIP List Identity)</b> — reads vendor, product, firmware, serial and run/fault state over udp/44818; it never touches the control program.",
+          "<b>Modbus/TCP (Read Device Identification)</b> — confirms reachability and vendor/product over tcp/502, and never writes a coil or a register.",
+          "<b>OT-safe by construction</b> — per-target maintenance windows, poll rate-limiting and a source-IP allow-list, so a controller is never flooded or probed mid-process.",
+          "<b>Firmware for CVE-matching</b> — the version Skans reads is matched offline against CVE and MITRE ATT&amp;CK feeds, no internet required."
+        ],
+        "shot": "noc",
+        "shotLabel": "Skans console · NOC",
+        "shotAlt": "The Skans NOC wall — fleet health, devices by tier, open vulnerabilities and RADIUS/NPS serving status across the enclave"
+      },
+      {
+        "type": "split",
+        "reverse": false,
+        "eyebrow": "Current, offline",
+        "h": "Keep an air-gapped plant floor current — no internet on the wire.",
+        "body": "Air-gapped estates fall behind because patching assumes a connection to the vendor. Skans holds a vetted, hash-verified firmware repository on the appliance and stages Windows updates in approval rings without WSUS — so the engineering workstations and jump hosts beside the line stay current while the OT segment never touches Microsoft Update or a vendor cloud. The one optional egress, the operator-controlled Skans Update Service, only pulls signed content down; it never sends your data out.",
+        "bullets": [
+          "<b>Firmware repository</b> — camera, IoT and OT firmware, hash-verified before it lands and staged from the box rather than the internet.",
+          "<b>Patch rings without WSUS</b> — Microsoft-signature-gated updates promoted ring by ring, inside your maintenance window, reported per host.",
+          "<b>Off-source backup + DR</b> — encrypted backups of your switch, firewall and gateway configuration, databases and secrets, held off the source machine.",
+          "<b>Air-gap-first</b> — disconnected by default; a severed WAN changes nothing about your protection."
+        ],
+        "shot": "patch",
+        "shotLabel": "Skans console · Updates",
+        "shotAlt": "The Skans updates view — signature-gated patch rings, a fleet patch-compliance chart and a hash-verified firmware repository"
+      },
+      {
+        "type": "split",
+        "reverse": true,
+        "eyebrow": "Contained and evidenced",
+        "h": "Contain the gear that can't be hardened — and prove it to an assessor.",
+        "body": "When a controller genuinely can't take a certificate, Skans never fakes it: the driver returns a clear error, and the platform secures the conduit instead — segment the device, put a security gateway in front of it, allow-list only the flows it needs, and monitor it read-only. Those are NIST 800-82 compensating controls, not pretend admission. Skans then maps what it measures to NIST 800-171 / CMMC control families and crosswalks to ISO 27001, so the technical evidence is already in place when the assessor arrives.",
+        "bullets": [
+          "<b>Secure the conduit</b> — 802.1X on the switch, a security gateway and an allow-list stand in for the identity a legacy device can't hold.",
+          "<b>NIST 800-82 aligned</b> — the legacy-OT posture Skans applies is the compensating-control model the standard expects.",
+          "<b>Evidence, not badges</b> — live 800-171 / CMMC posture by control family, an ISO 27001 crosswalk and a signed evidence pack you hand straight over.",
+          "<b>Responsibility, honestly drawn</b> — Skans supplies the technical controls; organizational, people and physical controls stay yours via a control-responsibility matrix, with gaps tracked in a POA&amp;M. It's your ISMS that gets certified, never a product."
+        ],
+        "shot": "compliance",
+        "shotLabel": "Skans console · Compliance",
+        "shotAlt": "The Skans compliance view — a NIST posture ring and per-control-family status cards for AC, AU, CM, IA, RA and SC"
+      }
+    ],
+    "related": [
+      {
+        "name": "Building automation & facilities",
+        "href": "/solutions/building-automation"
+      },
+      {
+        "name": "Device identity & the CA",
+        "href": "/features/identity"
+      },
+      {
+        "name": "Network access control",
+        "href": "/features/access-control"
+      },
+      {
+        "name": "Continuous monitoring",
+        "href": "/features/monitoring"
+      }
+    ],
+    "editionNote": "Core identity, multi-protocol discovery and read-only OT monitoring start in Community (free); patch, firmware and backup add in Essential; 802.1X NAC, dynamic-VLAN/MAB, legacy segmentation and NIST 800-171 / CMMC evidence in Professional; deep OT/ICS depth — S7-1500, Desigo, BACnet/SC, OPC UA GDS Push and industrial protocol gateways — in Business and Enterprise.",
+    "seoTitle": "Industrial &amp; OT security for air-gapped plant floors — Skans Labs",
+    "seoDesc": "Give PLCs, SCADA, OPC UA servers and sensors an identity on islanded plant and utility floors. Modern gear gets full identity — OPC UA and S7 cert lanes — while legacy gets segmentation and NIST 800-82 compensating controls. Read-only, air-gapped, nothing leaves the wire."
+  },
+  {
+    "slug": "solutions/compliance",
+    "kind": "Solution",
+    "eyebrow": "NIST 800-171 · CMMC · ISO 27001",
+    "h1": "Meet the technical controls before the assessor arrives.",
+    "lead": "Skans ships meeting the technical controls of NIST 800-171 and CMMC at mandated defaults — FIPS mode, hardware-backed MFA, a CIS/STIG baseline, TLS everywhere — and assembles the evidence pack from live state on one command. The organizational controls stay yours, spelled out per control in a responsibility matrix with any gaps tracked in a POA&M. It supports your certification; no product can grant it.",
+    "heroShot": "compliance",
+    "heroShotLabel": "Skans console · Compliance",
+    "heroShotAlt": "The Skans compliance view — a NIST 800-171 security-posture ring with per-control-family status cards for AC, AU, CM, CP, IA, RA and SC.",
+    "sections": [
+      {
+        "type": "split",
+        "eyebrow": "On by default",
+        "h": "The technical controls are set at install — not after a project.",
+        "body": "The hard technical controls don't wait for a hardening sprint. From the first boot the appliance runs its cryptography in FIPS approved-mode, admits operators only with hardware-backed MFA, applies a CIS/STIG baseline, and encrypts every device and service. The posture starts compliant and stays enforced — a severed WAN changes none of it.",
+        "shot": "patch",
+        "shotLabel": "Skans console · Updates",
+        "shotAlt": "The Skans updates view — signature-gated patch rings, a fleet patch-compliance bar chart, a firmware repository and password-baseline tabs.",
+        "reverse": false,
+        "bullets": [
+          "<b>FIPS approved-mode</b> — the appliance runs its cryptography in FIPS 140-3 approved-mode from install (approved-mode, honestly stated — not a per-release CMVP-validated module).",
+          "<b>Hardware-backed MFA</b> — operator login via PIV / FIDO2 tokens issued from your own CA, satisfying device trust and multi-factor authentication.",
+          "<b>CIS / STIG baseline</b> — a hardening baseline applied by default at install, with drift detection against directory and network golden config.",
+          "<b>TLS everywhere</b> — encryption in transit on every device and service, encryption at rest, and default credentials removed.",
+          "<b>An enforced update baseline</b> — staged patch rings keep Configuration Management controls current with no WSUS and no internet."
+        ]
+      },
+      {
+        "type": "split",
+        "eyebrow": "Measured, not assumed",
+        "h": "Every device carries proof — or reads Not Verified.",
+        "body": "Compliance is read off the box, device by device, never inferred from a policy that should have applied. Each managed device carries an X.509 identity and an agent-measured scorecard; a control Skans hasn't actually measured stays Not Verified rather than turning green. Agentless devices are marked N/A for agent checks — they never silently count as passing.",
+        "shot": "devices",
+        "shotLabel": "Skans console · Devices",
+        "shotAlt": "The Skans device inventory — cameras, switches and firewalls with certificate status, capability tier and management lane per device.",
+        "reverse": true,
+        "bullets": [
+          "<b>An identity per device</b> — every managed device carries an X.509 identity from the enclave's own certificate authority.",
+          "<b>Agent-measured scorecard</b> — BitLocker, host firewall, audit policy, FIPS mode, patch, Defender and certificate posture, all read on the box.",
+          "<b>Not Verified stays honest</b> — a control that hasn't been measured is never flipped green because a policy was supposed to apply it.",
+          "<b>Agentless is N/A, not a silent pass</b> — devices without an agent don't quietly inflate the numbers."
+        ]
+      },
+      {
+        "type": "split",
+        "eyebrow": "Live posture",
+        "h": "Mapped to the control families, continuously — with an ISO 27001 crosswalk.",
+        "body": "Skans maps its live technical checks to the NIST 800-171 control families and reports posture from current appliance state — not a spreadsheet from last quarter. The same measurements crosswalk to all 93 ISO/IEC 27001:2022 Annex A controls via NIST's published OLIR #155 mapping, so every link traces back to a reference standard. It never rolls that crosswalk up to a single \"you're compliant\" score — that would be a lie over a standard that is mostly organizational — so it reports honest buckets over a fixed denominator instead.",
+        "shot": "noc",
+        "shotLabel": "Skans console · NOC",
+        "shotAlt": "The Skans NOC wall — live tiles for fleet health (31 of 42 devices online), open incidents, controls-passing, certificates issued, devices by trust tier, open vulnerabilities, ATT&CK detections and 24-hour events.",
+        "reverse": false,
+        "bullets": [
+          "<b>Mapped to the families</b> — AC, AU, CA, CM, CP, IA, RA, SC and SI, each evidenced from live appliance state.",
+          "<b>ISO 27001 crosswalk</b> — the same checks crosswalk to the 93 Annex A controls of ISO/IEC 27001:2022 via NIST OLIR #155.",
+          "<b>Four honest buckets</b> — supporting-evidence, gaps identified, mapped-not-measured, and customer-responsibility over a fixed denominator — never a single made-up score.",
+          "<b>Continuous risk assessment</b> — correlated monitoring plus offline CVE and MITRE ATT&CK feeds, matched against live per-host inventory without internet."
+        ]
+      },
+      {
+        "type": "split",
+        "eyebrow": "Assessment-ready",
+        "h": "One command hands the assessor the whole evidence pack.",
+        "body": "From the Compliance hub, a single command produces a timestamped, air-gap-friendly .zip assembled entirely from live state — no hand-collation the night before. Inside is the system security plan status, a live POA&M of open gaps, the responsibility matrix, the asset inventory and the audit log, all under a signed manifest. Alongside it, an append-only, hash-linked audit chain lets you prove nothing was edited after the fact.",
+        "shot": "compliance",
+        "shotLabel": "Skans console · Compliance",
+        "shotAlt": "The Skans compliance hub — control-family posture cards and the one-command evidence-pack export.",
+        "reverse": true,
+        "bullets": [
+          "<b>One command, one pack</b> — a timestamped .zip built from live state, suitable for a disconnected site, with no manual assembly.",
+          "<b>Everything an assessor asks for</b> — SSP control status, a live POA&M of gaps, the responsibility matrix, the asset register and the audit log.",
+          "<b>Signed manifest</b> — a SHA-256 hash of every file plus a detached signature, so the pack proves it wasn't altered after export.",
+          "<b>Tamper-evident audit chain</b> — an append-only, hash-linked, signed log that detects after-the-fact modification cryptographically (tamper-evident — not WORM, not immutable)."
+        ]
+      },
+      {
+        "type": "grid",
+        "eyebrow": "Where the boundary sits",
+        "h": "Honest about what a product can and can't do.",
+        "body": "Being straight about the edges is part of the point. Skans does the technical heavy lifting and generates the evidence; it never pretends to be your certification.",
+        "cards": [
+          {
+            "icon": "ic-sheet",
+            "h": "Technical vs organizational",
+            "p": "Roughly a third of NIST 800-171's 110 requirements are organizational — physical, personnel, planning, program, and the process parts of incident response. Those stay yours, spelled out per control in the responsibility matrix."
+          },
+          {
+            "icon": "ic-clipboard",
+            "h": "Supports, never certifies",
+            "p": "No product makes you \"CMMC compliant in a box.\" Formal Level 2 standing needs a third-party assessment by a C3PAO; ISO 27001 certifies your ISMS, not an appliance. Skans generates the evidence — it doesn't replace the assessor."
+          },
+          {
+            "icon": "ic-check",
+            "h": "Tamper-evident, not immutable",
+            "p": "The audit chain detects modification cryptographically, but it isn't write-once media. We describe it as tamper-evident — never as WORM or immutable — because that's what it is."
+          },
+          {
+            "icon": "ic-defense",
+            "h": "FIPS approved-mode, stated plainly",
+            "p": "The appliance runs in FIPS 140-3 approved-mode — capable, not the same as a CMVP-validated module. Per-release module pinning is an open item, and an independent penetration test remains yours to run."
+          }
+        ]
+      }
+    ],
+    "related": [
+      {
+        "name": "Network access control",
+        "href": "/features/access-control"
+      },
+      {
+        "name": "Device identity",
+        "href": "/features/identity"
+      },
+      {
+        "name": "Continuous monitoring",
+        "href": "/features/monitoring"
+      },
+      {
+        "name": "Backup & disaster recovery",
+        "href": "/features/backup"
+      }
+    ],
+    "editionNote": "Compliance tooling — NIST 800-171 / CMMC control mapping, the ISO 27001 Annex A crosswalk, signed evidence-pack export, and the audit log with change approvals — is included in Professional and up (Professional, Business, Enterprise). Community and Essential don't include the compliance evidence tools.",
+    "seoTitle": "NIST 800-171 & CMMC evidence for isolated enclaves — Skans Labs",
+    "seoDesc": "Skans meets the technical controls of NIST 800-171 / CMMC at mandated defaults — FIPS mode, MFA, CIS/STIG baseline, TLS everywhere — and exports an assessment-ready evidence pack from live state. It supports your certification; organizational controls stay yours via a responsibility matrix and POA&M."
+  }
+]
