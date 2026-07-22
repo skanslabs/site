@@ -382,10 +382,25 @@
 .plan { display:flex; flex-direction:column; padding:26px 22px; }
 .plan.featured { border-color:rgba(56,189,248,0.55); box-shadow:0 14px 46px rgba(56,189,248,0.14); }
 .plan.featured:hover { border-color:rgba(56,189,248,0.7); }
+.plan.plan-free { border-color:rgba(52,211,193,0.55); box-shadow:0 14px 46px rgba(52,211,193,0.12); }
+.plan.plan-free:hover { border-color:rgba(52,211,193,0.75); }
 .plan-tag { position:absolute; top:0; right:0; font-family:var(--font-sans); font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:#04141f; background:linear-gradient(115deg,var(--accent2),var(--accent)); padding:5px 11px; border-bottom-left-radius:12px; }
+.plan-tag-free { background:linear-gradient(115deg,var(--accent2),#5eead4); }
 .plan-name { font-family:var(--font-display); font-weight:700; font-size:1.18rem; color:var(--ink); letter-spacing:-0.01em; }
 .plan-price { font-family:var(--font-display); font-weight:700; color:var(--ink); font-size:2rem; line-height:1; margin:14px 0 0; }
 .plan-price small { font-family:var(--font-sans); font-weight:500; font-size:0.76rem; color:var(--steel); letter-spacing:0.01em; }
+.plan-price-note { display:block; margin-top:6px; font-size:0.78rem !important; color:var(--accent2) !important; font-weight:600 !important; letter-spacing:0.02em; }
+.plan-free .plan-price { color:var(--accent2); }
+.free-callout { margin-top:18px; max-width:62ch; padding:14px 18px; border:1px solid rgba(52,211,193,0.35); border-radius:12px; background:rgba(52,211,193,0.08); color:var(--ink-mut); font-size:0.98rem; line-height:1.5; }
+.free-callout strong { color:var(--ink); font-weight:700; }
+.hero-free-note { margin:14px 0 0; max-width:46ch; font-size:0.95rem; color:var(--ink-mut); line-height:1.45; }
+.hero-free-note strong { color:var(--accent2); font-weight:700; }
+.cmp thead th.col-free { color:var(--accent2); }
+.cmp td.col-free, .cmp thead th.col-free { background:rgba(52,211,193,0.06); }
+.cmp .cmp-price { font-weight:600; }
+.ed-mini.ed-free { border-color:rgba(52,211,193,0.55); box-shadow:0 10px 32px rgba(52,211,193,0.1); }
+.ed-tag-free { background:linear-gradient(115deg,var(--accent2),#5eead4); }
+.ed-free .ed-price { color:var(--accent2); }
 .plan-band { font-size:0.8rem; color:var(--accent2); font-weight:600; margin:11px 0 17px; letter-spacing:0.01em; }
 .plan-feats { list-style:none; margin:0 0 22px; padding:0; display:flex; flex-direction:column; gap:10px; flex:1; }
 .plan-feats li { font-size:0.85rem; color:var(--ink-mut); line-height:1.45; padding-left:22px; position:relative; }

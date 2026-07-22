@@ -4,28 +4,28 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Monitoring & operations — signal over noise, offline threat intel — Skans Labs</title>
-  <meta name="description" content="Skans correlates every event into a bounded, per-device worklist and matches offline CVE + MITRE ATT&CK on the box. Alert rules route what fires; suppressions are recorded exceptions. Nothing leaves the wire." />
+  <meta name="description" content="Skans correlates every event into a bounded, per-device worklist and matches offline CVE, KEV, EPSS, ATT&CK and Sigma on the box. Alert rules route what fires; suppressions are recorded exceptions. Nothing leaves the wire." />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0a0d12" />
   <link rel="canonical" href="https://skanslabs.com/features/monitoring" />
   <script>(function(){try{var t=localStorage.getItem('skans-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
-  <link rel="icon" href="/favicon.svg?v=8cf018d0" type="image/svg+xml" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png?v=8cf018d0" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=8cf018d0" />
+  <link rel="icon" href="/favicon.svg?v=7c3c7493" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png?v=7c3c7493" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=7c3c7493" />
   <link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Monitoring & operations — signal over noise, offline threat intel — Skans Labs" />
-  <meta property="og:description" content="Skans correlates every event into a bounded, per-device worklist and matches offline CVE + MITRE ATT&CK on the box. Alert rules route what fires; suppressions are recorded exceptions. Nothing leaves the wire." />
+  <meta property="og:description" content="Skans correlates every event into a bounded, per-device worklist and matches offline CVE, KEV, EPSS, ATT&CK and Sigma on the box. Alert rules route what fires; suppressions are recorded exceptions. Nothing leaves the wire." />
   <meta property="og:site_name" content="Skans Labs" />
   <meta property="og:url" content="https://skanslabs.com/features/monitoring" />
   <meta property="og:image" content="https://skanslabs.com/og.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Monitoring & operations — signal over noise, offline threat intel — Skans Labs" />
-  <meta name="twitter:description" content="Skans correlates every event into a bounded, per-device worklist and matches offline CVE + MITRE ATT&CK on the box. Alert rules route what fires; suppressions are recorded exceptions. Nothing leaves the wire." />
+  <meta name="twitter:description" content="Skans correlates every event into a bounded, per-device worklist and matches offline CVE, KEV, EPSS, ATT&CK and Sigma on the box. Alert rules route what fires; suppressions are recorded exceptions. Nothing leaves the wire." />
   <meta name="twitter:image" content="https://skanslabs.com/og.png" />
-  <link rel="stylesheet" href="/styles.css?v=8cf018d0" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://skanslabs.com/#org","name":"Skans Labs","url":"https://skanslabs.com/","logo":"https://skanslabs.com/apple-touch-icon.png"},{"@type":"WebPage","name":"Monitoring & operations — signal over noise, offline threat intel — Skans Labs","description":"Skans correlates every event into a bounded, per-device worklist and matches offline CVE + MITRE ATT&CK on the box. Alert rules route what fires; suppressions are recorded exceptions. Nothing leaves the wire.","url":"https://skanslabs.com/features/monitoring","isPartOf":{"@id":"https://skanslabs.com/#website"},"publisher":{"@id":"https://skanslabs.com/#org"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Skans Labs","item":"https://skanslabs.com/"},{"@type":"ListItem","position":2,"name":"Monitoring & operations — signal over noise, offline threat intel","item":"https://skanslabs.com/features/monitoring"}]}]}</script>
+  <link rel="stylesheet" href="/styles.css?v=7c3c7493" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://skanslabs.com/#org","name":"Skans Labs","url":"https://skanslabs.com/","logo":"https://skanslabs.com/apple-touch-icon.png"},{"@type":"WebPage","name":"Monitoring & operations — signal over noise, offline threat intel — Skans Labs","description":"Skans correlates every event into a bounded, per-device worklist and matches offline CVE, KEV, EPSS, ATT&CK and Sigma on the box. Alert rules route what fires; suppressions are recorded exceptions. Nothing leaves the wire.","url":"https://skanslabs.com/features/monitoring","isPartOf":{"@id":"https://skanslabs.com/#website"},"publisher":{"@id":"https://skanslabs.com/#org"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Skans Labs","item":"https://skanslabs.com/"},{"@type":"ListItem","position":2,"name":"Monitoring & operations — signal over noise, offline threat intel","item":"https://skanslabs.com/features/monitoring"}]}]}</script>
 </head>
 <body>
   <a class="skip-link btn btn-ghost" href="#main">Skip to content</a>
@@ -89,7 +89,7 @@
                 <a href="/features/patching"><b>Patch &amp; firmware</b><span>Rings, no WSUS</span></a>
                 <a href="/features/backup"><b>Backup &amp; DR</b><span>Off-box, vault-sealed</span></a>
                 <a href="/features/monitoring"><b>Monitoring</b><span>Correlated findings</span></a>
-                <a href="/features/vulnerabilities"><b>Vulnerabilities</b><span>Offline CVE + ATT&amp;CK</span></a>
+                <a href="/features/vulnerabilities"><b>Vulnerabilities</b><span>CVE · KEV · EPSS · ATT&amp;CK · Sigma</span></a>
                 <a href="/features/compliance"><b>Compliance</b><span>NIST / CMMC / ISO</span></a>
                 <a href="/features/vault"><b>Credential vault</b><span>TPM-protected secrets</span></a>
                 <a href="/features/console"><b>The console</b><span>Ask the appliance</span></a>
@@ -111,7 +111,7 @@
           <li><a href="https://docs.skanslabs.com">Docs</a></li>
           <li><a href="https://blog.skanslabs.com">Blog</a></li>
           <li><a class="nav-plain" href="/#contact">Request a briefing</a></li>
-          <li><a class="btn btn-primary nav-cta" href="https://portal.skanslabs.com/">Get Skans</a></li>
+          <li><a class="btn btn-primary nav-cta" href="https://portal.skanslabs.com/?edition=Community">Get Community free</a></li>
         </ul>
         <button class="theme-toggle" type="button" aria-label="Toggle light or dark theme" aria-pressed="false">
           <svg class="ic-sun" aria-hidden="true"><use href="#ic-sun"/></svg>
@@ -126,7 +126,7 @@
         <div class="hero-copy">
           <p class="ph-eyebrow reveal in">Monitoring & operations</p>
           <h1 class="ph-title reveal in">Signal that scales with your fleet. Not a firehose.</h1>
-          <p class="ph-lead reveal in">Skans watches every device on the enclave — Windows endpoints through the agent, cameras, PLCs, switches and firewalls through the collector — and turns the raw stream into a small, correlated worklist bounded by the number of devices affected, never a wall of events. Alert rules decide what fires, routing decides where it goes, and every suppression is a recorded exception. Offline CVE and MITRE ATT&CK run on the box, so a severed WAN changes nothing about what you can see.</p>
+          <p class="ph-lead reveal in">Skans watches every device on the enclave — Windows endpoints through the agent, cameras, PLCs, switches and firewalls through the collector — and turns the raw stream into a small, correlated worklist bounded by the number of devices affected, never a wall of events. Alert rules decide what fires, routing decides where it goes, and every suppression is a recorded exception. Offline security feeds (CVE, KEV, EPSS, ATT&CK including ICS, Sigma) run on the box, so a severed WAN changes nothing about what you can see.</p>
           <div class="hero-actions reveal in"><a class="btn btn-primary" href="https://portal.skanslabs.com/">Get Skans</a><a class="btn btn-ghost" href="/pricing">See editions</a></div>
         </div>
         <div class="hero-shot reveal in"><div class="appwin reveal in"><div class="appwin-bar"><i></i><i></i><i></i><span class="appwin-url">Skans console · Operations</span></div><img src="/shots/noc.png" width="1440" height="900" loading="lazy" alt="A Skans NOC wall dashboard — metric tiles for fleet health, open incidents, compliance percentage, certificates, devices by tier, vulnerabilities, approvals and maintenance windows, events in the last 24 hours, ATT&CK detections, auto-handled findings, RADIUS/NPS status, and search-engine health." /></div></div>
@@ -142,7 +142,7 @@
     </section>
 
     <section class="section">
-      <div class="container-wide"><div class="shotrow reveal"><div class="shotrow-text"><p class="kicker">Threat intel, offline</p><h3>Offline CVE and MITRE ATT&CK, matched on the box.</h3><p>Skans syncs the public CVE List and MITRE ATT&CK into an on-box store and matches them against live per-host inventory — no cloud scanner in the loop. The match uses a strict version-range gate, not a name lookup, so a host that is actually patched shows zero findings. Green means green, not unscanned.</p><ul class="frow-list"><li><b>~342k CVEs, 697 ATT&CK techniques</b> — held on the appliance and matched locally; a severed WAN changes nothing about the scan.</li><li><b>Ranked by real-world risk</b> — findings carry a CVSS score, are stamped when they appear in CISA's Known Exploited catalog, and carry a FIRST.org EPSS exploit-probability score, so what's actually being exploited sorts to the top.</li><li><b>ATT&CK on every finding</b> — a CVE → CWE → ATT&CK join tags each hit with the techniques that exploit it, so a finding reads as adversary behavior, not just a number.</li><li><b>Air-gap integrity</b> — the offline feed arrives as a signed bundle that is cryptographically verified against a held anchor before a single record is indexed; a tampered or unsigned bundle is refused.</li><li><b>An honest hand-off</b> — Skans tells you what's vulnerable and which version fixes it, then routes remediation into approved patch rings where a human approves the change. It never picks or applies a fix for you.</li></ul></div><div class="appwin reveal reveal-d1"><div class="appwin-bar"><i></i><i></i><i></i><span class="appwin-url">Skans console · Updates & patch rings</span></div><img src="/shots/patch.png" width="1440" height="900" loading="lazy" alt="The Skans updates view — signature-gated updates with per-ring approval and a fleet patch-compliance bar chart, where a CVE finding's remediation lands." /></div></div></div>
+      <div class="container-wide"><div class="shotrow reveal"><div class="shotrow-text"><p class="kicker">Threat intel, offline</p><h3>Offline security feeds, matched on the box.</h3><p>Skans syncs the public CVE List, CISA KEV, FIRST.org EPSS, MITRE ATT&CK (Enterprise + ICS) and Sigma detection rules into an on-box store and matches them against live per-host inventory — no cloud scanner in the loop. The match uses a strict version-range gate, not a name lookup, so a host that is actually patched shows zero findings. Green means green, not unscanned.</p><ul class="frow-list"><li><b>~342k CVEs, 697 ATT&CK techniques, plus ICS</b> — held on the appliance and matched locally; a severed WAN changes nothing about the scan.</li><li><b>Ranked by real-world risk</b> — findings carry a CVSS score, are stamped when they appear in CISA's Known Exploited catalog, and carry a FIRST.org EPSS exploit-probability score, so what's actually being exploited sorts to the top.</li><li><b>ATT&CK on every finding</b> — a CVE → CWE → ATT&CK join tags each hit with the techniques that exploit it, so a finding reads as adversary behavior, not just a number.</li><li><b>Sigma rules</b> — detection content rides the same signed pack path for operator-controlled rulesets.</li></ul></div><div class="appwin reveal reveal-d1"><div class="appwin-bar"><i></i><i></i><i></i><span class="appwin-url">Skans console · Updates & patch rings</span></div><img src="/shots/patch.png" width="1440" height="900" loading="lazy" alt="The Skans updates view — signature-gated updates with per-ring approval and a fleet patch-compliance bar chart, where a CVE finding's remediation lands." /></div></div></div>
     </section>
 
     <section class="section">
@@ -170,7 +170,7 @@
           <a class="rel-card" href="/features/patching"><span>Patch & firmware</span><svg aria-hidden="true"><use href="#ic-arrow"/></svg></a>
           <a class="rel-card" href="/features/access-control"><span>Network access control</span><svg aria-hidden="true"><use href="#ic-arrow"/></svg></a>
         </div>
-        <p class="edition-note reveal reveal-d1">Continuous monitoring with correlated findings and offline CVE + MITRE ATT&CK feeds are in every edition, including free Community. Alert rules, routing and notifications start at Essential; vulnerability management (CVE matching + prioritisation) and log & topology fusion start at Professional. <a href="/pricing">Compare editions →</a></p>
+        <p class="edition-note reveal reveal-d1">Continuous monitoring, security feeds (CVE, KEV, EPSS, ATT&CK + ICS, Sigma) and malware defs are in every edition, including free Community. Alert rules, routing and notifications start at Essential; vulnerability management (matching + prioritisation) and log & topology fusion start at Professional. <a href="/pricing">Compare editions →</a></p>
       </div>
     </section>
 
@@ -199,6 +199,6 @@
       <span class="footer-micro">Air-gap-first · You own the keys</span>
     </div>
   </footer>
-  <script src="/app.js?v=8cf018d0" defer></script>
+  <script src="/app.js?v=7c3c7493" defer></script>
 </body>
 </html>

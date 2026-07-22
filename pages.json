@@ -64,7 +64,7 @@
           {
             "icon": "ic-vuln",
             "h": "Vulnerability management",
-            "p": "The CVE List and MITRE ATT&CK sync to the box and match your live inventory with a strict version-range gate — CVSS-scored, KEV/EPSS-ranked findings that hand off to patch approval. No cloud scanner in the loop."
+            "p": "The CVE List, CISA KEV, FIRST.org EPSS, MITRE ATT&CK (Enterprise + ICS) and Sigma rules sync to the box and match your live inventory with a strict version-range gate — ranked findings that hand off to patch approval. No cloud scanner in the loop."
           },
           {
             "icon": "ic-check",
@@ -150,7 +150,7 @@
         "href": "/features/compliance"
       }
     ],
-    "editionNote": "Every edition includes the root of trust, device identity, the full driver pack, the credential vault and monitoring; patch, backup and alerting start at Essential; 802.1X NAC, vulnerability management and NIST 800-171 / CMMC evidence at Professional; OT/ICS depth at Business; Core + Edge, high availability and the air-gap Update Service at Enterprise.",
+    "editionNote": "Every edition includes the root of trust, device identity, the full driver pack, the credential vault, monitoring, and security feeds (CVE, KEV, EPSS, ATT&CK, Sigma) plus malware defs — starting with free Community. Optional online Skans Update Service is available on every edition (operator opt-in). Patch, backup and alerting start at Essential; 802.1X NAC, vulnerability management and NIST 800-171 / CMMC evidence at Professional; OT/ICS depth at Business; Core + Edge, high availability and offline SUS sneakernet/offline licensing at Enterprise.",
     "seoTitle": "Platform — one appliance for an isolated enclave | Skans Labs",
     "seoDesc": "Skans is a single air-gapped appliance that becomes an isolated network's root of trust — identity for every device, plus access control, patching, backup, monitoring, vulnerability assessment and NIST 800-171 / CMMC evidence, run from one console."
   },
@@ -522,7 +522,7 @@
         "href": "/features/monitoring"
       }
     ],
-    "editionNote": "Patch management and the vetted, hash-verified firmware repository are included from Essential up (Essential, Professional, Business, Enterprise). The air-gapped Skans Update Service and offline licensing are Enterprise.",
+    "editionNote": "Patch management and the vetted, hash-verified firmware repository are included from Essential up (Essential, Professional, Business, Enterprise). Optional online Skans Update Service (security feeds, malware defs, driver packs, product/agent content) is available on every edition including free Community; offline sneakernet bundles and offline licensing are Enterprise.",
     "seoTitle": "Patch & firmware management without WSUS — Skans Labs",
     "seoDesc": "Staged patch rings without WSUS, offline missing-KB scans and a hash-verified firmware repository for cameras and OT — every payload cryptographically verified before it installs, with no endpoint ever reaching the internet."
   },
@@ -642,7 +642,7 @@
     "kind": "Feature",
     "eyebrow": "Monitoring & operations",
     "h1": "Signal that scales with your fleet. Not a firehose.",
-    "lead": "Skans watches every device on the enclave — Windows endpoints through the agent, cameras, PLCs, switches and firewalls through the collector — and turns the raw stream into a small, correlated worklist bounded by the number of devices affected, never a wall of events. Alert rules decide what fires, routing decides where it goes, and every suppression is a recorded exception. Offline CVE and MITRE ATT&CK run on the box, so a severed WAN changes nothing about what you can see.",
+    "lead": "Skans watches every device on the enclave — Windows endpoints through the agent, cameras, PLCs, switches and firewalls through the collector — and turns the raw stream into a small, correlated worklist bounded by the number of devices affected, never a wall of events. Alert rules decide what fires, routing decides where it goes, and every suppression is a recorded exception. Offline security feeds (CVE, KEV, EPSS, ATT&CK including ICS, Sigma) run on the box, so a severed WAN changes nothing about what you can see.",
     "heroShot": "noc",
     "heroShotLabel": "Skans console · Operations",
     "heroShotAlt": "A Skans NOC wall dashboard — metric tiles for fleet health, open incidents, compliance percentage, certificates, devices by tier, vulnerabilities, approvals and maintenance windows, events in the last 24 hours, ATT&CK detections, auto-handled findings, RADIUS/NPS status, and search-engine health.",
@@ -681,14 +681,13 @@
       {
         "type": "split",
         "eyebrow": "Threat intel, offline",
-        "h": "Offline CVE and MITRE ATT&CK, matched on the box.",
-        "body": "Skans syncs the public CVE List and MITRE ATT&CK into an on-box store and matches them against live per-host inventory — no cloud scanner in the loop. The match uses a strict version-range gate, not a name lookup, so a host that is actually patched shows zero findings. Green means green, not unscanned.",
+        "h": "Offline security feeds, matched on the box.",
+        "body": "Skans syncs the public CVE List, CISA KEV, FIRST.org EPSS, MITRE ATT&CK (Enterprise + ICS) and Sigma detection rules into an on-box store and matches them against live per-host inventory — no cloud scanner in the loop. The match uses a strict version-range gate, not a name lookup, so a host that is actually patched shows zero findings. Green means green, not unscanned.",
         "bullets": [
-          "<b>~342k CVEs, 697 ATT&CK techniques</b> — held on the appliance and matched locally; a severed WAN changes nothing about the scan.",
+          "<b>~342k CVEs, 697 ATT&CK techniques, plus ICS</b> — held on the appliance and matched locally; a severed WAN changes nothing about the scan.",
           "<b>Ranked by real-world risk</b> — findings carry a CVSS score, are stamped when they appear in CISA's Known Exploited catalog, and carry a FIRST.org EPSS exploit-probability score, so what's actually being exploited sorts to the top.",
           "<b>ATT&CK on every finding</b> — a CVE → CWE → ATT&CK join tags each hit with the techniques that exploit it, so a finding reads as adversary behavior, not just a number.",
-          "<b>Air-gap integrity</b> — the offline feed arrives as a signed bundle that is cryptographically verified against a held anchor before a single record is indexed; a tampered or unsigned bundle is refused.",
-          "<b>An honest hand-off</b> — Skans tells you what's vulnerable and which version fixes it, then routes remediation into approved patch rings where a human approves the change. It never picks or applies a fix for you."
+          "<b>Sigma rules</b> — detection content rides the same signed pack path for operator-controlled rulesets."
         ],
         "shot": "patch",
         "shotLabel": "Skans console · Updates & patch rings",
@@ -755,16 +754,16 @@
         "href": "/features/access-control"
       }
     ],
-    "editionNote": "Continuous monitoring with correlated findings and offline CVE + MITRE ATT&CK feeds are in every edition, including free Community. Alert rules, routing and notifications start at Essential; vulnerability management (CVE matching + prioritisation) and log & topology fusion start at Professional.",
+    "editionNote": "Continuous monitoring, security feeds (CVE, KEV, EPSS, ATT&CK + ICS, Sigma) and malware defs are in every edition, including free Community. Alert rules, routing and notifications start at Essential; vulnerability management (matching + prioritisation) and log & topology fusion start at Professional.",
     "seoTitle": "Monitoring & operations — signal over noise, offline threat intel",
-    "seoDesc": "Skans correlates every event into a bounded, per-device worklist and matches offline CVE + MITRE ATT&CK on the box. Alert rules route what fires; suppressions are recorded exceptions. Nothing leaves the wire."
+    "seoDesc": "Skans correlates every event into a bounded, per-device worklist and matches offline CVE, KEV, EPSS, ATT&CK and Sigma on the box. Alert rules route what fires; suppressions are recorded exceptions. Nothing leaves the wire."
   },
   {
     "slug": "features/vulnerabilities",
     "kind": "Feature",
     "eyebrow": "Vulnerability management",
     "h1": "Know exactly what's exploitable. With nothing leaving the wire.",
-    "lead": "Skans syncs the public CVE List and MITRE ATT&CK onto the appliance and matches them against your live, per-host inventory — no cloud scanner, no internet. Findings come CVSS-scored, ranked by KEV and EPSS so real-world exploitation sorts to the top, tagged with the ATT&CK techniques that exploit them, and rolled up per device. And because the match uses a strict version-range gate, a patched host shows zero — green means green, not unscanned.",
+    "lead": "Skans syncs the public CVE List, CISA KEV, FIRST.org EPSS, MITRE ATT&CK (Enterprise + ICS) and Sigma onto the appliance and matches them against your live, per-host inventory — no cloud scanner, no internet. Findings come CVSS-scored, ranked by KEV and EPSS so real-world exploitation sorts to the top, tagged with the ATT&CK techniques that exploit them, and rolled up per device. And because the match uses a strict version-range gate, a patched host shows zero — green means green, not unscanned.",
     "heroShot": "noc",
     "heroShotLabel": "Skans console · NOC",
     "heroShotAlt": "The Skans NOC wall — fleet-health tiles including open vulnerabilities and ATT&CK-tagged findings across the enclave.",
@@ -773,7 +772,7 @@
         "type": "split",
         "eyebrow": "The match",
         "h": "Matched to your live fleet — not to a name.",
-        "body": "A first-party worker, Skans.VulnFeed, syncs the public CVE List (cvelistV5) and MITRE ATT&CK Enterprise into an on-box store, then joins your live per-host inventory against each CVE's affected-version ranges. A broad product match finds candidates; a strict version-range check then gates every one, so software patched past the affected range stays quiet. The whole match runs on the appliance — there is no cloud scanner in the loop.",
+        "body": "A first-party worker, Skans.VulnFeed, syncs the public CVE List (cvelistV5), CISA KEV, FIRST.org EPSS, MITRE ATT&CK Enterprise + ICS, and Sigma rules into an on-box store, then joins your live per-host inventory against each CVE's affected-version ranges. A broad product match finds candidates; a strict version-range check then gates every one, so software patched past the affected range stays quiet. The whole match runs on the appliance — there is no cloud scanner in the loop.",
         "bullets": [
           "<b>Version-range gate, not name lookup</b> — a candidate only becomes a finding when the installed version actually falls inside the affected range.",
           "<b>Green means green</b> — a fully-patched host produced zero findings in a live drill, so a clean result means secured, not unscanned.",
@@ -809,12 +808,12 @@
           {
             "icon": "ic-cloudcut",
             "h": "A signed feed bundle",
-            "p": "For an air-gapped site the CVE + ATT&CK feed arrives as a PackSigner-signed .skb bundle. Skans CMS-verifies it against the held pack anchor before a single record is indexed — a tampered or unsigned bundle is refused, and nothing is ingested."
+            "p": "For an air-gapped site the security feed arrives as a PackSigner-signed .skb bundle (or via the optional online Skans Update Service on any edition). Skans CMS-verifies it against the held pack anchor before a single record is indexed — a tampered or unsigned bundle is refused."
           },
           {
             "icon": "ic-globe",
             "h": "The whole corpus, on-box",
-            "p": "About 342k CVEs and 697 ATT&CK techniques live in the appliance's own search store. A severed WAN changes nothing about your assessment — the match keeps running."
+            "p": "About 342k CVEs, 697 ATT&CK techniques, KEV, EPSS and Sigma rules live in the appliance's own search store. A severed WAN changes nothing about your assessment — the match keeps running."
           },
           {
             "icon": "ic-check",
@@ -878,9 +877,9 @@
         "href": "/features/compliance"
       }
     ],
-    "editionNote": "Full vulnerability management — CVE matching plus KEV/EPSS prioritisation — is included in Professional, Business and Enterprise. The offline CVE + MITRE ATT&CK feeds and continuous monitoring ship in every edition, including free Community.",
-    "seoTitle": "Vulnerability Management — offline CVE & ATT&CK matching | Skans Labs",
-    "seoDesc": "Skans matches the public CVE List and MITRE ATT&CK against your live fleet on the appliance — no internet. KEV/EPSS prioritisation, ATT&CK-tagged findings, per-device rollup, patch hand-off, and RA-5 evidence."
+    "editionNote": "Security feeds (CVE, KEV, EPSS, ATT&CK + ICS, Sigma) and malware defs ship in every edition, including free Community. Full vulnerability management (matching + prioritisation UI) starts at Professional. Optional online Skans Update Service is available on every edition; offline sneakernet bundles are Enterprise.",
+    "seoTitle": "Vulnerability Management — offline CVE, KEV, EPSS & ATT&CK — Skans Labs",
+    "seoDesc": "Skans matches CVE, CISA KEV, FIRST.org EPSS, MITRE ATT&CK (Enterprise + ICS) and Sigma against your live fleet on the appliance — no internet. Ranked findings, per-device rollup, patch hand-off, and RA-5 evidence."
   },
   {
     "slug": "features/compliance",

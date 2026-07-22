@@ -181,29 +181,36 @@ console.log("build-pages: wrote " + built.map((s) => s + ".html").join(", "));
   const title = "Pricing";
   const desc = "Skans editions — licensed per site, metered by managed endpoints. Community is free and production-ready.";
   const plans = [
-    { name: "Community", price: "Free", per: "", band: "Up to 25 endpoints",
-      feats: ["Device identity + built-in CA", "Endpoint agent + NAC visibility", "Threat &amp; malware feeds", "Full community driver pack", "Single site &middot; community support"],
-      cta: "Get Community" },
+    { name: "Community", price: "Free", priceNote: "forever · $0", per: "", band: "Up to 25 endpoints",
+      free: true, primary: true,
+      feats: ["Device identity + built-in CA", "Endpoint agent + NAC visibility", "Security feeds (CVE, KEV, EPSS, ATT&amp;CK, Sigma) + malware defs", "Full community driver pack", "Single site &middot; community support"],
+      cta: "Get Community free" },
     { name: "Essential", price: "$499", per: "/ site &middot; yr", band: "Up to 100 endpoints",
       feats: [{ head: "Everything in Community, plus" }, "Patch management + enforcement", "Backup &amp; disaster recovery", "Alerting &amp; notifications", "Password &amp; lockout baseline", "Email support"],
       cta: "Choose Essential" },
-    { name: "Professional", price: "$999", per: "/ site &middot; yr", band: "Up to 500 endpoints", featured: true, primary: true,
+    { name: "Professional", price: "$999", per: "/ site &middot; yr", band: "Up to 500 endpoints", featured: true,
       feats: [{ head: "Everything in Essential, plus" }, "NIST 800-171 / CMMC / ISO 27001 evidence", "802.1X NAC, dynamic VLAN, segmentation", "Vulnerability management", "Log &amp; topology fusion", "Business-hours support"],
       cta: "Choose Professional" },
     { name: "Business", price: "$2,999", per: "/ site &middot; yr", band: "Up to 1,000 endpoints",
       feats: [{ head: "Everything in Professional, plus" }, "OT/ICS driver depth &mdash; S7-1500, Desigo, BACnet", "Industrial cert lanes (OPC UA GDS Push)", "Priority support"],
       cta: "Choose Business" },
     { name: "Enterprise", price: "Contact", per: "", band: "1,000+ endpoints &middot; multi-site",
-      feats: [{ head: "Everything in Business, plus" }, "Distributed Core + Edge (per-site)", "High availability", "Air-gap Update Service + offline licensing", "SSO, advanced RBAC, full audit", "Dedicated support + SLA"],
+      feats: [{ head: "Everything in Business, plus" }, "Distributed Core + Edge (per-site)", "High availability", "Offline SUS bundle + offline licensing", "SSO, advanced RBAC, full audit", "Dedicated support + SLA"],
       cta: "Contact sales" },
   ];
-  const card = (p) => `<article class="card plan${p.featured ? " featured" : ""} reveal">${p.featured ? '<span class="plan-tag">Most popular</span>' : ""}
+  const card = (p) => {
+    const tag = p.free ? '<span class="plan-tag plan-tag-free">Free forever</span>'
+      : p.featured ? '<span class="plan-tag">Most popular</span>' : "";
+    const priceExtra = p.priceNote ? `<small class="plan-price-note"> ${p.priceNote}</small>`
+      : (p.per ? `<small> ${p.per}</small>` : "");
+    return `<article class="card plan${p.featured ? " featured" : ""}${p.free ? " plan-free" : ""} reveal">${tag}
             <div class="plan-name">${p.name}</div>
-            <div class="plan-price">${p.price}${p.per ? `<small> ${p.per}</small>` : ""}</div>
+            <div class="plan-price">${p.price}${priceExtra}</div>
             <div class="plan-band">${p.band}</div>
             <ul class="plan-feats">${p.feats.map((f) => (f.head ? `<li class="head">${f.head}</li>` : `<li>${f}</li>`)).join("")}</ul>
-            <div class="plan-cta"><a class="btn ${p.primary ? "btn-primary" : "btn-ghost"}" href="${p.name === "Enterprise" ? "/#contact" : "https://portal.skanslabs.com/?edition=" + p.name}">${p.cta}</a></div>
+            <div class="plan-cta"><a class="btn ${p.primary || p.free ? "btn-primary" : "btn-ghost"}" href="${p.name === "Enterprise" ? "/#contact" : "https://portal.skanslabs.com/?edition=" + p.name}">${p.cta}</a></div>
           </article>`;
+  };
 
   // ---- full feature-comparison matrix across all five editions ----
   const editions = plans.map((p) => p.name);
@@ -236,7 +243,7 @@ console.log("build-pages: wrote " + built.map((s) => s + ".html").join(", "));
     ] },
     { group: "Monitoring &amp; threat intel", rows: [
       ["Continuous monitoring (correlated findings)", true, true, true, true, true],
-      ["Offline CVE + MITRE ATT&amp;CK feeds", true, true, true, true, true],
+      ["Security feeds (CVE, KEV, EPSS, ATT&amp;CK + ICS, Sigma) + malware defs", true, true, true, true, true],
       ["Alerting rules, routing &amp; notifications", false, true, true, true, true],
       ["Vulnerability management (matching + prioritisation)", false, false, true, true, true],
       ["Log &amp; topology fusion", false, false, true, true, true],
@@ -255,7 +262,8 @@ console.log("build-pages: wrote " + built.map((s) => s + ".html").join(", "));
     { group: "Scale, availability &amp; governance", rows: [
       ["Distributed Core + Edge (per-site)", false, false, false, false, true],
       ["High availability", false, false, false, false, true],
-      ["Air-gap Update Service + offline licensing", false, false, false, false, true],
+      ["Optional online Skans Update Service (security + product content)", true, true, true, true, true],
+      ["Offline SUS sneakernet bundle + offline licensing", false, false, false, false, true],
       ["SSO / OIDC single sign-on", false, false, false, false, true],
       ["Advanced RBAC &amp; full audit", false, false, false, false, true],
     ] },
@@ -264,18 +272,27 @@ console.log("build-pages: wrote " + built.map((s) => s + ".html").join(", "));
       ["Uptime SLA", false, false, false, false, true],
     ] },
   ];
-  const proIdx = plans.findIndex((p) => p.primary);
-  const cell = (v, pro) => { const c = pro ? " col-pro" : ""; return v === true ? `<td class="yes${c}" aria-label="included">✓</td>` : v === false ? `<td class="no${c}" aria-label="not included">—</td>` : `<td class="val${c}">${v}</td>`; };
+  const proIdx = plans.findIndex((p) => p.featured);
+  const freeIdx = plans.findIndex((p) => p.free);
+  const cell = (v, pro, free) => {
+    const c = (pro ? " col-pro" : "") + (free ? " col-free" : "");
+    return v === true ? `<td class="yes${c}" aria-label="included">✓</td>` : v === false ? `<td class="no${c}" aria-label="not included">—</td>` : `<td class="val${c}">${v}</td>`;
+  };
   const matrixHtml = `
         <div class="cmp-head reveal">
           <h2 class="section-title">Compare every edition.</h2>
-          <p class="lead" style="margin-top:12px">Every capability, and exactly where it lands. Each edition includes everything in the one before it.</p>
+          <p class="lead" style="margin-top:12px">Every capability, and exactly where it lands. Each edition includes everything in the one before it. <strong>Community is free forever</strong> — no credit card, production-ready.</p>
         </div>
         <div class="cmp-wrap reveal">
           <table class="cmp">
-            <thead><tr><th class="col-feat" scope="col">Capability</th>${editions.map((e, i) => `<th scope="col"${plans[i].primary ? ' class="col-pro"' : ""}>${e}<span class="cmp-price">${plans[i].price}${plans[i].per ? " / yr" : ""}</span></th>`).join("")}</tr></thead>
+            <thead><tr><th class="col-feat" scope="col">Capability</th>${editions.map((e, i) => {
+              const p = plans[i];
+              const priceLabel = p.free ? "Free forever" : (p.price + (p.per ? " / yr" : ""));
+              const cls = [p.featured && "col-pro", p.free && "col-free"].filter(Boolean).join(" ");
+              return `<th scope="col"${cls ? ` class="${cls}"` : ""}>${e}<span class="cmp-price">${priceLabel}</span></th>`;
+            }).join("")}</tr></thead>
             <tbody>
-              ${matrix.map((g) => `<tr class="cmp-group"><td colspan="6">${g.group}</td></tr>` + g.rows.map((r) => `<tr><th scope="row">${r[0]}</th>${r.slice(1).map((v, i) => cell(v, i === proIdx)).join("")}</tr>`).join("")).join("\n              ")}
+              ${matrix.map((g) => `<tr class="cmp-group"><td colspan="6">${g.group}</td></tr>` + g.rows.map((r) => `<tr><th scope="row">${r[0]}</th>${r.slice(1).map((v, i) => cell(v, i === proIdx, i === freeIdx)).join("")}</tr>`).join("")).join("\n              ")}
             </tbody>
           </table>
         </div>`;
@@ -285,15 +302,17 @@ console.log("build-pages: wrote " + built.map((s) => s + ".html").join(", "));
     <section class="section" id="pricing">
       <div class="container-wide">
         <p class="kicker reveal">Editions</p>
-        <h2 class="section-title reveal reveal-d1" style="max-width:24ch">Priced per site — by what you protect, not who you are.</h2>
-        <p class="lead reveal reveal-d2" style="margin-top:16px">One Skans appliance secures one site on one license. You're metered by <strong>managed endpoints</strong> — every device Skans gives an identity to: cameras, controllers, PLCs, switches, the server itself — not by seats, sockets, or agents. Community is free and runs in production; step a site up as it grows.</p>
+        <h2 class="section-title reveal reveal-d1" style="max-width:24ch">Start free. Grow by the site.</h2>
+        <p class="lead reveal reveal-d2" style="margin-top:16px">One Skans appliance secures one site on one license. You're metered by <strong>managed endpoints</strong> — every device Skans gives an identity to: cameras, controllers, PLCs, switches, the server itself — not by seats, sockets, or agents.</p>
+        <p class="free-callout reveal reveal-d2" role="note"><strong>Community Edition is free forever</strong> — $0, no credit card, production-ready up to 25 endpoints. Paid editions add depth as a site grows; each includes everything in the one before it.</p>
         <div class="plan-grid">
           ${plans.map(card).join("\n          ")}
         </div>
 ${matrixHtml}
         <div class="plan-notes reveal">
-          <p>Prices are annual, in USD, <strong>per site</strong>. Multi-site estates license each site — distributed <strong>Core&nbsp;+&nbsp;Edge</strong> deployments license each Edge. <a href="/#contact">Talk to us</a> about site packs and volume.</p>
+          <p><strong>Community is free forever</strong> (≤&nbsp;25 endpoints). Paid prices are annual, in USD, <strong>per site</strong>. Multi-site estates license each site — distributed <strong>Core&nbsp;+&nbsp;Edge</strong> deployments license each Edge. <a href="/#contact">Talk to us</a> about site packs and volume.</p>
           <p><strong>Managed endpoints</strong> counts devices under active Skans management — identity, certificates, policy, or monitoring. The endpoint agents running on those devices are never metered separately.</p>
+          <p><strong>Skans Update Service:</strong> optional online pull of signed security feeds, malware defs, driver packs and product/agent content is available on every edition (operator opt-in; download-only). The offline sneakernet bundle and offline licensing path are Enterprise.</p>
         </div>
       </div>
     </section>
