@@ -24,7 +24,8 @@ function grab(src, startRe, endTag) {
 
 const sprite = grab(index, /<svg width="0" height="0"/, "</svg>");
 // on sub-pages, in-page hash links must jump to the homepage sections
-const toHome = (html) => html.replace(/href="#/g, 'href="/#');
+// rewrite in-page anchor links to jump to the homepage — but NOT SVG <use href="#symbol"> sprite refs
+const toHome = (html) => html.replace(/(?<!<use )href="#/g, 'href="/#');
 const header = toHome(grab(index, /<header class="site-header"/, "</header>"));
 const footer = toHome(grab(index, /<footer class="site-footer/, "</footer>"));
 
