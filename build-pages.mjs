@@ -202,7 +202,7 @@ console.log("build-pages: wrote " + built.map((s) => s + ".html").join(", "));
             <div class="plan-price">${p.price}${p.per ? `<small> ${p.per}</small>` : ""}</div>
             <div class="plan-band">${p.band}</div>
             <ul class="plan-feats">${p.feats.map((f) => (f.head ? `<li class="head">${f.head}</li>` : `<li>${f}</li>`)).join("")}</ul>
-            <div class="plan-cta"><a class="btn ${p.primary ? "btn-primary" : "btn-ghost"}" href="/#contact">${p.cta}</a></div>
+            <div class="plan-cta"><a class="btn ${p.primary ? "btn-primary" : "btn-ghost"}" href="${p.name === "Enterprise" ? "/#contact" : "https://portal.skanslabs.com/?edition=" + p.name}">${p.cta}</a></div>
           </article>`;
 
   // ---- full feature-comparison matrix across all five editions ----
@@ -360,7 +360,7 @@ const contentSlugs = [];
           <p class="ph-eyebrow reveal in">${spec.eyebrow}</p>
           <h1 class="ph-title reveal in">${spec.h1}</h1>
           <p class="ph-lead reveal in">${spec.lead}</p>
-          <div class="hero-actions reveal in"><a class="btn btn-primary" href="/#contact">Request a briefing</a><a class="btn btn-ghost" href="/pricing">See editions</a></div>
+          <div class="hero-actions reveal in"><a class="btn btn-primary" href="https://portal.skanslabs.com/">Get Skans</a><a class="btn btn-ghost" href="/pricing">See editions</a></div>
         </div>
         <div class="hero-shot reveal in">${heroShot}</div>
       </div></div>
@@ -383,7 +383,7 @@ ${sections}
         <p class="kicker reveal" style="justify-content:center">Talk to us</p>
         <h2 class="section-title cta-title reveal reveal-d1">See Skans on your network.</h2>
         <p class="lead reveal reveal-d2" style="margin:18px auto 0;text-align:center">Built for the teams running networks the cloud can't reach. Email us for a technical walkthrough — architecture, controls, and exactly how it stays offline.</p>
-        <div class="cta-actions reveal reveal-d3"><a class="btn btn-primary" href="/#contact">Request a briefing</a><a class="btn btn-ghost" href="/pricing">Compare editions</a></div>
+        <div class="cta-actions reveal reveal-d3"><a class="btn btn-primary" href="https://portal.skanslabs.com/">Get Skans</a><a class="btn btn-ghost" href="/#contact">Request a briefing</a></div>
       </div>
     </section>
   </main>`;

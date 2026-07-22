@@ -430,7 +430,9 @@
 .ed-price small { font-family:var(--font-sans); font-weight:500; font-size:0.64rem; color:var(--steel); }
 .ed-band { font-size:0.72rem; color:var(--accent2); font-weight:600; letter-spacing:0.01em; }
 .ed-desc { font-size:0.82rem; color:var(--ink-mut); line-height:1.42; margin-top:3px; }
-.ed-cta { display:flex; justify-content:center; margin-top:24px; }
+.ed-cta { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:24px; }
+.nav-plain { font-size:0.94rem; color:var(--ink-mut); font-weight:500; }
+.nav-plain:hover { color:var(--ink); }
 @media (max-width:900px){ .ed-strip{ grid-template-columns:repeat(2,1fr); } }
 @media (max-width:520px){ .ed-strip{ grid-template-columns:1fr; } }
 
