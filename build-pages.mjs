@@ -203,6 +203,82 @@ console.log("build-pages: wrote " + built.map((s) => s + ".html").join(", "));
             <ul class="plan-feats">${p.feats.map((f) => (f.head ? `<li class="head">${f.head}</li>` : `<li>${f}</li>`)).join("")}</ul>
             <div class="plan-cta"><a class="btn ${p.primary ? "btn-primary" : "btn-ghost"}" href="/#contact">${p.cta}</a></div>
           </article>`;
+
+  // ---- full feature-comparison matrix across all five editions ----
+  const editions = plans.map((p) => p.name);
+  const matrix = [
+    { group: "Identity &amp; root of trust", rows: [
+      ["Enclave root of trust (on-prem CA)", true, true, true, true, true],
+      ["X.509 identity for every device", true, true, true, true, true],
+      ["Full per-vendor cert-push driver pack", true, true, true, true, true],
+      ["Credential vault", true, true, true, true, true],
+      ["Hardware-backed operator login (PIV / FIDO2)", true, true, true, true, true],
+    ] },
+    { group: "Devices", rows: [
+      ["Managed endpoints per site", "25", "100", "500", "1,000", "1,000+"],
+      ["Device discovery &amp; inventory", true, true, true, true, true],
+      ["Multi-protocol discovery (ONVIF · scan · industrial)", true, true, true, true, true],
+      ["Capability-tier classification (A / B / C)", true, true, true, true, true],
+      ["Endpoint agent — Windows · Linux · macOS", true, true, true, true, true],
+    ] },
+    { group: "Network access control", rows: [
+      ["NAC visibility", true, true, true, true, true],
+      ["802.1X EAP-TLS admission", false, false, true, true, true],
+      ["Dynamic VLANs + MAB for limited gear", false, false, true, true, true],
+      ["Legacy segmentation + security gateway", false, false, true, true, true],
+    ] },
+    { group: "Patch, firmware &amp; backup", rows: [
+      ["Patch management + enforcement", false, true, true, true, true],
+      ["Vetted, hash-verified firmware repository", false, true, true, true, true],
+      ["Off-source encrypted backup + DR restore", false, true, true, true, true],
+      ["Configuration &amp; secret vaulting", false, true, true, true, true],
+    ] },
+    { group: "Monitoring &amp; threat intel", rows: [
+      ["Continuous monitoring (correlated findings)", true, true, true, true, true],
+      ["Offline CVE + MITRE ATT&amp;CK feeds", true, true, true, true, true],
+      ["Alerting rules, routing &amp; notifications", false, true, true, true, true],
+      ["Vulnerability management (matching + prioritisation)", false, false, true, true, true],
+      ["Log &amp; topology fusion", false, false, true, true, true],
+    ] },
+    { group: "Compliance", rows: [
+      ["NIST 800-171 / CMMC control mapping", false, false, true, true, true],
+      ["ISO 27001 crosswalk (93 Annex A controls)", false, false, true, true, true],
+      ["Signed evidence-pack export", false, false, true, true, true],
+      ["Audit log &amp; change approvals", false, false, true, true, true],
+    ] },
+    { group: "OT / ICS depth", rows: [
+      ["OT/ICS driver depth (S7-1500 · Desigo · BACnet/SC)", false, false, false, true, true],
+      ["OPC UA GDS Push certificate management", false, false, false, true, true],
+      ["Industrial protocol gateways", false, false, false, true, true],
+    ] },
+    { group: "Scale, availability &amp; governance", rows: [
+      ["Distributed Core + Edge (per-site)", false, false, false, false, true],
+      ["High availability", false, false, false, false, true],
+      ["Air-gap Update Service + offline licensing", false, false, false, false, true],
+      ["SSO / OIDC single sign-on", false, false, false, false, true],
+      ["Advanced RBAC &amp; full audit", false, false, false, false, true],
+    ] },
+    { group: "Support", rows: [
+      ["Support", "Community", "Email", "Business-hours", "Priority", "Dedicated"],
+      ["Uptime SLA", false, false, false, false, true],
+    ] },
+  ];
+  const proIdx = plans.findIndex((p) => p.primary);
+  const cell = (v, pro) => { const c = pro ? " col-pro" : ""; return v === true ? `<td class="yes${c}" aria-label="included">✓</td>` : v === false ? `<td class="no${c}" aria-label="not included">—</td>` : `<td class="val${c}">${v}</td>`; };
+  const matrixHtml = `
+        <div class="cmp-head reveal">
+          <h2 class="section-title">Compare every edition.</h2>
+          <p class="lead" style="margin-top:12px">Every capability, and exactly where it lands. Each edition includes everything in the one before it.</p>
+        </div>
+        <div class="cmp-wrap reveal">
+          <table class="cmp">
+            <thead><tr><th class="col-feat" scope="col">Capability</th>${editions.map((e, i) => `<th scope="col"${plans[i].primary ? ' class="col-pro"' : ""}>${e}<span class="cmp-price">${plans[i].price}${plans[i].per ? " / yr" : ""}</span></th>`).join("")}</tr></thead>
+            <tbody>
+              ${matrix.map((g) => `<tr class="cmp-group"><td colspan="6">${g.group}</td></tr>` + g.rows.map((r) => `<tr><th scope="row">${r[0]}</th>${r.slice(1).map((v, i) => cell(v, i === proIdx)).join("")}</tr>`).join("")).join("\n              ")}
+            </tbody>
+          </table>
+        </div>`;
+
   const main = `
   <main id="main">
     <section class="section" id="pricing">
@@ -213,6 +289,7 @@ console.log("build-pages: wrote " + built.map((s) => s + ".html").join(", "));
         <div class="plan-grid">
           ${plans.map(card).join("\n          ")}
         </div>
+${matrixHtml}
         <div class="plan-notes reveal">
           <p>Prices are annual, in USD, <strong>per site</strong>. Multi-site estates license each site — distributed <strong>Core&nbsp;+&nbsp;Edge</strong> deployments license each Edge. <a href="/#contact">Talk to us</a> about site packs and volume.</p>
           <p><strong>Managed endpoints</strong> counts devices under active Skans management — identity, certificates, policy, or monitoring. The endpoint agents running on those devices are never metered separately.</p>
