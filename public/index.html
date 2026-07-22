@@ -7,9 +7,9 @@
   <meta name="description" content="NIST security-in-a-box for isolated video-surveillance, IoT, OT and building-automation enclaves. Give every device its own identity, encryption, access control and compliance evidence — set up by the technician who installs the cameras." />
   <meta name="theme-color" content="#0a0d12" />
   <script>(function(){try{var t=localStorage.getItem('skans-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
-  <link rel="icon" href="/favicon.svg?v=3c94337d" type="image/svg+xml" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png?v=3c94337d" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3c94337d" />
+  <link rel="icon" href="/favicon.svg?v=0f1325da" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png?v=0f1325da" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=0f1325da" />
   <link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
   <meta property="og:type" content="website" />
@@ -25,7 +25,7 @@
   <meta name="twitter:description" content="NIST security for isolated camera, IoT, OT and building-automation networks — every device gets an identity, nothing leaves the wire." />
   <meta name="twitter:image" content="https://skanslabs.com/og.png" />
   <link rel="canonical" href="https://skanslabs.com/" />
-  <link rel="stylesheet" href="/styles.css?v=3c94337d" />
+  <link rel="stylesheet" href="/styles.css?v=0f1325da" />
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://skanslabs.com/#org","name":"Skans Labs","url":"https://skanslabs.com/","logo":"https://skanslabs.com/apple-touch-icon.png","description":"On-premises security for isolated camera, IoT, OT and building-automation networks.","contactPoint":{"@type":"ContactPoint","email":"hello@skanslabs.com","contactType":"sales"}},{"@type":"WebSite","@id":"https://skanslabs.com/#website","name":"Skans Labs","url":"https://skanslabs.com/","publisher":{"@id":"https://skanslabs.com/#org"}},{"@type":"SoftwareApplication","name":"Skans","applicationCategory":"SecurityApplication","operatingSystem":"Windows Server","url":"https://skanslabs.com/","publisher":{"@id":"https://skanslabs.com/#org"},"description":"A single appliance that becomes the root of trust for an isolated network — giving every device its own identity plus access control, patching, backup, monitoring and NIST 800-171 / CMMC compliance evidence, run by the technician who installs the equipment."}]}</script>
 </head>
 <body>
@@ -106,26 +106,29 @@
     <section class="hero" id="hero">
       <canvas id="enclave" class="hero-canvas" aria-hidden="true"></canvas>
       <div class="hero-seam-fallback" aria-hidden="true"></div>
-      <div class="container-wide hero-inner">
+      <div class="container-wide hero-inner hero-grid">
         <div class="hero-copy">
           <p class="eyebrow reveal in">NIST security for isolated camera, IoT, OT &amp; building-automation networks</p>
           <h1 class="hero-title reveal in">Everything inside.<br /><span class="text-gradient">Nothing out.</span></h1>
-          <p class="lead hero-lead reveal in">Skans gives an islanded network of cameras, controllers, and building systems its <b>own root of trust</b> — issuing an identity to every device, admitting only trusted gear, then encrypting, patching, backing up, and producing the compliance evidence. <b>One appliance, set up by the technician who installs the cameras.</b> Your data never leaves the wire; it runs air-gapped by default.</p>
+          <p class="lead hero-lead reveal in">Skans gives an islanded network of cameras, controllers, and building systems its <b>own root of trust</b> — an identity for every device, admission for only trusted gear, then encryption, patching, backup and the compliance evidence. <b>One appliance, set up by the technician who installs the cameras.</b></p>
           <div class="hero-actions reveal in">
             <a class="btn btn-primary" href="#contact">Request a briefing</a>
-            <a class="btn btn-ghost" href="#platform">See the capabilities</a>
+            <a class="btn btn-ghost" href="#showcase">See the console</a>
+          </div>
+          <div class="hero-trust reveal in">
+            <span><svg aria-hidden="true"><use href="#ic-check"/></svg> Air-gapped by default</span>
+            <span><svg aria-hidden="true"><use href="#ic-check"/></svg> NIST 800-171 / CMMC</span>
+            <span><svg aria-hidden="true"><use href="#ic-check"/></svg> Set up by the install tech</span>
+          </div>
+        </div>
+        <div class="hero-shot reveal in">
+          <div class="appwin">
+            <div class="appwin-bar"><i></i><i></i><i></i><span class="appwin-url">Skans console · Devices</span></div>
+            <img src="/shots/devices.png?v=0f1325da" width="1440" height="900" alt="The Skans console device inventory — cameras, switches and firewalls with certificate status and capability tiers" />
           </div>
         </div>
       </div>
-      <div class="hud" aria-hidden="true">
-        <div class="hud-head"><span class="live-dot"></span> ENCLAVE&#8209;01 · AIR&#8209;GAPPED</div>
-        <div class="hud-grid">
-          <div class="hud-metric"><span class="hud-num tnum" id="hud-probes" data-to="248">0</span><span class="hud-label">devices secured</span></div>
-          <div class="hud-sep"></div>
-          <div class="hud-metric"><span class="hud-num hud-num--calm tnum" id="hud-findings" data-to="2">0</span><span class="hud-label">certs expiring</span></div>
-        </div>
-      </div>
-      <p class="sr-only">A sealed, air-gapped enclave of cameras, controllers and building systems, each issued its own identity from an on-site root of trust — 2 certificates due for renewal, and your data never crossing the perimeter.</p>
+      <p class="sr-only">A sealed, air-gapped enclave of cameras, controllers and building systems, each issued its own identity from an on-site root of trust — and your data never crossing the perimeter.</p>
     </section>
 
     <!-- ===== PROOF / INTEGRATIONS STRIP ===== -->
@@ -201,24 +204,59 @@
     <div class="seam-link reveal" aria-hidden="true"></div>
 
     <!-- ===== NOT SECURE -> SECURE ===== -->
-    <section class="section" id="secure">
-      <div class="container">
-        <div class="frow">
-          <div class="frow-text">
-            <p class="kicker reveal">Default to defended</p>
-            <h3 class="reveal reveal-d1">Every device gets a real identity.</h3>
-            <p class="reveal reveal-d2">A new camera ships with a self-signed certificate and a default password — untrusted and exposed. Skans issues it a real identity from your CA, replaces the cert, locks the credentials, and admits it over 802.1X. The browser warning disappears; the device is trusted, encrypted, and accounted for.</p>
-            <ul class="frow-list reveal reveal-d2">
-              <li><b>A root of trust the enclave owns</b> — its own CA, nothing in the cloud.</li>
-              <li><b>Per-vendor drivers</b> push certs onto gear that can't enroll itself.</li>
-              <li><b>802.1X admission</b> — only trusted, cert-bearing devices get on the wire.</li>
-            </ul>
+    <section class="section" id="showcase">
+      <div class="container-wide">
+        <div class="sec-head">
+          <div>
+            <p class="kicker reveal">The console</p>
+            <h2 class="section-title reveal reveal-d1">See it the way the operator does.</h2>
           </div>
-          <div class="frow-visual reveal reveal-d1">
-            <div class="viz-chip is-bad"><svg class="icon-line" aria-hidden="true"><use href="#ic-vuln"/></svg><div class="viz-chip-body"><span class="viz-chip-main">CAMERA-07</span><span class="viz-chip-sub">self-signed cert · default password · open on the LAN</span></div></div>
-            <svg class="viz-arrow" aria-hidden="true" style="transform:rotate(90deg)"><use href="#ic-arrow"/></svg>
-            <div class="viz-chip is-good"><svg class="icon-line" aria-hidden="true"><use href="#ic-identity"/></svg><div class="viz-chip-body"><span class="viz-chip-main">CAMERA-07</span><span class="viz-chip-sub">CA-issued identity · creds rotated &amp; vaulted · admitted over 802.1X</span></div></div>
+          <p class="lead reveal reveal-d2">One console for the whole enclave — every device and its identity, the compliance posture an assessor asks for, and the alerts that actually matter. Air-gapped, role-based, nothing leaving the wire.</p>
+        </div>
+        <div class="shotcase">
+
+          <div class="shotrow reveal">
+            <div class="shotrow-text">
+              <p class="kicker">One question away</p>
+              <h3>The whole appliance, run by outcomes.</h3>
+              <p>Ask the box in plain language, or read the triage at a glance — what needs you, where compliance stands, whether last night's backup ran. The operator sees results, never certificate chains.</p>
+              <ul class="frow-list">
+                <li><b>Ask or command the appliance</b> — "certs", "what needs me", "open incidents".</li>
+                <li><b>Correlated triage</b> — a bounded worklist, not a firehose of events.</li>
+                <li><b>Outcomes, not internals</b> — never AD, Kerberos or a CLI.</li>
+              </ul>
+            </div>
+            <div class="appwin reveal reveal-d1"><div class="appwin-bar"><i></i><i></i><i></i><span class="appwin-url">Skans console · Home</span></div><img src="/shots/dashboard.png?v=0f1325da" width="1440" height="900" loading="lazy" alt="The Skans console home — an ask-the-appliance command bar over a correlated worklist of what needs attention" /></div>
           </div>
+
+          <div class="shotrow rev reveal">
+            <div class="shotrow-text">
+              <p class="kicker">Compliance by design</p>
+              <h3>The evidence an assessor asks for — already in place.</h3>
+              <p>Live NIST 800-171 posture mapped to control families, with an ISO 27001 crosswalk, a signed evidence pack, reports and an audit trail you hand straight over.</p>
+              <ul class="frow-list">
+                <li><b>Posture by control family</b> — AC, AU, CM, IA, RA, SC…</li>
+                <li><b>Signed evidence pack</b> — per-control and tamper-evident.</li>
+                <li><b>An icon and a word</b>, never colour alone.</li>
+              </ul>
+            </div>
+            <div class="appwin reveal reveal-d1"><div class="appwin-bar"><i></i><i></i><i></i><span class="appwin-url">Skans console · Compliance</span></div><img src="/shots/compliance.png?v=0f1325da" width="1440" height="900" loading="lazy" alt="The Skans compliance view — a NIST posture ring and per-control-family status cards" /></div>
+          </div>
+
+          <div class="shotrow reveal">
+            <div class="shotrow-text">
+              <p class="kicker">Signal, not noise</p>
+              <h3>Detection is the product's judgment. Where it lands is yours.</h3>
+              <p>Correlated, deduplicated findings — bounded by device count, not raw volume. Rules decide what fires; routing decides where it goes; suppressions are recorded exceptions.</p>
+              <ul class="frow-list">
+                <li><b>Rules &amp; routing</b> per severity, with cooldowns.</li>
+                <li><b>Offline CVE + MITRE ATT&amp;CK</b>, matched without internet.</li>
+                <li><b>Recorded exceptions</b>, never silent muting.</li>
+              </ul>
+            </div>
+            <div class="appwin reveal reveal-d1"><div class="appwin-bar"><i></i><i></i><i></i><span class="appwin-url">Skans console · Alerting</span></div><img src="/shots/alerting.png?v=0f1325da" width="1440" height="900" loading="lazy" alt="The Skans alerting view — alert rules by type and severity with cooldowns" /></div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -458,7 +496,7 @@
     </div>
   </footer>
 
-  <script src="/enclave.js?v=3c94337d" defer></script>
-  <script src="/app.js?v=3c94337d" defer></script>
+  <script src="/enclave.js?v=0f1325da" defer></script>
+  <script src="/app.js?v=0f1325da" defer></script>
 </body>
 </html>
