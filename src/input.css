@@ -459,6 +459,9 @@
 @media (max-width:860px){
   .nav-drop-btn { display:flex; width:100%; justify-content:space-between; padding:12px 0; font-size:1rem; }
   .drop { position:static; transform:none; min-width:0; opacity:1; pointer-events:auto; background:none; border:0; box-shadow:none; backdrop-filter:none; padding:2px 0 10px 12px; display:none; }
+  /* out-specify the desktop open/hover rule — its translateX(-50%) would push the
+     stacked panel half off-screen (media queries add no specificity) */
+  .has-drop.open .drop, .has-drop:hover .drop, .has-drop:focus-within .drop { transform:none; }
   .has-drop.open .drop { display:block; }
   .drop::before { display:none; }
   .drop-lead { background:none; border:0; padding:8px 12px; }
@@ -648,11 +651,27 @@
 [data-theme="light"] .site-header:not(.scrolled) .theme-toggle { color:#aab6c6; border-color:rgba(255,255,255,0.20); }
 [data-theme="light"] .site-header:not(.scrolled) .nav-toggle { border-color:rgba(255,255,255,0.20); }
 [data-theme="light"] .site-header:not(.scrolled) .nav-toggle span { background:#f4f7fb; }
+/* the Product/Solutions triggers are <button>, not <a> — the .nav-menu a rule above misses them */
+[data-theme="light"] .site-header:not(.scrolled) .nav-drop-btn { color:#aab6c6; }
+[data-theme="light"] .site-header:not(.scrolled) .nav-drop-btn:hover,
+[data-theme="light"] .site-header:not(.scrolled) .has-drop:hover .nav-drop-btn,
+[data-theme="light"] .site-header:not(.scrolled) .has-drop.open .nav-drop-btn { color:#fff; }
 [data-theme="light"] .site-header.scrolled { background:rgba(255,255,255,0.9); border-bottom-color:var(--line); }
 [data-theme="light"] .site-header.scrolled .wordmark { color:#0f1a2e; }
 [data-theme="light"] .site-header.scrolled .brand-mark { color:#586679; }
 /* mobile dropdown panel stays dark in both themes → keep its links light */
-@media (max-width:860px){ [data-theme="light"] .nav-menu a { color:#cdd8e6; } }
+@media (max-width:860px){
+  [data-theme="light"] .nav-menu a { color:#cdd8e6; }
+  /* ...and its drop contents, which otherwise inherit the light theme's dark ink */
+  [data-theme="light"] .nav-drop-btn,
+  [data-theme="light"] .nav-drop-btn:hover,
+  [data-theme="light"] .has-drop:hover .nav-drop-btn,
+  [data-theme="light"] .has-drop.open .nav-drop-btn { color:#f4f7fb; }
+  [data-theme="light"] .drop-lead b,
+  [data-theme="light"] .drop-grid a b { color:#f4f7fb; }
+  [data-theme="light"] .drop-lead span,
+  [data-theme="light"] .drop-grid a span { color:#aab6c6; }
+}
 
 @media (prefers-reduced-motion:reduce) {
   .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
