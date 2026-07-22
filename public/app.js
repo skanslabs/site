@@ -34,6 +34,28 @@
     });
   }
 
+  /* nav dropdowns (Product / Solutions) — hover on desktop (CSS), click/keyboard toggle here */
+  var dropBtns = [].slice.call(document.querySelectorAll(".nav-drop-btn"));
+  dropBtns.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      var li = btn.closest(".has-drop"); if (!li) return;
+      var open = li.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      document.querySelectorAll(".has-drop").forEach(function (o) {
+        if (o !== li) { o.classList.remove("open"); var b = o.querySelector(".nav-drop-btn"); if (b) b.setAttribute("aria-expanded", "false"); }
+      });
+    });
+  });
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".has-drop")) {
+      document.querySelectorAll(".has-drop.open").forEach(function (o) { o.classList.remove("open"); var b = o.querySelector(".nav-drop-btn"); if (b) b.setAttribute("aria-expanded", "false"); });
+    }
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") document.querySelectorAll(".has-drop.open").forEach(function (o) { o.classList.remove("open"); var b = o.querySelector(".nav-drop-btn"); if (b) b.setAttribute("aria-expanded", "false"); });
+  });
+
   /* count-up helper (ease-out) */
   function countUp(el, to, dur, suffix, startGate) {
     if (reduce) { el.textContent = fmt(to) + (suffix || ""); return; }

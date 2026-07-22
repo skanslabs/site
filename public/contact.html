@@ -9,9 +9,9 @@
   <meta name="theme-color" content="#0a0d12" />
   <link rel="canonical" href="https://skanslabs.com/contact" />
   <script>(function(){try{var t=localStorage.getItem('skans-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
-  <link rel="icon" href="/favicon.svg?v=8113f82e" type="image/svg+xml" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png?v=8113f82e" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=8113f82e" />
+  <link rel="icon" href="/favicon.svg?v=f6790a58" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png?v=f6790a58" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=f6790a58" />
   <link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
   <meta property="og:type" content="website" />
@@ -24,7 +24,7 @@
   <meta name="twitter:title" content="Contact — Skans Labs" />
   <meta name="twitter:description" content="How to reach Skans Labs — email, product briefings, and responsible disclosure." />
   <meta name="twitter:image" content="https://skanslabs.com/og.png" />
-  <link rel="stylesheet" href="/styles.css?v=8113f82e" />
+  <link rel="stylesheet" href="/styles.css?v=f6790a58" />
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://skanslabs.com/#org","name":"Skans Labs","url":"https://skanslabs.com/","logo":"https://skanslabs.com/apple-touch-icon.png"},{"@type":"WebPage","name":"Contact — Skans Labs","description":"How to reach Skans Labs — email, product briefings, and responsible disclosure.","url":"https://skanslabs.com/contact","isPartOf":{"@id":"https://skanslabs.com/#website"},"publisher":{"@id":"https://skanslabs.com/#org"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Skans Labs","item":"https://skanslabs.com/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://skanslabs.com/contact"}]}]}</script>
 </head>
 <body>
@@ -79,10 +79,35 @@
       <nav class="nav" aria-label="Primary">
         <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu"><span></span><span></span><span></span></button>
         <ul class="nav-menu" id="nav-menu">
-          <li><a href="/#platform">Capabilities</a></li>
-          <li><a href="/#showcase">Console</a></li>
+          <li class="has-drop">
+            <button class="nav-drop-btn" type="button" aria-expanded="false" aria-haspopup="true">Product <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="drop">
+              <a class="drop-lead" href="/platform"><b>Platform overview</b><span>Every capability in one air-gapped appliance</span></a>
+              <div class="drop-grid">
+                <a href="/features/identity"><b>Device identity</b><span>PKI &amp; root of trust</span></a>
+                <a href="/features/access-control"><b>Network access control</b><span>802.1X admission</span></a>
+                <a href="/features/patching"><b>Patch &amp; firmware</b><span>Rings, no WSUS</span></a>
+                <a href="/features/backup"><b>Backup &amp; DR</b><span>Off-box, vault-sealed</span></a>
+                <a href="/features/monitoring"><b>Monitoring</b><span>Correlated findings</span></a>
+                <a href="/features/vulnerabilities"><b>Vulnerabilities</b><span>Offline CVE + ATT&amp;CK</span></a>
+                <a href="/features/compliance"><b>Compliance</b><span>NIST / CMMC / ISO</span></a>
+                <a href="/features/vault"><b>Credential vault</b><span>TPM-protected secrets</span></a>
+                <a href="/features/console"><b>The console</b><span>Ask the appliance</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="has-drop">
+            <button class="nav-drop-btn" type="button" aria-expanded="false" aria-haspopup="true">Solutions <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="drop">
+              <div class="drop-grid">
+                <a href="/solutions/physical-security"><b>Video &amp; physical security</b><span>Cameras, access, intercoms</span></a>
+                <a href="/solutions/building-automation"><b>Building automation</b><span>BMS, HVAC, facilities</span></a>
+                <a href="/solutions/industrial-ot"><b>Industrial &amp; OT</b><span>PLC, SCADA, OPC UA</span></a>
+                <a href="/solutions/compliance"><b>NIST 800-171 / CMMC</b><span>Isolated CUI enclaves</span></a>
+              </div>
+            </div>
+          </li>
           <li><a href="/pricing">Pricing</a></li>
-          <li><a href="/#compliance">Compliance</a></li>
           <li><a href="https://docs.skanslabs.com">Docs</a></li>
           <li><a href="https://blog.skanslabs.com">Blog</a></li>
           <li><a class="btn btn-primary nav-cta" href="/#contact">Request a briefing</a></li>
@@ -127,6 +152,6 @@
       <span class="footer-micro">Air-gap-first · You own the keys</span>
     </div>
   </footer>
-  <script src="/app.js?v=8113f82e" defer></script>
+  <script src="/app.js?v=f6790a58" defer></script>
 </body>
 </html>

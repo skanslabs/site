@@ -303,8 +303,103 @@ ${matrixHtml}
   console.log("build-pages: wrote pricing.html (STAGED — noindex, unlinked, not in sitemap)");
 })();
 
+// ---- content pages (features / solutions / platform) generated from pages.json ----
+const contentSlugs = [];
+(function writeContentPages() {
+  let specs = [];
+  try { specs = JSON.parse(fs.readFileSync(path.join(ROOT, "pages.json"), "utf8")); }
+  catch (e) { console.log("build-pages: no pages.json yet — skipping content pages"); return; }
+
+  const shotHtml = (key, label, alt, cls) => key
+    ? `<div class="appwin ${cls || ""}"><div class="appwin-bar"><i></i><i></i><i></i><span class="appwin-url">${label || "Skans console"}</span></div><img src="/shots/${key}.png" width="1440" height="900" loading="lazy" alt="${alt || ""}" /></div>`
+    : "";
+
+  const renderSection = (s) => {
+    if (s.type === "grid") {
+      const cards = (s.cards || []).map((c) =>
+        `<article class="card prob reveal">${c.icon ? `<svg class="icon-line" aria-hidden="true"><use href="#${c.icon}"/></svg>` : ""}<h3>${c.h}</h3><p>${c.p}</p></article>`).join("\n          ");
+      return `    <section class="section">
+      <div class="container">
+        <div class="sec-head"><div><p class="kicker reveal">${s.eyebrow || ""}</p><h2 class="section-title reveal reveal-d1">${s.h || ""}</h2></div>${s.body ? `<p class="lead reveal reveal-d2">${s.body}</p>` : ""}</div>
+        <div class="sec-body"><div class="grid-2x2">
+          ${cards}
+        </div></div>
+      </div>
+    </section>`;
+    }
+    // split
+    const bullets = (s.bullets || []).length ? `<ul class="frow-list">${s.bullets.map((b) => `<li>${b}</li>`).join("")}</ul>` : "";
+    const text = `<div class="shotrow-text"><p class="kicker">${s.eyebrow || ""}</p><h3>${s.h || ""}</h3>${s.body ? `<p>${s.body}</p>` : ""}${bullets}</div>`;
+    if (s.shot) {
+      return `    <section class="section">
+      <div class="container-wide"><div class="shotrow${s.reverse ? " rev" : ""} reveal">${text}${shotHtml(s.shot, s.shotLabel, s.shotAlt, "reveal reveal-d1")}</div></div>
+    </section>`;
+    }
+    // split without a screenshot → narrative block
+    return `    <section class="section">
+      <div class="container">
+        <div class="sec-head"><div><p class="kicker reveal">${s.eyebrow || ""}</p><h2 class="section-title reveal reveal-d1">${s.h || ""}</h2></div>${s.body ? `<p class="lead reveal reveal-d2">${s.body}</p>` : ""}</div>
+        ${bullets ? `<div class="sec-body" style="max-width:760px">${bullets}</div>` : ""}
+      </div>
+    </section>`;
+  };
+
+  const norm = (h) => (h.startsWith("/") ? h : "/" + h);
+
+  for (const spec of specs) {
+    const heroShot = shotHtml(spec.heroShot, spec.heroShotLabel, spec.heroShotAlt, "reveal in");
+    const sections = spec.sections.map(renderSection).join("\n\n");
+    const related = (spec.related || []).map((r) =>
+      `<a class="rel-card" href="${norm(r.href)}"><span>${r.name}</span><svg aria-hidden="true"><use href="#ic-arrow"/></svg></a>`).join("\n          ");
+    const page = `
+  <main id="main" class="page-main">
+    <section class="page-hero">
+      <div class="container-wide"><div class="hero-grid">
+        <div class="hero-copy">
+          <p class="ph-eyebrow reveal in">${spec.eyebrow}</p>
+          <h1 class="ph-title reveal in">${spec.h1}</h1>
+          <p class="ph-lead reveal in">${spec.lead}</p>
+          <div class="hero-actions reveal in"><a class="btn btn-primary" href="/#contact">Request a briefing</a><a class="btn btn-ghost" href="/pricing">See editions</a></div>
+        </div>
+        <div class="hero-shot reveal in">${heroShot}</div>
+      </div></div>
+    </section>
+
+${sections}
+
+    <section class="section related">
+      <div class="container">
+        <p class="kicker reveal">Keep exploring</p>
+        <div class="rel-grid reveal reveal-d1">
+          ${related}
+        </div>
+        ${spec.editionNote ? `<p class="edition-note reveal reveal-d1">${spec.editionNote} <a href="/pricing">Compare editions →</a></p>` : ""}
+      </div>
+    </section>
+
+    <section class="section cta seamed" id="contact-cta">
+      <div class="container cta-inner">
+        <p class="kicker reveal" style="justify-content:center">Talk to us</p>
+        <h2 class="section-title cta-title reveal reveal-d1">See Skans on your network.</h2>
+        <p class="lead reveal reveal-d2" style="margin:18px auto 0;text-align:center">Built for the teams running networks the cloud can't reach. Email us for a technical walkthrough — architecture, controls, and exactly how it stays offline.</p>
+        <div class="cta-actions reveal reveal-d3"><a class="btn btn-primary" href="/#contact">Request a briefing</a><a class="btn btn-ghost" href="/pricing">Compare editions</a></div>
+      </div>
+    </section>
+  </main>`;
+
+    const title = spec.seoTitle.replace(/\s*[—-]\s*Skans( Labs)?\s*$/i, "");
+    const html = head(title, spec.seoDesc, spec.slug) + sprite + header + page + footer +
+      `\n  <script src="/app.js?v=0" defer></script>\n</body>\n</html>\n`;
+    const outPath = path.join(PUB, spec.slug + ".html");
+    fs.mkdirSync(path.dirname(outPath), { recursive: true });
+    fs.writeFileSync(outPath, html);
+    contentSlugs.push(spec.slug);
+  }
+  console.log("build-pages: wrote " + contentSlugs.length + " content pages: " + contentSlugs.join(", "));
+})();
+
 // ---- crawler / AI / SEO files ----
-const siteUrls = [`${SITE}/`, ...pages.map((p) => `${SITE}/${p.slug}`)];
+const siteUrls = [`${SITE}/`, ...pages.map((p) => `${SITE}/${p.slug}`), ...contentSlugs.map((s) => `${SITE}/${s}`)];
 fs.writeFileSync(path.join(PUB, "sitemap.xml"),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${siteUrls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}\n</urlset>\n`);
 fs.writeFileSync(path.join(PUB, "robots.txt"),
@@ -323,9 +418,12 @@ const assetBytes = ["styles.css", "enclave.js", "app.js"].map((f) => {
   try { return fs.readFileSync(path.join(PUB, f)); } catch { return Buffer.alloc(0); }
 });
 const VER = crypto.createHash("md5").update(Buffer.concat(assetBytes)).digest("hex").slice(0, 8);
-for (const f of fs.readdirSync(PUB)) {
-  if (!f.endsWith(".html")) continue;
-  const p = path.join(PUB, f);
-  fs.writeFileSync(p, fs.readFileSync(p, "utf8").replace(/\?v=[A-Za-z0-9]+/g, `?v=${VER}`));
-}
-console.log("build-pages: cache-bust stamped ?v=" + VER + " across all html");
+const stampHtml = (dir) => {
+  for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
+    const p = path.join(dir, ent.name);
+    if (ent.isDirectory()) stampHtml(p);
+    else if (ent.name.endsWith(".html")) fs.writeFileSync(p, fs.readFileSync(p, "utf8").replace(/\?v=[A-Za-z0-9]+/g, `?v=${VER}`));
+  }
+};
+stampHtml(PUB);
+console.log("build-pages: cache-bust stamped ?v=" + VER + " across all html (recursive)");
