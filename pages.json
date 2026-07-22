@@ -1373,8 +1373,8 @@
         "href": "/solutions/industrial-ot"
       },
       {
-        "name": "IoT / OT security consulting",
-        "href": "/solutions/consulting"
+        "name": "Professional Services",
+        "href": "/solutions/professional-services"
       }
     ],
     "editionNote": "Camera identity, discovery, the credential vault and continuous monitoring ship in the free Community edition; patch, firmware, scheduled password rotation and off-source backup at Essential; 802.1X admission, vulnerability management, and NIST 800-171 / CMMC and ISO 27001 evidence at Professional.",
@@ -1502,8 +1502,8 @@
         "href": "/features/access-control"
       },
       {
-        "name": "IoT / OT security consulting",
-        "href": "/solutions/consulting"
+        "name": "Professional Services",
+        "href": "/solutions/professional-services"
       }
     ],
     "editionNote": "Foundations — device identity, the on-prem CA and the per-vendor cert-push driver pack — are in free Community. 802.1X NAC, legacy segmentation and NIST 800-171 / CMMC evidence from Professional. Deep OT/ICS lanes — S7-1500, Desigo, BACnet/SC and OPC UA GDS Push certificate management — from Business.",
@@ -1631,8 +1631,8 @@
         "href": "/features/monitoring"
       },
       {
-        "name": "IoT / OT security consulting",
-        "href": "/solutions/consulting"
+        "name": "Professional Services",
+        "href": "/solutions/professional-services"
       }
     ],
     "editionNote": "Core identity, multi-protocol discovery and read-only OT monitoring start in Community (free); patch, firmware and backup add in Essential; 802.1X NAC, dynamic-VLAN/MAB, legacy segmentation and NIST 800-171 / CMMC evidence in Professional; deep OT/ICS depth — S7-1500, Desigo, BACnet/SC, OPC UA GDS Push and industrial protocol gateways — in Business and Enterprise.",
@@ -1640,11 +1640,11 @@
     "seoDesc": "Give PLCs, SCADA, OPC UA servers and sensors an identity on islanded plant and utility floors. Modern gear gets full identity — OPC UA and S7 cert lanes — while legacy gets segmentation and NIST 800-82 compensating controls. Read-only, air-gapped, nothing leaves the wire."
   },
   {
-    "slug": "solutions/consulting",
+    "slug": "solutions/professional-services",
     "kind": "Solution",
-    "eyebrow": "Consulting",
-    "h1": "IoT and OT security consulting for networks that can't live in the cloud.",
-    "lead": "Skans Labs helps integrators, facility owners and OT teams design, harden and prove security on isolated camera, building-automation and plant-floor enclaves — architecture reviews, risk assessments, identity and network design, and NIST 800-171 / CMMC evidence planning. Engagements stand alone: you can buy consulting with or without the Skans appliance.",
+    "eyebrow": "Professional Services",
+    "h1": "IoT and OT professional services for networks that can't live in the cloud.",
+    "lead": "Skans Labs professional services help integrators, facility owners and OT teams design, harden and prove security on isolated camera, building-automation and plant-floor enclaves — architecture reviews, risk assessments, identity and network design, and NIST 800-171 / CMMC evidence planning. Engagements stand alone: you can buy professional services with or without the Skans appliance.",
     "heroShot": "noc",
     "heroShotLabel": "Skans console · NOC",
     "heroShotAlt": "The Skans NOC wall — fleet health, incidents, compliance and vulnerability posture for an isolated enclave",
@@ -1691,7 +1691,7 @@
         "type": "split",
         "eyebrow": "Engagement styles",
         "h": "Short assessments or multi-site programs.",
-        "body": "Consulting is scoped to the problem, not a forced product path. Typical shapes:",
+        "body": "Professional services are scoped to the problem, not a forced product path. Typical shapes:",
         "bullets": [
           "<b>Discovery workshop (1–2 days)</b> — inventory reality vs drawings, threat model for the island, prioritized backlog the site can actually execute.",
           "<b>Architecture & design package</b> — target enclave design: identity lanes, NAC, monitoring, backup, and update/air-gap content flow (including optional Skans Update Service).",
@@ -1700,12 +1700,12 @@
         ],
         "shot": "devices",
         "shotLabel": "Skans console · Devices",
-        "shotAlt": "Device inventory sorted by capability tier — the kind of live picture a consulting assessment builds toward",
+        "shotAlt": "Device inventory sorted by capability tier — the kind of live picture a professional-services assessment builds toward",
         "reverse": false
       },
       {
         "type": "split",
-        "eyebrow": "Product + consulting",
+        "eyebrow": "Product + services",
         "h": "Use Skans when it fits — or take the design alone.",
         "body": "Many engagements end in a Skans appliance because the product is built for this exact problem. That is optional. If you already have a stack, we still help with architecture, risk, and operator process so the enclave is safer either way.",
         "bullets": [
@@ -1716,7 +1716,7 @@
         ],
         "shot": "compliance",
         "shotLabel": "Skans console · Compliance",
-        "shotAlt": "Compliance posture view — technical evidence planning is a common consulting deliverable",
+        "shotAlt": "Compliance posture view — technical evidence planning is a common professional-services deliverable",
         "reverse": true
       },
       {
@@ -1770,13 +1770,13 @@
         "href": "/platform"
       }
     ],
-    "editionNote": "Consulting is engagement-based and priced separately from software editions. Community through Enterprise product licenses are optional; start a conversation even if you are not deploying Skans yet.",
-    "seoTitle": "IoT & OT security consulting — Skans Labs",
-    "seoDesc": "Consulting for isolated camera, building-automation and OT networks: architecture reviews, device identity design, NAC and containment, risk posture, and NIST 800-171 / CMMC evidence planning. With or without the Skans appliance.",
-    "heroCtaHtml": "<a class=\"btn btn-primary\" href=\"mailto:hello@skanslabs.com?subject=IoT%2FOT%20security%20consulting\">Request consulting</a><a class=\"btn btn-ghost\" href=\"https://portal.skanslabs.com/?edition=Community\">Get Community free</a>",
+    "editionNote": "Professional services are engagement-based and priced separately from software editions. Community through Enterprise product licenses are optional; start a conversation even if you are not deploying Skans yet.",
+    "seoTitle": "IoT & OT professional services — Skans Labs",
+    "seoDesc": "Professional services for isolated camera, building-automation and OT networks: architecture reviews, device identity design, NAC and containment, risk posture, and NIST 800-171 / CMMC evidence planning. With or without the Skans appliance.",
+    "heroCtaHtml": "<a class=\"btn btn-primary\" href=\"mailto:hello@skanslabs.com?subject=IoT%2FOT%20professional%20services\">Request professional services</a><a class=\"btn btn-ghost\" href=\"https://portal.skanslabs.com/?edition=Community\">Get Community free</a>",
     "ctaTitle": "Tell us about the island you need to secure.",
     "ctaLead": "Architecture reviews, identity and containment design, risk posture, and compliance evidence planning for camera, BMS and OT enclaves — with or without the Skans appliance.",
-    "ctaActionsHtml": "<a class=\"btn btn-primary\" href=\"mailto:hello@skanslabs.com?subject=IoT%2FOT%20security%20consulting\">Email consulting</a><a class=\"btn btn-ghost\" href=\"/#contact\">Product briefing</a>",
+    "ctaActionsHtml": "<a class=\"btn btn-primary\" href=\"mailto:hello@skanslabs.com?subject=IoT%2FOT%20professional%20services\">Email professional services</a><a class=\"btn btn-ghost\" href=\"/#contact\">Product briefing</a>",
     "hideEditionsLink": true
   },
   {
@@ -1901,8 +1901,8 @@
         "href": "/features/backup"
       },
       {
-        "name": "IoT / OT security consulting",
-        "href": "/solutions/consulting"
+        "name": "Professional Services",
+        "href": "/solutions/professional-services"
       }
     ],
     "editionNote": "Compliance tooling — NIST 800-171 / CMMC control mapping, the ISO 27001 Annex A crosswalk, signed evidence-pack export, and the audit log with change approvals — is included in Professional and up (Professional, Business, Enterprise). Community and Essential don't include the compliance evidence tools.",

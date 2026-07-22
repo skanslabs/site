@@ -101,8 +101,8 @@ const pages = [
     body: `      <p class="lead">Skans Labs builds an on-premises root of trust for the networks that can't — or shouldn't — touch the cloud: isolated camera, IoT, OT, and building-automation enclaves.</p>
       <h2>What we do</h2>
       <p>Skans gives every device on an isolated network its own identity, then adds the controls that identity makes possible: access control, patching and firmware, encryption and hardening, backup and configuration vaulting, monitoring, and audit-ready compliance evidence. It runs entirely on the local network — set up by the technician who installs the cameras, not a security team.</p>
-      <h2>Consulting</h2>
-      <p>Alongside the product, we offer <a href="/solutions/consulting">IoT and OT security consulting</a> — architecture reviews, device-identity and containment design, risk posture, and NIST 800-171 / CMMC-oriented evidence planning for camera, building-automation and plant-floor enclaves. Engagements can include the Skans appliance or stand alone.</p>
+      <h2>Professional services</h2>
+      <p>Alongside the product, we offer <a href="/solutions/professional-services">IoT and OT professional services</a> — architecture reviews, device-identity and containment design, risk posture, and NIST 800-171 / CMMC-oriented evidence planning for camera, building-automation and plant-floor enclaves. Engagements can include the Skans appliance or stand alone.</p>
       <h2>How we build</h2>
       <ul>
         <li><strong>Air-gap-first.</strong> The whole root of trust runs on the enclave itself. When a feature needs outside data, it arrives through a controlled, signed update — never by opening the network to the internet.</li>
@@ -161,14 +161,14 @@ const pages = [
   },
   {
     slug: "contact", title: "Contact", eyebrow: "Contact", h1: "Get in touch",
-    desc: "How to reach Skans Labs — product briefings, IoT/OT consulting, and responsible disclosure.",
+    desc: "How to reach Skans Labs — product briefings, IoT/OT professional services, and responsible disclosure.",
     body: `      <p class="lead">The fastest way to reach us is email.</p>
       <h2>Email</h2>
-      <p><a href="mailto:${EMAIL}">${EMAIL}</a> — for product, partnership, consulting, and press inquiries.</p>
+      <p><a href="mailto:${EMAIL}">${EMAIL}</a> — for product, partnership, professional services, and press inquiries.</p>
       <h2>Request a product briefing</h2>
       <p>To see Skans in action, use the <a href="/#contact">briefing form on our homepage</a> or email <a href="mailto:${EMAIL}?subject=Skans%20briefing">${EMAIL}</a> with subject “Skans briefing”.</p>
-      <h2>IoT / OT security consulting</h2>
-      <p>Architecture reviews, identity and containment design, risk posture, and compliance evidence planning for isolated camera, BMS and plant-floor networks — with or without the Skans appliance. Details: <a href="/solutions/consulting">IoT / OT consulting</a>. Email <a href="mailto:${EMAIL}?subject=IoT%2FOT%20security%20consulting">${EMAIL}</a> with subject “IoT/OT security consulting”.</p>
+      <h2>IoT / OT professional services</h2>
+      <p>Architecture reviews, identity and containment design, risk posture, and compliance evidence planning for isolated camera, BMS and plant-floor networks — with or without the Skans appliance. Details: <a href="/solutions/professional-services">Professional services</a>. Email <a href="mailto:${EMAIL}?subject=IoT%2FOT%20professional%20services">${EMAIL}</a> with subject “IoT/OT professional services”.</p>
       <h2>Security researchers</h2>
       <p>For responsible disclosure, see our <a href="/.well-known/security.txt">security.txt</a>.</p>
       <h2>Company</h2>
