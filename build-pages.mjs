@@ -101,6 +101,8 @@ const pages = [
     body: `      <p class="lead">Skans Labs builds an on-premises root of trust for the networks that can't — or shouldn't — touch the cloud: isolated camera, IoT, OT, and building-automation enclaves.</p>
       <h2>What we do</h2>
       <p>Skans gives every device on an isolated network its own identity, then adds the controls that identity makes possible: access control, patching and firmware, encryption and hardening, backup and configuration vaulting, monitoring, and audit-ready compliance evidence. It runs entirely on the local network — set up by the technician who installs the cameras, not a security team.</p>
+      <h2>Consulting</h2>
+      <p>Alongside the product, we offer <a href="/solutions/consulting">IoT and OT security consulting</a> — architecture reviews, device-identity and containment design, risk posture, and NIST 800-171 / CMMC-oriented evidence planning for camera, building-automation and plant-floor enclaves. Engagements can include the Skans appliance or stand alone.</p>
       <h2>How we build</h2>
       <ul>
         <li><strong>Air-gap-first.</strong> The whole root of trust runs on the enclave itself. When a feature needs outside data, it arrives through a controlled, signed update — never by opening the network to the internet.</li>
@@ -159,12 +161,14 @@ const pages = [
   },
   {
     slug: "contact", title: "Contact", eyebrow: "Contact", h1: "Get in touch",
-    desc: "How to reach Skans Labs — email, product briefings, and responsible disclosure.",
+    desc: "How to reach Skans Labs — product briefings, IoT/OT consulting, and responsible disclosure.",
     body: `      <p class="lead">The fastest way to reach us is email.</p>
       <h2>Email</h2>
-      <p><a href="mailto:${EMAIL}">${EMAIL}</a> — for product, partnership, and press inquiries.</p>
-      <h2>Request a briefing</h2>
-      <p>To see Skans in action, use the <a href="/#contact">briefing form on our homepage</a> and we’ll follow up.</p>
+      <p><a href="mailto:${EMAIL}">${EMAIL}</a> — for product, partnership, consulting, and press inquiries.</p>
+      <h2>Request a product briefing</h2>
+      <p>To see Skans in action, use the <a href="/#contact">briefing form on our homepage</a> or email <a href="mailto:${EMAIL}?subject=Skans%20briefing">${EMAIL}</a> with subject “Skans briefing”.</p>
+      <h2>IoT / OT security consulting</h2>
+      <p>Architecture reviews, identity and containment design, risk posture, and compliance evidence planning for isolated camera, BMS and plant-floor networks — with or without the Skans appliance. Details: <a href="/solutions/consulting">IoT / OT consulting</a>. Email <a href="mailto:${EMAIL}?subject=IoT%2FOT%20security%20consulting">${EMAIL}</a> with subject “IoT/OT security consulting”.</p>
       <h2>Security researchers</h2>
       <p>For responsible disclosure, see our <a href="/.well-known/security.txt">security.txt</a>.</p>
       <h2>Company</h2>
@@ -379,7 +383,8 @@ const contentSlugs = [];
           <p class="ph-eyebrow reveal in">${spec.eyebrow}</p>
           <h1 class="ph-title reveal in">${spec.h1}</h1>
           <p class="ph-lead reveal in">${spec.lead}</p>
-          <div class="hero-actions reveal in"><a class="btn btn-primary" href="https://portal.skanslabs.com/">Get Skans</a><a class="btn btn-ghost" href="/pricing">See editions</a></div>
+          <div class="hero-actions reveal in">${spec.heroCtaHtml
+            || `<a class="btn btn-primary" href="https://portal.skanslabs.com/?edition=Community">Get Community free</a><a class="btn btn-ghost" href="/pricing">See editions</a>`}</div>
         </div>
         <div class="hero-shot reveal in">${heroShot}</div>
       </div></div>
@@ -393,16 +398,17 @@ ${sections}
         <div class="rel-grid reveal reveal-d1">
           ${related}
         </div>
-        ${spec.editionNote ? `<p class="edition-note reveal reveal-d1">${spec.editionNote} <a href="/pricing">Compare editions →</a></p>` : ""}
+        ${spec.editionNote ? `<p class="edition-note reveal reveal-d1">${spec.editionNote}${spec.hideEditionsLink ? "" : ` <a href="/pricing">Compare editions →</a>`}</p>` : ""}
       </div>
     </section>
 
     <section class="section cta seamed" id="contact-cta">
       <div class="container cta-inner">
         <p class="kicker reveal" style="justify-content:center">Talk to us</p>
-        <h2 class="section-title cta-title reveal reveal-d1">See Skans on your network.</h2>
-        <p class="lead reveal reveal-d2" style="margin:18px auto 0;text-align:center">Built for the teams running networks the cloud can't reach. Email us for a technical walkthrough — architecture, controls, and exactly how it stays offline.</p>
-        <div class="cta-actions reveal reveal-d3"><a class="btn btn-primary" href="https://portal.skanslabs.com/">Get Skans</a><a class="btn btn-ghost" href="/#contact">Request a briefing</a></div>
+        <h2 class="section-title cta-title reveal reveal-d1">${spec.ctaTitle || "See Skans on your network."}</h2>
+        <p class="lead reveal reveal-d2" style="margin:18px auto 0;text-align:center">${spec.ctaLead || "Built for the teams running networks the cloud can't reach. Email us for a technical walkthrough — architecture, controls, and exactly how it stays offline."}</p>
+        <div class="cta-actions reveal reveal-d3">${spec.ctaActionsHtml
+          || `<a class="btn btn-primary" href="https://portal.skanslabs.com/?edition=Community">Get Community free</a><a class="btn btn-ghost" href="/#contact">Request a briefing</a>`}</div>
       </div>
     </section>
   </main>`;

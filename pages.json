@@ -1371,6 +1371,10 @@
       {
         "name": "Industrial & OT networks",
         "href": "/solutions/industrial-ot"
+      },
+      {
+        "name": "IoT / OT security consulting",
+        "href": "/solutions/consulting"
       }
     ],
     "editionNote": "Camera identity, discovery, the credential vault and continuous monitoring ship in the free Community edition; patch, firmware, scheduled password rotation and off-source backup at Essential; 802.1X admission, vulnerability management, and NIST 800-171 / CMMC and ISO 27001 evidence at Professional.",
@@ -1496,6 +1500,10 @@
       {
         "name": "Network access control",
         "href": "/features/access-control"
+      },
+      {
+        "name": "IoT / OT security consulting",
+        "href": "/solutions/consulting"
       }
     ],
     "editionNote": "Foundations — device identity, the on-prem CA and the per-vendor cert-push driver pack — are in free Community. 802.1X NAC, legacy segmentation and NIST 800-171 / CMMC evidence from Professional. Deep OT/ICS lanes — S7-1500, Desigo, BACnet/SC and OPC UA GDS Push certificate management — from Business.",
@@ -1621,11 +1629,155 @@
       {
         "name": "Continuous monitoring",
         "href": "/features/monitoring"
+      },
+      {
+        "name": "IoT / OT security consulting",
+        "href": "/solutions/consulting"
       }
     ],
     "editionNote": "Core identity, multi-protocol discovery and read-only OT monitoring start in Community (free); patch, firmware and backup add in Essential; 802.1X NAC, dynamic-VLAN/MAB, legacy segmentation and NIST 800-171 / CMMC evidence in Professional; deep OT/ICS depth — S7-1500, Desigo, BACnet/SC, OPC UA GDS Push and industrial protocol gateways — in Business and Enterprise.",
     "seoTitle": "Industrial &amp; OT security for air-gapped plant floors — Skans Labs",
     "seoDesc": "Give PLCs, SCADA, OPC UA servers and sensors an identity on islanded plant and utility floors. Modern gear gets full identity — OPC UA and S7 cert lanes — while legacy gets segmentation and NIST 800-82 compensating controls. Read-only, air-gapped, nothing leaves the wire."
+  },
+  {
+    "slug": "solutions/consulting",
+    "kind": "Solution",
+    "eyebrow": "Consulting",
+    "h1": "IoT and OT security consulting for networks that can't live in the cloud.",
+    "lead": "Skans Labs helps integrators, facility owners and OT teams design, harden and prove security on isolated camera, building-automation and plant-floor enclaves — architecture reviews, risk assessments, identity and network design, and NIST 800-171 / CMMC evidence planning. Engagements stand alone: you can buy consulting with or without the Skans appliance.",
+    "heroShot": "noc",
+    "heroShotLabel": "Skans console · NOC",
+    "heroShotAlt": "The Skans NOC wall — fleet health, incidents, compliance and vulnerability posture for an isolated enclave",
+    "sections": [
+      {
+        "type": "grid",
+        "eyebrow": "What we help with",
+        "h": "Practical security for cameras, BMS and the plant floor.",
+        "body": "We work where cloud-native security tools stop: air-gapped and poorly connected sites, mixed-vintage IoT, and OT that must not be written to or rebooted without a change window.",
+        "cards": [
+          {
+            "icon": "ic-discovery",
+            "h": "Enclave architecture review",
+            "p": "Map the island — cameras, controllers, PLCs, switches, jump hosts — and design a root of trust, segmentation and monitoring path that fits how the site is actually operated."
+          },
+          {
+            "icon": "ic-identity",
+            "h": "Device identity & PKI design",
+            "p": "Certificate strategy for gear that can hold an identity, and compensating controls (VLAN, gateway, monitoring) for gear that cannot — without inventing a theater program."
+          },
+          {
+            "icon": "ic-nac",
+            "h": "Network access & OT containment",
+            "p": "802.1X where it is viable, MAB and dynamic VLANs for limited devices, and legacy segmentation patterns aligned with NIST 800-82-style compensating controls."
+          },
+          {
+            "icon": "ic-vuln",
+            "h": "Risk & vulnerability posture",
+            "p": "How to assess firmware and software risk offline, prioritize with real-world signals (KEV/EPSS-class thinking), and turn findings into operator-sized worklists — not a scanner firehose."
+          },
+          {
+            "icon": "ic-clipboard",
+            "h": "Compliance evidence planning",
+            "p": "NIST 800-171 / CMMC and ISO-aligned technical evidence for isolated CUI or sensitive enclaves — what the product can support, what stays organizational, and how to avoid overclaiming."
+          },
+          {
+            "icon": "ic-console",
+            "h": "Deployment & operator readiness",
+            "p": "Stand-up plans for integrators and site techs: who installs what, how rings and backups run, and how the console stays usable by the people who mount the cameras — not only by a security team."
+          }
+        ]
+      },
+      {
+        "type": "split",
+        "eyebrow": "Engagement styles",
+        "h": "Short assessments or multi-site programs.",
+        "body": "Consulting is scoped to the problem, not a forced product path. Typical shapes:",
+        "bullets": [
+          "<b>Discovery workshop (1–2 days)</b> — inventory reality vs drawings, threat model for the island, prioritized backlog the site can actually execute.",
+          "<b>Architecture & design package</b> — target enclave design: identity lanes, NAC, monitoring, backup, and update/air-gap content flow (including optional Skans Update Service).",
+          "<b>Hardening & evidence assist</b> — walk-through against NIST 800-171 / CMMC-oriented technical controls, gap list, and an evidence map your assessor can follow.",
+          "<b>Integrator enablement</b> — train the field team that installs cameras and BMS so the security posture ships with the job, not as a later specialist visit."
+        ],
+        "shot": "devices",
+        "shotLabel": "Skans console · Devices",
+        "shotAlt": "Device inventory sorted by capability tier — the kind of live picture a consulting assessment builds toward",
+        "reverse": false
+      },
+      {
+        "type": "split",
+        "eyebrow": "Product + consulting",
+        "h": "Use Skans when it fits — or take the design alone.",
+        "body": "Many engagements end in a Skans appliance because the product is built for this exact problem. That is optional. If you already have a stack, we still help with architecture, risk, and operator process so the enclave is safer either way.",
+        "bullets": [
+          "<b>Independent advice</b> — we will not invent a requirement just to sell software.",
+          "<b>Honest limits</b> — we say when a device cannot hold a cert, when monitoring is read-only, and when an organizational control is yours, not the box's.",
+          "<b>Air-gap first</b> — designs assume severed WAN, signed content import, and no dependency on a vendor cloud inside the island.",
+          "<b>Same people as the product</b> — you talk to engineering, not a separate partner farm that has never seen a PLC."
+        ],
+        "shot": "compliance",
+        "shotLabel": "Skans console · Compliance",
+        "shotAlt": "Compliance posture view — technical evidence planning is a common consulting deliverable",
+        "reverse": true
+      },
+      {
+        "type": "grid",
+        "eyebrow": "Who engages us",
+        "h": "Built for the people who own the island.",
+        "body": "",
+        "cards": [
+          {
+            "icon": "ic-defense",
+            "h": "Security integrators & VMS partners",
+            "p": "Add identity, admission and evidence to camera and access jobs without standing up a second security product team."
+          },
+          {
+            "icon": "ic-ot",
+            "h": "Facilities & BMS owners",
+            "p": "Harden building automation and shared OT networks where IT owns the WAN and the plant still needs to stay offline."
+          },
+          {
+            "icon": "ic-clipboard",
+            "h": "Compliance & CISO sponsors",
+            "p": "Get a credible technical story for isolated CUI or sensitive enclaves without pretending a product certifies your whole ISMS."
+          },
+          {
+            "icon": "ic-console",
+            "h": "Plant / OT engineering",
+            "p": "Contain legacy controllers and modern OPC UA gear with change windows, read-only monitoring, and no surprise writes to live processes."
+          }
+        ]
+      }
+    ],
+    "related": [
+      {
+        "name": "Industrial & OT",
+        "href": "/solutions/industrial-ot"
+      },
+      {
+        "name": "Building automation",
+        "href": "/solutions/building-automation"
+      },
+      {
+        "name": "Video & physical security",
+        "href": "/solutions/physical-security"
+      },
+      {
+        "name": "NIST 800-171 / CMMC",
+        "href": "/solutions/compliance"
+      },
+      {
+        "name": "Platform overview",
+        "href": "/platform"
+      }
+    ],
+    "editionNote": "Consulting is engagement-based and priced separately from software editions. Community through Enterprise product licenses are optional; start a conversation even if you are not deploying Skans yet.",
+    "seoTitle": "IoT & OT security consulting — Skans Labs",
+    "seoDesc": "Consulting for isolated camera, building-automation and OT networks: architecture reviews, device identity design, NAC and containment, risk posture, and NIST 800-171 / CMMC evidence planning. With or without the Skans appliance.",
+    "heroCtaHtml": "<a class=\"btn btn-primary\" href=\"mailto:hello@skanslabs.com?subject=IoT%2FOT%20security%20consulting\">Request consulting</a><a class=\"btn btn-ghost\" href=\"https://portal.skanslabs.com/?edition=Community\">Get Community free</a>",
+    "ctaTitle": "Tell us about the island you need to secure.",
+    "ctaLead": "Architecture reviews, identity and containment design, risk posture, and compliance evidence planning for camera, BMS and OT enclaves — with or without the Skans appliance.",
+    "ctaActionsHtml": "<a class=\"btn btn-primary\" href=\"mailto:hello@skanslabs.com?subject=IoT%2FOT%20security%20consulting\">Email consulting</a><a class=\"btn btn-ghost\" href=\"/#contact\">Product briefing</a>",
+    "hideEditionsLink": true
   },
   {
     "slug": "solutions/compliance",
@@ -1747,6 +1899,10 @@
       {
         "name": "Backup & disaster recovery",
         "href": "/features/backup"
+      },
+      {
+        "name": "IoT / OT security consulting",
+        "href": "/solutions/consulting"
       }
     ],
     "editionNote": "Compliance tooling — NIST 800-171 / CMMC control mapping, the ISO 27001 Annex A crosswalk, signed evidence-pack export, and the audit log with change approvals — is included in Professional and up (Professional, Business, Enterprise). Community and Essential don't include the compliance evidence tools.",
