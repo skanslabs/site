@@ -387,7 +387,7 @@ ${sections}
     </section>
   </main>`;
 
-    const title = spec.seoTitle.replace(/\s*[—-]\s*Skans( Labs)?\s*$/i, "");
+    const title = spec.seoTitle.replace(/\s*[—\-|·]\s*Skans(\s*Labs)?\s*$/i, "").trim();
     const html = head(title, spec.seoDesc, spec.slug) + sprite + header + page + footer +
       `\n  <script src="/app.js?v=0" defer></script>\n</body>\n</html>\n`;
     const outPath = path.join(PUB, spec.slug + ".html");
